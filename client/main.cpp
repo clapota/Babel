@@ -1,9 +1,9 @@
-//
-// EPITECH PROJECT, 2018
-// babel
-// File description:
-// 
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by antoine_dh,
+*/
 
 #include <stdio.h>
 #include <opus/opus.h>
