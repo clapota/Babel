@@ -2,12 +2,15 @@
 // Created by abel on 19/09/2019.
 //
 
-#ifndef BABEL_AUDIOWRAPPER_H
-#define BABEL_AUDIOWRAPPER_H
+#ifndef BABEL_AUDIOWRAPPER_HPP
+#define BABEL_AUDIOWRAPPER_HPP
 
-#define SAMPLE_RATE 44100
 
+#include <fstream>
 #include <portaudio.h>
+#include <vector>
+#include "AudioInfo.hpp"
+#include "AudioCompressor.hpp"
 
 class AudioWrapper {
     public:
@@ -15,11 +18,13 @@ class AudioWrapper {
         ~AudioWrapper();
         void Start();
         void Stop();
-        void Sleep(int milliseconds);
-        void *getInputBuffer();
-        void getInfo();
+        void writeOutput(std::vector<float> data);
+        AudioCompressor &getCompressor();
     private:
+        PaStream *outStream = nullptr;
         PaStream *stream = nullptr;
+        std::ofstream myfile;
+        AudioCompressor compressor;
 };
 
 
