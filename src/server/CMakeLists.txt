@@ -3,8 +3,10 @@ add_definitions("-fPIC")
 
 if (NOT $ENV{CLION_IDE})
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-    conan_basic_setup()
 endif()
+
+macro(conan_basic_setup)
+endmacro(conan_basic_setup)
 
 file(
         GLOB_RECURSE
