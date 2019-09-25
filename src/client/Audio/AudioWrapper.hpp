@@ -9,6 +9,7 @@
 #include <fstream>
 #include <portaudio.h>
 #include <vector>
+#include <queue>
 #include "AudioInfo.hpp"
 #include "AudioCompressor.hpp"
 
@@ -18,12 +19,14 @@ class AudioWrapper {
         ~AudioWrapper();
         void Start();
         void Stop();
-        void writeOutput(std::vector<float> data);
         AudioCompressor &getCompressor();
+        void addInQueue(std::vector<float> &audioData);
+        std::queue<std::vector<float>> &getQueue();
     private:
         PaStream *outStream = nullptr;
         PaStream *stream = nullptr;
         AudioCompressor compressor;
+        std::queue<std::vector<float>> audioQueue;
 };
 
 
