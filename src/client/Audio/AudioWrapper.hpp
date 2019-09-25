@@ -23,7 +23,6 @@ class AudioWrapper {
     private:
         PaStream *outStream = nullptr;
         PaStream *stream = nullptr;
-        std::ofstream myfile;
         AudioCompressor compressor;
 };
 

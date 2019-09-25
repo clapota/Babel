@@ -27,6 +27,9 @@ int callback(const void *inputBuffer, void *outputBuffer,
     }
 
     AudioPacket packet = wrapper->getCompressor().compress((float *)inputBuffer);
+    std::vector<unsigned char> serializedData = AudioPacket::serialize(packet);
+    packet = AudioPacket::unserialize(serializedData);
+    std::cout << packet.nbBytes << std::endl;
     std::vector<float> outData2 = wrapper->getCompressor().uncompress(packet);
 
     wrapper->writeOutput(outData2);
@@ -34,7 +37,6 @@ int callback(const void *inputBuffer, void *outputBuffer,
 }
 
 AudioWrapper::AudioWrapper() {
-    myfile.open("myfile");
     PaError err = Pa_Initialize();
     PaStream *stream;
     PaStream *outStream;
@@ -43,10 +45,6 @@ AudioWrapper::AudioWrapper() {
 
     if (err != paNoError) {
         std::cerr << "Error while loading portAudio library" << std::endl;
-        //TODO: Throw un truc
-    }
-    if (err != paNoError) {
-        std::cerr << "Error while opening I/O stream" << std::endl;
         //TODO: Throw un truc
     }
     inputParameters.device = Pa_GetDefaultInputDevice();
@@ -93,7 +91,6 @@ AudioWrapper::~AudioWrapper() {
     PaError err;
 
     this->Stop();
-    myfile.close();
     err = Pa_Terminate();
     if (err != paNoError) {
         std::cerr << "Error while quiting portAudio" << std::endl;

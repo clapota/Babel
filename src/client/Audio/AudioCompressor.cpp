@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "AudioCompressor.hpp"
+#include <cstring>
 
 AudioPacket AudioCompressor::compress(float *data) {
     float *in = data;
@@ -61,4 +62,28 @@ AudioCompressor::AudioCompressor() {
 AudioCompressor::~AudioCompressor() {
     opus_decoder_destroy(decoder);
     opus_encoder_destroy(encoder);
+}
+
+std::vector<unsigned char> AudioPacket::serialize(const AudioPacket &packet) {
+    std::vector<unsigned char> byteArray(sizeof(packet.nbBytes) + packet.data.size());
+    int i;
+
+    byteArray.insert(byteArray.begin(), (packet.nbBytes) & 0xFF);
+    byteArray.insert(byteArray.begin() + 1,(packet.nbBytes >> 8) & 0xFF);
+    byteArray.insert(byteArray.begin() + 2,(packet.nbBytes >> 16) & 0xFF);
+    byteArray.insert(byteArray.begin() + 3, (packet.nbBytes >> 24 ) & 0xFF);
+    std::memcpy(&i, byteArray.data(), 4);
+    std::cout << "I : " << i << std::endl;
+    byteArray.insert(byteArray.begin() + 4, packet.data.begin(), packet.data.end());
+    return byteArray;
+}
+
+AudioPacket AudioPacket::unserialize(std::vector<unsigned char> &data) {
+    AudioPacket packet;
+
+    std::memcpy(&(packet.nbBytes), data.data(), sizeof(packet.nbBytes));
+    std::cout << packet.nbBytes << std::endl;
+    data.erase(data.begin(), data.begin() + 4);
+    packet.data = data;
+    return packet;
 }
