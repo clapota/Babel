@@ -6,7 +6,6 @@
 
 class BoostService : public IService {
     public:
-        std::string getName() override { return "BoostService"; }
         void const runContext() { _io_context.run(); }
         void const stopContext() { _io_context.stop(); }
         boost::asio::io_context &getContext() { return _io_context; }

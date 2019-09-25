@@ -5,8 +5,6 @@
 
 class LogService : public IService {
     public:
-        std::string getName() override { return "LogService"; }
-
         void writeHour(std::string message)
         {
             time_t now = time(nullptr);

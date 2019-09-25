@@ -9,7 +9,7 @@
 
 class BoostListener : public IListener {
     public:
-        explicit BoostListener(ushort port) :
+        explicit BoostListener(int port = LISTENER_DEFAULT_PORT) :
             _acceptor(ServiceLocator<BoostService>::getService()->getContext(),
                       boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)) { }
         void stop() override;

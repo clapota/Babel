@@ -4,8 +4,6 @@
 #include <string>
 
 class IService {
-    public:
-        virtual std::string getName() = 0;
 };
 
 #endif //BABEL_ISERVICE_HPP

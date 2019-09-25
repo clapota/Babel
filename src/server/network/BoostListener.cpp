@@ -15,9 +15,13 @@ void BoostListener::accept()
 
 void BoostListener::stop()
 {
+    auto log = ServiceLocator<LogService>::getService();
+
+    log->writeHour("Closing listener");
     _isRunning = false;
     _acceptor.cancel();
     _acceptor.close();
+    log->writeHour("Listener closed");
 }
 
 void BoostListener::handle_accept(BoostConnection::pointer new_connection,

@@ -8,8 +8,18 @@ template <class T>
 class ServiceLocator {
     static_assert(std::is_base_of<IService, T>::value, "T must inherit from IService");
     public:
-        static T *getService() { return _service; } const
-        static void registerService(T &service) { _service = &service; }
+        static T *getService()
+        {
+                if (_service == nullptr) {
+                        _service = new T();
+                }
+                return _service;
+        }
+
+        ~ServiceLocator()
+        {
+                delete(_service);
+        }
     private:
         static T *_service;
 };
