@@ -33,14 +33,16 @@ void BoostConnection::write_async(const std::string &message)
 
 void const BoostConnection::handleWrite(const boost::system::error_code &error, size_t size)
 {
-    #ifdef DEBUG
-        auto log = ServiceLocator<LogService>::getService();
-        log->writeHour("Sent " + std::to_string(size) + " bytes");
-    #endif
+    auto log = ServiceLocator<LogService>::getService();
 
     if (error) {
         log->writeError(error.message());
+        return;
     }
+
+    #ifdef DEBUG
+        log->writeHour("Sent " + std::to_string(size) + " bytes");
+    #endif
 }
 
 void const BoostConnection::handleRead(const boost::system::error_code &error, size_t size)
@@ -48,7 +50,9 @@ void const BoostConnection::handleRead(const boost::system::error_code &error, s
     auto log = ServiceLocator<LogService>::getService();
 
     if (!error) {
-        std::cout.write(_bytes.data(), size);
+        #ifdef DEBUG
+            std::cout.write(_bytes.data(), size);
+        #endif
         getSocket().async_read_some(boost::asio::buffer(_bytes),
                                     boost::bind(&BoostConnection::handleRead,
                                                 this,

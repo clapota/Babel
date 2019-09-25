@@ -17,7 +17,7 @@ void BoostListener::stop()
 {
     auto log = ServiceLocator<LogService>::getService();
 
-    log->writeHour("Closing listener");
+    log->writeHour("Closing listener ...");
     _isRunning = false;
     _acceptor.cancel();
     _acceptor.close();
@@ -33,8 +33,8 @@ void BoostListener::handle_accept(BoostConnection::pointer new_connection,
         log->writeHour("Client connected");
         new_connection->read_async();
         new_connection->write_async("bite");
-        if (_isRunning)
-            accept();
+       // if (_isRunning)
+      //      accept();
     } else {
         log->writeHour(error.message());
         /* TODO : handle error*/

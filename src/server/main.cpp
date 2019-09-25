@@ -33,6 +33,5 @@ int main()
     /* Block until end of logic calls fired by network events*/
     ServiceLocator<BoostService>::getService()->runContext();
 
-
     return 0;
 }
