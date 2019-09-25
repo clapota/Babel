@@ -8,6 +8,30 @@
 #include "AudioWrapper.hpp"
 #include "AudioCompressor.hpp"
 
+int outputCallback(const void *inputBuffer, void *outputBuffer,
+             unsigned long framesPerBuffer,
+             const PaStreamCallbackTimeInfo* timeInfo,
+             PaStreamCallbackFlags statusFlags,
+             void *userData) {
+    auto *wrapper = reinterpret_cast<AudioWrapper *>(userData);
+    float *output = static_cast<float *>(outputBuffer);
+
+    (void)inputBuffer;
+    (void)timeInfo;
+    (void)statusFlags;
+    auto &queue = wrapper->getQueue();
+    auto &float_vector = queue.front();
+
+    if (!queue.empty()) {
+        for (auto it: float_vector) {
+            *output++ = it;
+        }
+        queue.pop();
+    }
+    return (0);
+}
+
+
 int callback(const void *inputBuffer, void *outputBuffer,
                            unsigned long framesPerBuffer,
                            const PaStreamCallbackTimeInfo* timeInfo,
@@ -16,25 +40,27 @@ int callback(const void *inputBuffer, void *outputBuffer,
     (void)outputBuffer;
     (void)timeInfo;
     (void)statusFlags;
-    std::cout << framesPerBuffer << std::endl;
     auto *wrapper = reinterpret_cast<AudioWrapper *>(userData);
     auto *in = (float *)inputBuffer;
-
     std::vector<float> outData;
+
     for (unsigned long i = 0; i < framesPerBuffer; i++) {
         outData.push_back(*in++);
         outData.push_back(*in++);
     }
 
     AudioPacket packet = wrapper->getCompressor().compress((float *)inputBuffer);
+    std::vector<unsigned char> serializedData = AudioPacket::serialize(packet);
+    //TODO: Envoyer sur le réseau
+
+    packet = AudioPacket::unserialize(serializedData);
     std::vector<float> outData2 = wrapper->getCompressor().uncompress(packet);
 
-    wrapper->writeOutput(outData2);
+    wrapper->addInQueue(outData2);
     return 0;
 }
 
 AudioWrapper::AudioWrapper() {
-    myfile.open("myfile");
     PaError err = Pa_Initialize();
     PaStream *stream;
     PaStream *outStream;
@@ -43,10 +69,6 @@ AudioWrapper::AudioWrapper() {
 
     if (err != paNoError) {
         std::cerr << "Error while loading portAudio library" << std::endl;
-        //TODO: Throw un truc
-    }
-    if (err != paNoError) {
-        std::cerr << "Error while opening I/O stream" << std::endl;
         //TODO: Throw un truc
     }
     inputParameters.device = Pa_GetDefaultInputDevice();
@@ -83,8 +105,8 @@ AudioWrapper::AudioWrapper() {
             SAMPLE_RATE,
             FRAMES_PER_BUFFER,
             paDitherOff,
-            NULL,
-            NULL);
+            outputCallback,
+            this);
     this->stream = stream;
     this->outStream = outStream;
 }
@@ -93,7 +115,6 @@ AudioWrapper::~AudioWrapper() {
     PaError err;
 
     this->Stop();
-    myfile.close();
     err = Pa_Terminate();
     if (err != paNoError) {
         std::cerr << "Error while quiting portAudio" << std::endl;
@@ -123,6 +144,11 @@ void AudioWrapper::Start() {
             //TODO: Throw un truc
         }
     }
+    std::vector<float> zeroBuffer;
+    for (int i = 0; i < FRAMES_PER_BUFFER * NUMBER_CHANNELS; i++) {
+        zeroBuffer.push_back(0);
+    }
+    Pa_WriteStream(this->outStream, zeroBuffer.data(), FRAMES_PER_BUFFER);
 }
 
 /***
@@ -157,10 +183,14 @@ void AudioWrapper::Stop() {
     }
 }
 
-void AudioWrapper::writeOutput(std::vector<float> data) {
-    Pa_WriteStream(this->outStream, data.data(), FRAMES_PER_BUFFER);
-}
-
 AudioCompressor &AudioWrapper::getCompressor() {
     return this->compressor;
+}
+
+void AudioWrapper::addInQueue(std::vector<float> &audioData) {
+    this->audioQueue.push(audioData);
+}
+
+std::queue<std::vector<float>> & AudioWrapper::getQueue() {
+    return this->audioQueue;
 }

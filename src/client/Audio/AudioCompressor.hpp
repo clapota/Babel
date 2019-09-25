@@ -12,6 +12,8 @@
 struct AudioPacket {
     std::vector<unsigned char> data;
     int nbBytes;
+    static std::vector<unsigned char> serialize(const AudioPacket &packet);
+    static AudioPacket unserialize(std::vector<unsigned char> &data);
 };
 
 class AudioCompressor {
