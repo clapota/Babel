@@ -16,6 +16,8 @@ void BoostListener::accept()
 void BoostListener::stop()
 {
     _isRunning = false;
+    _acceptor.cancel();
+    _acceptor.close();
 }
 
 void BoostListener::handle_accept(BoostConnection::pointer new_connection,
@@ -25,11 +27,12 @@ void BoostListener::handle_accept(BoostConnection::pointer new_connection,
 
     if (!error) {
         log->writeHour("Client connected");
+        new_connection->read_async();
         new_connection->write_async("bite");
-    //    new_connection.start();
         if (_isRunning)
             accept();
     } else {
+        log->writeHour(error.message());
         /* TODO : handle error*/
     }
 }

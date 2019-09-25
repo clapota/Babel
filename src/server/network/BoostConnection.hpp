@@ -23,8 +23,11 @@ class BoostConnection : public IConnection, public boost::enable_shared_from_thi
         void write_async(void *data, size_t size) override;
         void write_async(const std::string &message) override;
     private:
+        std::array<char, 4096> _bytes;
         void const handleWrite(const boost::system::error_code&, size_t);
-        BoostConnection() : _socket(ServiceLocator<BoostService>::getService()->getContext()) {}
+        void const handleRead(const boost::system::error_code &, size_t);
+        BoostConnection() : _socket(ServiceLocator<BoostService>::getService()->getContext()),
+                            _bytes({}) {}
         boost::asio::ip::tcp::socket _socket;
 };
 

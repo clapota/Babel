@@ -8,7 +8,9 @@
 #define LISTENER_PORT 4444
 
 #include <iostream>
-#include <services/LogService.hpp>
+#include "network/BoostListener.hpp"
+#include "services/ServiceLocator.hpp"
+#include "services/LogService.hpp"
 #include "services/BoostService.hpp"
 #include "services/NetworkService.hpp"
 #include "services/DataBaseService.hpp"
@@ -18,7 +20,7 @@ void cleanServices()
     delete(ServiceLocator<LogService>::getService());
     delete(ServiceLocator<BoostService>::getService());
     delete(ServiceLocator<DataBaseService>::getService());
-    delete(ServiceLocator<NetworkService>::getService());
+    delete(ServiceLocator<NetworkService<BoostListener>>::getService());
 }
 
 void initializeServices()
@@ -32,8 +34,8 @@ void initializeServices()
     auto *dataBase = new DataBaseService;
     ServiceLocator<DataBaseService>::registerService(*dataBase);
 
-    auto *network = new NetworkService(LISTENER_PORT);
-    ServiceLocator<NetworkService>::registerService(*network);
+    auto *network = new NetworkService<BoostListener>(LISTENER_PORT);
+    ServiceLocator<NetworkService<BoostListener>>::registerService(*network);
 }
 
 int main()
@@ -41,7 +43,7 @@ int main()
     initializeServices();
 
     auto logService = ServiceLocator<LogService>::getService();
-    auto netService = ServiceLocator<NetworkService>::getService();
+    auto netService = ServiceLocator<NetworkService<BoostListener>>::getService();
 
     netService->accept();
     logService->writeHour("Server is now listening on port " + std::to_string(LISTENER_PORT));
