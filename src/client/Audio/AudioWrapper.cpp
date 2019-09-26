@@ -3,8 +3,6 @@
 //
 
 #include <iostream>
-#include <string.h>
-#include <stdlib.h>
 #include "AudioWrapper.hpp"
 #include "AudioCompressor.hpp"
 
@@ -55,17 +53,15 @@ int callback(const void *inputBuffer, void *outputBuffer,
     std::vector<unsigned char> serializedData = AudioPacket::serialize(packet);
     //TODO: Envoyer sur le réseau
 
-    wrapper->sendData(serializedData);
-
-//    packet = AudioPacket::unserialize(serializedData);
-//    std::vector<float> outData2 = wrapper->getCompressor().uncompress(packet);
-
-//    wrapper->addInQueue(outData2);
+    wrapper->addToSendList(serializedData);
     return 0;
 }
 
 AudioWrapper::AudioWrapper() {
     this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.112.72", 7777));
+    this->timer = new QTimer(this);
+    this->timer->setInterval(10);
+    QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(sendData()));
     PaError err = Pa_Initialize();
     PaStream *stream;
     PaStream *outStream;
@@ -114,6 +110,7 @@ AudioWrapper::AudioWrapper() {
             this);
     this->stream = stream;
     this->outStream = outStream;
+    this->timer->start();
 }
 
 AudioWrapper::~AudioWrapper() {
@@ -190,6 +187,17 @@ std::queue<std::vector<float>> & AudioWrapper::getQueue() {
     return this->audioQueue;
 }
 
-void AudioWrapper::sendData(std::vector<unsigned char> &data) {
-    this->udpClient->sendData(data);
+void AudioWrapper::sendData() {
+    while (!this->sendList.empty()) {
+        this->udpClient->sendData(this->sendList.front());
+        this->sendList.pop();
+    }
+}
+
+void AudioWrapper::close() {
+    emit hangUp();
+}
+
+void AudioWrapper::addToSendList(std::vector<unsigned char> &data) {
+    this->sendList.push(data);
 }

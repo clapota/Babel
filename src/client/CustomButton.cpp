@@ -11,6 +11,11 @@ CustomButton::CustomButton() {
 void CustomButton::createWrapper() {
     if (wrapper == nullptr) {
         wrapper = std::unique_ptr<AudioWrapper>(new AudioWrapper());
+        QObject::connect(wrapper.get(), SIGNAL(hangUp()), this, SLOT(doHangUp()));
         wrapper->Start();
     }
+}
+
+void CustomButton::doHangUp() {
+    this->wrapper = nullptr;
 }

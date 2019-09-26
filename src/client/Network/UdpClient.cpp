@@ -12,19 +12,23 @@ UdpClient::UdpClient(AudioWrapper &wrapper, const std::string &addr, unsigned sh
 
     this->udpSocket->bind(QHostAddress::Any, this->port);
     QObject::connect(this->udpSocket, SIGNAL(readyRead()), this, SLOT(readReady()));
+    this->timer = new QTimer;
+    this->timer->setInterval(5000);
+    QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(disconnect()));
+    this->timer->start();
 }
 
 void UdpClient::readReady() {
     std::cout << "ready" << std::endl;
     while (this->udpSocket->hasPendingDatagrams())
     {
+        this->timer->setInterval(5000);
         QHostAddress host;
         unsigned short port;
 
         std::vector<unsigned char> ucharVector;
         QNetworkDatagram datagram = udpSocket->receiveDatagram();
         QByteArray data = datagram.data();
-        std::cout << data.size() << std::endl;
 
         for (const auto it : data)
             ucharVector.push_back(it);
@@ -43,5 +47,13 @@ void UdpClient::sendData(std::vector<unsigned char> &data)
         array.append(static_cast<char>(it));
 
     this->udpSocket->writeDatagram(array, this->address, this->port);
-//    this->udpSocket->waitForReadyRead();
+}
+
+bool UdpClient::isConnected() const {
+    return this->isAlive;
+}
+
+void UdpClient::disconnect() {
+    std::cout << " BITE NOIRE " << std::endl;
+    this->wrapper.close();
 }

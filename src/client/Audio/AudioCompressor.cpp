@@ -20,7 +20,6 @@ AudioPacket AudioCompressor::compress(float *data) {
     }
     packet.data = std::vector<unsigned char>(cbits.begin(), cbits.begin() + nbBytes);
     packet.nbBytes = nbBytes;
-    std::cout << nbBytes << std::endl;
     return packet;
 }
 

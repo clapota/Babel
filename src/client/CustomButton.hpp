@@ -17,6 +17,7 @@ class CustomButton : public QPushButton {
         ~CustomButton() = default;
     public slots:
         void createWrapper();
+        void doHangUp();
     private:
         std::unique_ptr<AudioWrapper> wrapper = nullptr;
 
