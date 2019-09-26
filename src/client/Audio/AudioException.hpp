@@ -1,6 +1,9 @@
-//
-// Created by abel on 26/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #ifndef BABEL_AUDIOEXCEPTION_HPP
 #define BABEL_AUDIOEXCEPTION_HPP
@@ -15,6 +18,5 @@ class AudioException : public std::exception {
     private:
         const char *message = nullptr;
 };
-
 
 #endif //BABEL_AUDIOEXCEPTION_HPP
