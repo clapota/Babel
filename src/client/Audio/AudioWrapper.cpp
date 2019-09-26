@@ -3,8 +3,10 @@
 //
 
 #include <iostream>
+
 #include "AudioWrapper.hpp"
 #include "AudioCompressor.hpp"
+#include "AudioException.hpp"
 
 int outputCallback(const void *inputBuffer, void *outputBuffer,
              unsigned long framesPerBuffer,
@@ -12,7 +14,7 @@ int outputCallback(const void *inputBuffer, void *outputBuffer,
              PaStreamCallbackFlags statusFlags,
              void *userData) {
     auto *wrapper = reinterpret_cast<AudioWrapper *>(userData);
-    float *output = static_cast<float *>(outputBuffer);
+    auto *output = static_cast<float *>(outputBuffer);
 
     (void)inputBuffer;
     (void)timeInfo;
@@ -70,25 +72,19 @@ AudioWrapper::AudioWrapper() {
     PaStreamParameters inputParameters;
     PaStreamParameters outputParameters;
 
-    if (err != paNoError) {
-        std::cerr << "Error while loading portAudio library" << std::endl;
-        //TODO: Throw un truc
-    }
+    if (err != paNoError)
+        throw AudioException("error while loading portAudio library");
     inputParameters.device = Pa_GetDefaultInputDevice();
-    if (inputParameters.device == paNoDevice) {
-        std::cerr << "No default input device " << std::endl;
-        //TODO: Throw un truc
-    }
+    if (inputParameters.device == paNoDevice)
+        throw AudioException("No default input device");
     inputParameters.channelCount = NUMBER_CHANNELS;
     inputParameters.sampleFormat = paFloat32;
     inputParameters.suggestedLatency = Pa_GetDeviceInfo(inputParameters.device)->defaultLowInputLatency;
     inputParameters.hostApiSpecificStreamInfo = nullptr;
 
     outputParameters.device = Pa_GetDefaultOutputDevice();
-    if (outputParameters.device == paNoDevice) {
-        std::cerr << "No default output device" << std::endl;
-        //TODO: Throw un truc
-    }
+    if (outputParameters.device == paNoDevice)
+        throw AudioException("No default output device");
     outputParameters.channelCount = NUMBER_CHANNELS;
     outputParameters.sampleFormat = paFloat32;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
@@ -102,6 +98,8 @@ AudioWrapper::AudioWrapper() {
             paDitherOff,
             callback,
             this);
+    if (err != paNoError)
+        throw AudioException("Can't open Input stream");
     err = Pa_OpenStream(&outStream,
             nullptr,
             &outputParameters,
@@ -110,6 +108,8 @@ AudioWrapper::AudioWrapper() {
             paDitherOff,
             outputCallback,
             this);
+    if (err != paNoError)
+        throw AudioException("Can't open Output stream");
     this->stream = stream;
     this->outStream = outStream;
     this->timer->start();
@@ -120,10 +120,8 @@ AudioWrapper::~AudioWrapper() {
 
     this->Stop();
     err = Pa_Terminate();
-    if (err != paNoError) {
-        std::cerr << "Error while quiting portAudio" << std::endl;
-        //TODO: Throw un truc
-    }
+    if (err != paNoError)
+        throw AudioException("Error while quiting portAudio");
 }
 
 /***
@@ -138,20 +136,15 @@ void AudioWrapper::Start() {
 
     if (Pa_IsStreamStopped(this->stream) != 0) {
         err = Pa_StartStream(this->stream);
-        if (err != paNoError) {
-            std::cerr << "Error while starting stream" << std::endl;
-            //TODO: Throw un truc
-        }
+        if (err != paNoError)
+            throw AudioException("Error while starting Input stream");
         err = Pa_StartStream(this->outStream);
-        if (err != paNoError) {
-            std::cerr << "Error while starting stream" << std::endl;
-            //TODO: Throw un truc
-        }
+        if (err != paNoError)
+            throw AudioException("Error while starting Output stream");
     }
     std::vector<float> zeroBuffer;
-    for (int i = 0; i < FRAMES_PER_BUFFER * NUMBER_CHANNELS; i++) {
+    for (int i = 0; i < FRAMES_PER_BUFFER * NUMBER_CHANNELS; i++)
         zeroBuffer.push_back(0);
-    }
     Pa_WriteStream(this->outStream, zeroBuffer.data(), FRAMES_PER_BUFFER);
 }
 
@@ -163,17 +156,13 @@ void AudioWrapper::Stop() {
 
     if (Pa_IsStreamStopped(this->stream) != 1) {
         err = Pa_StopStream(this->stream);
-        if (err != paNoError) {
-            std::cerr << "Error while stopping stream" << std::endl;
-            //TODO: Throw un truc
-        }
+        if (err != paNoError)
+            throw AudioException("Error while stopping Input stream");
     }
     if (Pa_IsStreamStopped(this->outStream) != 1) {
         err = Pa_StopStream(this->outStream);
-        if (err != paNoError) {
-            std::cerr << "Error while stopping stream" << std::endl;
-            //TODO: Throw un truc
-        }
+        if (err != paNoError)
+            throw AudioException("Error while stopping Output stream");
     }
 }
 

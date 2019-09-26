@@ -14,7 +14,7 @@ class CustomButton : public QPushButton {
 
     public:
         CustomButton();
-        ~CustomButton() = default;
+        ~CustomButton() override = default;
     public slots:
         void createWrapper();
         void doHangUp();

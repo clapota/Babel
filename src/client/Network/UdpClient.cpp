@@ -53,6 +53,5 @@ bool UdpClient::isConnected() const {
 }
 
 void UdpClient::disconnect() {
-    std::cout << " BITE NOIRE " << std::endl;
     this->wrapper.close();
 }
