@@ -1,6 +1,9 @@
-//
-// Created by abel on 26/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #ifndef BABEL_CUSTOMBUTTON_HPP
 #define BABEL_CUSTOMBUTTON_HPP
@@ -22,6 +25,5 @@ class CustomButton : public QPushButton {
         std::unique_ptr<AudioWrapper> wrapper = nullptr;
 
 };
-
 
 #endif //BABEL_CUSTOMBUTTON_HPP

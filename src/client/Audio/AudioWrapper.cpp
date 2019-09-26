@@ -1,6 +1,9 @@
-//
-// Created by abel on 19/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #include <iostream>
 
@@ -62,7 +65,7 @@ int callback(const void *inputBuffer, void *outputBuffer,
 }
 
 AudioWrapper::AudioWrapper() {
-    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.112.72", 7777));
+    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.112.192", 7777));
     this->timer = new QTimer(this);
     this->timer->setInterval(10);
     QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(sendData()));
