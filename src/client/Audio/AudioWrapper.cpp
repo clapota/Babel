@@ -3,8 +3,6 @@
 //
 
 #include <iostream>
-#include <string.h>
-#include <stdlib.h>
 #include "AudioWrapper.hpp"
 #include "AudioCompressor.hpp"
 
@@ -24,6 +22,8 @@ int outputCallback(const void *inputBuffer, void *outputBuffer,
 
     if (!queue.empty()) {
         for (auto it: float_vector) {
+            if (it != 0)
+                std::cout << "normalement marche bien" << std::endl;
             *output++ = it;
         }
         queue.pop();
@@ -53,14 +53,15 @@ int callback(const void *inputBuffer, void *outputBuffer,
     std::vector<unsigned char> serializedData = AudioPacket::serialize(packet);
     //TODO: Envoyer sur le réseau
 
-    packet = AudioPacket::unserialize(serializedData);
-    std::vector<float> outData2 = wrapper->getCompressor().uncompress(packet);
-
-    wrapper->addInQueue(outData2);
+    wrapper->addToSendList(serializedData);
     return 0;
 }
 
 AudioWrapper::AudioWrapper() {
+    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.112.72", 7777));
+    this->timer = new QTimer(this);
+    this->timer->setInterval(10);
+    QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(sendData()));
     PaError err = Pa_Initialize();
     PaStream *stream;
     PaStream *outStream;
@@ -79,7 +80,7 @@ AudioWrapper::AudioWrapper() {
     inputParameters.channelCount = NUMBER_CHANNELS;
     inputParameters.sampleFormat = paFloat32;
     inputParameters.suggestedLatency = Pa_GetDeviceInfo(inputParameters.device)->defaultLowInputLatency;
-    inputParameters.hostApiSpecificStreamInfo = NULL;
+    inputParameters.hostApiSpecificStreamInfo = nullptr;
 
     outputParameters.device = Pa_GetDefaultOutputDevice();
     if (outputParameters.device == paNoDevice) {
@@ -89,18 +90,18 @@ AudioWrapper::AudioWrapper() {
     outputParameters.channelCount = NUMBER_CHANNELS;
     outputParameters.sampleFormat = paFloat32;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
-    outputParameters.hostApiSpecificStreamInfo = NULL;
+    outputParameters.hostApiSpecificStreamInfo = nullptr;
 
     err = Pa_OpenStream(&stream,
             &inputParameters,
-            NULL,
+            nullptr,
             SAMPLE_RATE,
             FRAMES_PER_BUFFER,
             paDitherOff,
             callback,
             this);
     err = Pa_OpenStream(&outStream,
-            NULL,
+            nullptr,
             &outputParameters,
             SAMPLE_RATE,
             FRAMES_PER_BUFFER,
@@ -109,6 +110,7 @@ AudioWrapper::AudioWrapper() {
             this);
     this->stream = stream;
     this->outStream = outStream;
+    this->timer->start();
 }
 
 AudioWrapper::~AudioWrapper() {
@@ -158,11 +160,6 @@ void AudioWrapper::Stop() {
     PaError err;
 
     if (Pa_IsStreamStopped(this->stream) != 1) {
-        err = Pa_AbortStream(this->stream);
-        if (err != paNoError) {
-            std::cerr << "Error while stopping stream" << std::endl;
-            //TODO: Throw un truc
-        }
         err = Pa_StopStream(this->stream);
         if (err != paNoError) {
             std::cerr << "Error while stopping stream" << std::endl;
@@ -170,11 +167,6 @@ void AudioWrapper::Stop() {
         }
     }
     if (Pa_IsStreamStopped(this->outStream) != 1) {
-        err = Pa_AbortStream(this->outStream);
-        if (err != paNoError) {
-            std::cerr << "Error while stopping outStream" << std::endl;
-            //TODO: Throw un truc
-        }
         err = Pa_StopStream(this->outStream);
         if (err != paNoError) {
             std::cerr << "Error while stopping stream" << std::endl;
@@ -187,10 +179,25 @@ AudioCompressor &AudioWrapper::getCompressor() {
     return this->compressor;
 }
 
-void AudioWrapper::addInQueue(std::vector<float> &audioData) {
+void AudioWrapper::addInQueue(std::vector<float> audioData) {
     this->audioQueue.push(audioData);
 }
 
 std::queue<std::vector<float>> & AudioWrapper::getQueue() {
     return this->audioQueue;
+}
+
+void AudioWrapper::sendData() {
+    while (!this->sendList.empty()) {
+        this->udpClient->sendData(this->sendList.front());
+        this->sendList.pop();
+    }
+}
+
+void AudioWrapper::close() {
+    emit hangUp();
+}
+
+void AudioWrapper::addToSendList(std::vector<unsigned char> &data) {
+    this->sendList.push(data);
 }
