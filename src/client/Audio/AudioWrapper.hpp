@@ -10,8 +10,10 @@
 #include <portaudio.h>
 #include <vector>
 #include <queue>
+#include <memory>
 #include "AudioInfo.hpp"
 #include "AudioCompressor.hpp"
+#include "../Network/UdpClient.hpp"
 
 class AudioWrapper {
     public:
@@ -20,13 +22,15 @@ class AudioWrapper {
         void Start();
         void Stop();
         AudioCompressor &getCompressor();
-        void addInQueue(std::vector<float> &audioData);
+        void addInQueue(std::vector<float> audioData);
         std::queue<std::vector<float>> &getQueue();
+        void sendData(std::vector<unsigned char> &data);
     private:
         PaStream *outStream = nullptr;
         PaStream *stream = nullptr;
         AudioCompressor compressor;
         std::queue<std::vector<float>> audioQueue;
+        std::unique_ptr<UdpClient> udpClient = nullptr;
 };
 
 

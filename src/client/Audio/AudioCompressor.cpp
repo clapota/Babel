@@ -18,8 +18,9 @@ AudioPacket AudioCompressor::compress(float *data) {
         std::cerr << "Failed to encode" << std::endl;
         //TODO: Throw un truc
     }
-    packet.data = cbits;
+    packet.data = std::vector<unsigned char>(cbits.begin(), cbits.begin() + nbBytes);
     packet.nbBytes = nbBytes;
+    std::cout << nbBytes << std::endl;
     return packet;
 }
 
@@ -67,7 +68,7 @@ std::vector<unsigned char> AudioPacket::serialize(const AudioPacket &packet) {
     std::vector<unsigned char> byteArray(sizeof(packet.nbBytes) + packet.data.size());
     int i;
 
-    byteArray.insert(byteArray.begin(), (packet.nbBytes) & 0xFF);
+    byteArray.insert(byteArray.begin(), packet.nbBytes & 0xFF);
     byteArray.insert(byteArray.begin() + 1,(packet.nbBytes >> 8) & 0xFF);
     byteArray.insert(byteArray.begin() + 2,(packet.nbBytes >> 16) & 0xFF);
     byteArray.insert(byteArray.begin() + 3, (packet.nbBytes >> 24 ) & 0xFF);

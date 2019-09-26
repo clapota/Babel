@@ -24,6 +24,8 @@ int outputCallback(const void *inputBuffer, void *outputBuffer,
 
     if (!queue.empty()) {
         for (auto it: float_vector) {
+            if (it != 0)
+                std::cout << "normalement marche bien" << std::endl;
             *output++ = it;
         }
         queue.pop();
@@ -53,14 +55,17 @@ int callback(const void *inputBuffer, void *outputBuffer,
     std::vector<unsigned char> serializedData = AudioPacket::serialize(packet);
     //TODO: Envoyer sur le réseau
 
-    packet = AudioPacket::unserialize(serializedData);
-    std::vector<float> outData2 = wrapper->getCompressor().uncompress(packet);
+    wrapper->sendData(serializedData);
 
-    wrapper->addInQueue(outData2);
+//    packet = AudioPacket::unserialize(serializedData);
+//    std::vector<float> outData2 = wrapper->getCompressor().uncompress(packet);
+
+//    wrapper->addInQueue(outData2);
     return 0;
 }
 
 AudioWrapper::AudioWrapper() {
+    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.111.192", 7777));
     PaError err = Pa_Initialize();
     PaStream *stream;
     PaStream *outStream;
@@ -79,7 +84,7 @@ AudioWrapper::AudioWrapper() {
     inputParameters.channelCount = NUMBER_CHANNELS;
     inputParameters.sampleFormat = paFloat32;
     inputParameters.suggestedLatency = Pa_GetDeviceInfo(inputParameters.device)->defaultLowInputLatency;
-    inputParameters.hostApiSpecificStreamInfo = NULL;
+    inputParameters.hostApiSpecificStreamInfo = nullptr;
 
     outputParameters.device = Pa_GetDefaultOutputDevice();
     if (outputParameters.device == paNoDevice) {
@@ -89,18 +94,18 @@ AudioWrapper::AudioWrapper() {
     outputParameters.channelCount = NUMBER_CHANNELS;
     outputParameters.sampleFormat = paFloat32;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
-    outputParameters.hostApiSpecificStreamInfo = NULL;
+    outputParameters.hostApiSpecificStreamInfo = nullptr;
 
     err = Pa_OpenStream(&stream,
             &inputParameters,
-            NULL,
+            nullptr,
             SAMPLE_RATE,
             FRAMES_PER_BUFFER,
             paDitherOff,
             callback,
             this);
     err = Pa_OpenStream(&outStream,
-            NULL,
+            nullptr,
             &outputParameters,
             SAMPLE_RATE,
             FRAMES_PER_BUFFER,
@@ -187,10 +192,14 @@ AudioCompressor &AudioWrapper::getCompressor() {
     return this->compressor;
 }
 
-void AudioWrapper::addInQueue(std::vector<float> &audioData) {
+void AudioWrapper::addInQueue(std::vector<float> audioData) {
     this->audioQueue.push(audioData);
 }
 
 std::queue<std::vector<float>> & AudioWrapper::getQueue() {
     return this->audioQueue;
+}
+
+void AudioWrapper::sendData(std::vector<unsigned char> &data) {
+    this->udpClient->sendData(data);
 }
