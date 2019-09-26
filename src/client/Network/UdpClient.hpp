@@ -1,6 +1,9 @@
-//
-// Created by abel on 26/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #ifndef BABEL_UDPCLIENT_HPP
 #define BABEL_UDPCLIENT_HPP
@@ -14,7 +17,7 @@ class UdpClient : QObject {
     Q_OBJECT
     public:
         UdpClient(AudioWrapper &wrapper, const std::string &addr, unsigned short port);
-        ~UdpClient() = default;
+        ~UdpClient() override = default;
         void sendData(std::vector<unsigned char> &);
         bool isConnected() const;
 
@@ -29,6 +32,5 @@ class UdpClient : QObject {
         bool isAlive = true;
         QTimer *timer;
 };
-
 
 #endif //BABEL_UDPCLIENT_HPP

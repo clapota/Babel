@@ -1,6 +1,9 @@
-//
-// Created by abel on 23/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #include <iostream>
 #include "AudioCompressor.hpp"
@@ -13,7 +16,8 @@ AudioPacket AudioCompressor::compress(float *data) {
     AudioPacket packet;
     int nbBytes;
 
-    nbBytes = opus_encode_float(encoder, in, FRAMES_PER_BUFFER, cbits.data(), cbits.size());
+    nbBytes = opus_encode_float(encoder, in, FRAMES_PER_BUFFER, cbits.data(),
+        static_cast<opus_int32>(cbits.size()));
     if (nbBytes < 0) {
         std::cerr << "Failed to encode" << std::endl;
         //TODO: Throw un truc

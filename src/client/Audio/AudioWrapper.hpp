@@ -1,10 +1,12 @@
-//
-// Created by abel on 19/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #ifndef BABEL_AUDIOWRAPPER_HPP
 #define BABEL_AUDIOWRAPPER_HPP
-
 
 #include <fstream>
 #include <portaudio.h>
@@ -14,7 +16,7 @@
 #include <QObject>
 #include "AudioInfo.hpp"
 #include "AudioCompressor.hpp"
-#include "../Network/UdpClient.hpp"
+#include "Network/UdpClient.hpp"
 
 class AudioWrapper : public QObject {
     Q_OBJECT

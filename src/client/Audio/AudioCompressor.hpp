@@ -1,6 +1,9 @@
-//
-// Created by abel on 23/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #ifndef BABEL_AUDIOENCODER_HPP
 #define BABEL_AUDIOENCODER_HPP
