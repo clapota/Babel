@@ -21,12 +21,14 @@ int outputCallback(const void *inputBuffer, void *outputBuffer,
     auto &float_vector = queue.front();
 
     if (!queue.empty()) {
+        int i = 0;
         for (auto it: float_vector) {
-            if (it != 0)
-                std::cout << "normalement marche bien" << std::endl;
             *output++ = it;
         }
         queue.pop();
+    } else {
+        for (int i = 0; i < framesPerBuffer * NUMBER_CHANNELS; ++i)
+            *output++ = 0;
     }
     return (0);
 }

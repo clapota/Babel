@@ -19,7 +19,6 @@ UdpClient::UdpClient(AudioWrapper &wrapper, const std::string &addr, unsigned sh
 }
 
 void UdpClient::readReady() {
-    std::cout << "ready" << std::endl;
     while (this->udpSocket->hasPendingDatagrams())
     {
         this->timer->setInterval(5000);
