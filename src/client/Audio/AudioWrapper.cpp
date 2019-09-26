@@ -65,7 +65,7 @@ int callback(const void *inputBuffer, void *outputBuffer,
 }
 
 AudioWrapper::AudioWrapper() {
-    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.111.192", 7777));
+    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.112.72", 7777));
     PaError err = Pa_Initialize();
     PaStream *stream;
     PaStream *outStream;
@@ -163,11 +163,6 @@ void AudioWrapper::Stop() {
     PaError err;
 
     if (Pa_IsStreamStopped(this->stream) != 1) {
-        err = Pa_AbortStream(this->stream);
-        if (err != paNoError) {
-            std::cerr << "Error while stopping stream" << std::endl;
-            //TODO: Throw un truc
-        }
         err = Pa_StopStream(this->stream);
         if (err != paNoError) {
             std::cerr << "Error while stopping stream" << std::endl;
@@ -175,11 +170,6 @@ void AudioWrapper::Stop() {
         }
     }
     if (Pa_IsStreamStopped(this->outStream) != 1) {
-        err = Pa_AbortStream(this->outStream);
-        if (err != paNoError) {
-            std::cerr << "Error while stopping outStream" << std::endl;
-            //TODO: Throw un truc
-        }
         err = Pa_StopStream(this->outStream);
         if (err != paNoError) {
             std::cerr << "Error while stopping stream" << std::endl;

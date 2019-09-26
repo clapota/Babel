@@ -15,25 +15,21 @@ UdpClient::UdpClient(AudioWrapper &wrapper, const std::string &addr, unsigned sh
 }
 
 void UdpClient::readReady() {
+    std::cout << "ready" << std::endl;
     while (this->udpSocket->hasPendingDatagrams())
     {
         QHostAddress host;
         unsigned short port;
 
-        std::vector<unsigned char> ucharVector(this->udpSocket->pendingDatagramSize());
+        std::vector<unsigned char> ucharVector;
         QNetworkDatagram datagram = udpSocket->receiveDatagram();
         QByteArray data = datagram.data();
-        QByteArray reverse;
-        reverse.reserve(data.size());
-        for (int i =data.size()-1;i>=0;--i)
-            reverse.append(data.at(i));
+        std::cout << data.size() << std::endl;
 
-        for (const auto &it: reverse) {
-            ucharVector.push_back(static_cast<unsigned char>(it));
-        }
+        for (const auto it : data)
+            ucharVector.push_back(it);
         AudioPacket packet;
         packet = AudioPacket::unserialize(ucharVector);
-        std::cout << "NB Bytes " << packet.nbBytes << std::endl;
         std::vector<float> uncompressedAudio = this->wrapper.getCompressor().uncompress(packet);
         this->wrapper.addInQueue(std::move(uncompressedAudio));
     }
@@ -47,5 +43,5 @@ void UdpClient::sendData(std::vector<unsigned char> &data)
         array.append(static_cast<char>(it));
 
     this->udpSocket->writeDatagram(array, this->address, this->port);
-    this->udpSocket->waitForReadyRead();
+//    this->udpSocket->waitForReadyRead();
 }
