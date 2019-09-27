@@ -11,6 +11,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
 #include "Audio/AudioWrapper.hpp"
+#include "MainWindow/Mainwindow.hpp"
 
 int main(int argc, char **argv)
 {
@@ -18,7 +19,9 @@ int main(int argc, char **argv)
 	QApplication app (argc, argv);
 	QPushButton button ("Hello world !");
 
-	wrapper.Start();
+    MainWindow w;
+    w.show();
+    wrapper.Start();
 	button.show();
 	return app.exec();
 }
