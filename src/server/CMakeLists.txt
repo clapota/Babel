@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 
 SET(SERVER_DEPENDENCIES boost_thread pthread boost_system)
-add_definitions("-fPIC -DDEBUG")
+add_definitions("-fPIC -DDEBUG -g")
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 

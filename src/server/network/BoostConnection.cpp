@@ -1,5 +1,8 @@
 #include <boost/bind.hpp>
 #include "BoostConnection.hpp"
+#include "services/DispatchService.hpp"
+
+using namespace std::placeholders;
 
 void BoostConnection::read_async()
 {
@@ -36,7 +39,7 @@ void const BoostConnection::handleWrite(const boost::system::error_code &error, 
     auto log = ServiceLocator<LogService>::getService();
 
     if (error) {
-        log->writeError(error.message());
+        log->writeError("[HandleWrite] " + error.message());
         return;
     }
 
@@ -48,17 +51,28 @@ void const BoostConnection::handleWrite(const boost::system::error_code &error, 
 void const BoostConnection::handleRead(const boost::system::error_code &error, size_t size)
 {
     auto log = ServiceLocator<LogService>::getService();
+    auto dispatch = ServiceLocator<DispatchService>::getService();
 
     if (!error) {
-        #ifdef DEBUG
-            std::cout.write(_bytes.data(), size);
-        #endif
+        /* TODO : Get handlers */
+        DispatchData data = { this, std::function<void(IConnection &)>(bite) };
+
+        /* Work is done asynchronously */
+        dispatch->enqueue(data);
+
         getSocket().async_read_some(boost::asio::buffer(_bytes),
                                     boost::bind(&BoostConnection::handleRead,
                                                 this,
                                                 boost::asio::placeholders::error,
                                                 boost::asio::placeholders::bytes_transferred));
     } else {
-        log->writeError(error.message());
+        log->writeError("[HandleRead] " + error.message());
     }
+}
+
+void bite(IConnection &connection)
+{
+    std::cout << "Executing handler" << std::endl;
+    std::string a("bite");
+    connection.write_async(a);
 }
