@@ -54,8 +54,10 @@ void const BoostConnection::handleRead(const boost::system::error_code &error, s
     auto dispatch = ServiceLocator<DispatchService>::getService();
 
     if (!error) {
+        /* TODO : Get handlers */
         DispatchData data = { this, std::function<void(IConnection &)>(bite) };
 
+        /* Work is done asynchronously */
         dispatch->enqueue(data);
 
         getSocket().async_read_some(boost::asio::buffer(_bytes),
