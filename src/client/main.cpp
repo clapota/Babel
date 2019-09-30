@@ -9,7 +9,6 @@
 #include <iostream>
 #include <QtWidgets/QListWidget>
 #include "MainWindow/mainwindow.h"
-#include "MainWindow/LoginWindow.hpp"
 
 int main(int argc, char **argv)
 {
@@ -24,5 +23,5 @@ int main(int argc, char **argv)
 	} catch (...) {
 		std::cerr << "Something happened" << std::endl;
 		return (84);
-	    }
+    }
 }
