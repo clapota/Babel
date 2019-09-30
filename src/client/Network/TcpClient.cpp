@@ -22,5 +22,4 @@ void TcpClient::sendData(std::vector<unsigned char> &data) {
 void TcpClient::dispatchData() {
     QByteArray array = this->tcpSocket->readAll();
 
-    emit
 }
