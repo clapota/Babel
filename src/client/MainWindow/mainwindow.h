@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QInputDialog>
 #include "../Network/TcpClient.hpp"
 
 namespace Ui {
@@ -18,6 +19,9 @@ public:
 
 public slots:
     void connectToServer();
+    void addFriend();
+    void deleteFriend();
+    void call();
 
 private:
     Ui::MainWindow *ui;

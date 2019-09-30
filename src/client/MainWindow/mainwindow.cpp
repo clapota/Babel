@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QPushButton>
 #include <iostream>
+#include <QtCore/QDir>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,9 +11,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     auto *connectionButton = this->ui->pushButton_2;
+    auto *addFriend = this->ui->actionAdd_new_friend;
+    auto *removeFriend =this->ui->actionDelete_frind;
+    auto *callButton = this->ui->pushButton;
 
     ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+    connect(addFriend, SIGNAL(triggered()), this, SLOT(addFriend()));
     connect(connectionButton, SIGNAL(clicked()), this, SLOT(connectToServer()));
+    connect(callButton, SIGNAL(clicked()), this, SLOT(call()));
+    connect(removeFriend, SIGNAL(triggered()), this, SLOT(deleteFriend()));
 }
 
 MainWindow::~MainWindow()
@@ -31,5 +38,70 @@ void MainWindow::connectToServer() {
 
     std::cout << "password " << password << " username " << username << std::endl;
 
-    //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+    if (!username.empty() && !password.empty()) {
+        //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+    } else {
+        if (username.empty())
+            usernameLineEdit->setStyleSheet("border: 2px solid red;");
+        if (password.empty())
+            passwordLineEdit->setStyleSheet("border: 2px solid red;");
+    }
+}
+
+void MainWindow::addFriend() {
+    bool ok;
+    bool alreadyExist = false;
+    QString text = QInputDialog::getText(this, tr("Add friend"), tr("Username :"), QLineEdit::Normal, QDir::home().dirName(), &ok);
+
+    if (ok && !text.isEmpty())
+    {
+        auto *list = this->ui->listWidget;
+        for (int i = 0; i < list->count(); i++) {
+            auto *item = list->item(i);
+            if (item->text() == text)
+                alreadyExist = true;
+        }
+        if (!alreadyExist) {
+            //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+
+            //IF SERVER RESPONSE == OK
+            list->addItem(text);
+        }
+    }
+}
+
+void MainWindow::deleteFriend() {
+    bool ok;
+
+    QStringList items;
+
+    auto *list = this->ui->listWidget;
+
+    for (int i = 0; i < list->count(); i++) {
+        auto *item = list->item(i);
+        items << item->text();
+    }
+
+    QString item = QInputDialog::getItem(this, tr("Remove friend"), tr("Username :"), items, 0, false, &ok);
+
+    if (ok && !item.isEmpty())
+    {
+        //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+    }
+}
+
+void MainWindow::call() {
+    auto *list = this->ui->listWidget;
+
+    std::cout << "test" << std::endl;
+    auto *selected = list->currentItem();
+    if (selected == nullptr) {
+        auto *callButton = this->ui->pushButton;
+
+        std::cout << "BITE" << std::endl;
+        callButton->setStyleSheet("border-color: red");
+    } else {
+        std::cout << selected->text().toStdString() << std::endl;
+    }
+
 }

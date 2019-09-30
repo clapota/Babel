@@ -23,5 +23,5 @@ int main(int argc, char **argv)
 	} catch (...) {
 		std::cerr << "Something happened" << std::endl;
 		return (84);
-	    }
+    }
 }
