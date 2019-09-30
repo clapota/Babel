@@ -42,9 +42,13 @@ void MainWindow::connectToServer() {
         //TODO: Build le packet et l'envoyer avec le TCPCLIENT
     } else {
         if (username.empty())
-            usernameLineEdit->setStyleSheet("border: 2px solid red;");
+            usernameLineEdit->setStyleSheet("border: 1px solid red;");
+        else
+            usernameLineEdit->setStyleSheet("border: 1px solid black;");
         if (password.empty())
-            passwordLineEdit->setStyleSheet("border: 2px solid red;");
+            passwordLineEdit->setStyleSheet("border: 1px solid red;");
+        else
+            passwordLineEdit->setStyleSheet("border: 1px solid black;");
     }
 }
 
@@ -87,6 +91,15 @@ void MainWindow::deleteFriend() {
     if (ok && !item.isEmpty())
     {
         //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+
+        // IF RESPONSE == OK
+
+        for (int i = 0; i < list->count(); i++) {
+            auto *it = list->item(i);
+            if (it->text() == item) {
+                delete it;
+            }
+        }
     }
 }
 
