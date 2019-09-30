@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(connectionButton, SIGNAL(clicked()), this, SLOT(connectToServer()));
     connect(callButton, SIGNAL(clicked()), this, SLOT(call()));
     connect(removeFriend, SIGNAL(triggered()), this, SLOT(deleteFriend()));
+    ui->widget->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -40,6 +41,8 @@ void MainWindow::connectToServer() {
 
     if (!username.empty() && !password.empty()) {
         //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+        //if checkpass
+              changeVisibleWidget(MAIN);
     } else {
         if (username.empty())
             usernameLineEdit->setStyleSheet("border: 1px solid red;");
@@ -117,4 +120,15 @@ void MainWindow::call() {
         std::cout << selected->text().toStdString() << std::endl;
     }
 
+}
+
+void MainWindow::changeVisibleWidget(Widget wid)
+{
+    if (wid == MAIN) {
+        ui->widget->setVisible(true);
+        ui->widget_2->setVisible(false);
+    } else if (wid == CONNEXION) {
+        ui->widget->setVisible(false);
+        ui->widget_2->setVisible(true);
+    }
 }
