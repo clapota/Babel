@@ -30,4 +30,6 @@ void MainWindow::connectToServer() {
     std::string password = text.toStdString();
 
     std::cout << "password " << password << " username " << username << std::endl;
+
+    //TODO: Build le packet et l'envoyer avec le TCPCLIENT
 }
