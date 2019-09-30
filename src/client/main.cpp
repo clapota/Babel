@@ -5,21 +5,18 @@
 ** Created by antoine_dh,
 */
 
-#include <stdio.h>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QPushButton>
 #include <iostream>
-#include "Audio/AudioWrapper.hpp"
-#include "CustomButton.hpp"
+#include "MainWindow/mainwindow.h"
 
 int main(int argc, char **argv)
 {
 	try {
 		QApplication app(argc, argv);
-		CustomButton button;
+		MainWindow window;
 
-		button.show();
-		return app.exec();
+		window.show();
+		return QApplication::exec();
 	} catch (const std::exception &exception) {
 		std::cerr << exception.what() << std::endl;
 		return (84);
