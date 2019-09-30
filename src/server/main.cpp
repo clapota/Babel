@@ -6,7 +6,6 @@
 */
 
 #include <iostream>
-#include <services/DispatchService.hpp>
 #include "database/SqliteProvider.hpp"
 #include "network/BoostListener.hpp"
 #include "services/ServiceLocator.hpp"
@@ -15,13 +14,15 @@
 #include "services/NetworkService.hpp"
 #include "services/DataBaseService.hpp"
 #include "services/DispatchService.hpp"
+#include "services/DispatchService.hpp"
+#include "services/ClientService.hpp"
 
 int main()
 {
     auto logService = ServiceLocator<LogService>::getService();
     auto netService = ServiceLocator<NetworkService<BoostListener>>::getService();
     auto dbService = ServiceLocator<DataBaseService<SqliteProvider>>::getService();
-    auto DispService = ServiceLocator<DispatchService>::getService();
+    auto boostService = ServiceLocator<BoostService>::getService();
 
     /* Open default database (DATABASE_DEFAULT_NAME) */
     if (dbService->openDataBase()) {
@@ -33,8 +34,13 @@ int main()
     netService->accept();
     logService->writeHour("Server is now listening on port " + std::to_string(LISTENER_DEFAULT_PORT));
 
-    /* Block until end of logic calls fired by network events*/
-    ServiceLocator<BoostService>::getService()->runContext();
+    /* set first client id to 0 */
+    Client::ReferenceId = 0;
 
+    /* Block until end of logic calls fired by network events*/
+    boostService->runContext();
+
+    /* When there is nothing to do, close listener. */
+    netService->stop();
     return 0;
 }

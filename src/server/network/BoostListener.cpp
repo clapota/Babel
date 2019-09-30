@@ -1,11 +1,12 @@
 #include <boost/bind.hpp>
 #include "BoostListener.hpp"
+#include "services/ClientService.hpp"
 
 void BoostListener::accept()
 {
     BoostConnection::pointer new_connection = BoostConnection::create();
 
-    test.push_back(new_connection);
+  //  test.push_back(new_connection);
 
     _isRunning = true;
     _acceptor.async_accept(new_connection->getSocket(),
@@ -26,14 +27,21 @@ void BoostListener::stop()
     log->writeHour("Listener closed");
 }
 
-void BoostListener::handle_accept(BoostConnection::pointer new_connection,
+void BoostListener::handle_accept(BoostConnection::pointer &new_connection,
     const boost::system::error_code &error)
 {
     auto log = ServiceLocator<LogService>::getService();
+    auto clients = ServiceLocator<ClientService>::getService();
 
     if (!error) {
+
+        #ifdef DEBUG
         log->writeHour("Client connected");
+        #endif
+
+      //  clients->registerClient(std::static_pointer_cast<IConnection>(new_connection));
         new_connection->read_async();
+
         if (_isRunning)
             accept();
     } else {
