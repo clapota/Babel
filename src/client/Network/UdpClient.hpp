@@ -13,7 +13,7 @@
 
 class AudioWrapper;
 
-class UdpClient : QObject {
+class UdpClient : public QObject {
     Q_OBJECT
     public:
         UdpClient(AudioWrapper &wrapper, const std::string &addr, unsigned short port);

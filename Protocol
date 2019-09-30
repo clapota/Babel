@@ -1,0 +1,81 @@
+Format d'un packet:
+
+{
+    Id (4byte)
+    Size(8byte)
+    DATA(variable)
+}
+
+client ======> Serveur :
+
+Register:
+{
+    ID: 1
+    char[255]username
+    char[255]password
+} RESPONSE : OK/MESSAGE DERREUR
+
+Connect:
+{
+    ID: 2
+    char[255]username
+    char[255]password
+} RESPONSE : OK/MESSAGE DERREUR
+
+AddFriend:
+{
+    ID: 3
+    char[255]username
+} RESPONSE : OK/MESSAGE DERREUR
+
+RemoveFriend:
+{
+    ID: 4
+    char[255]username
+} RESPONSE : OK/MESSAGE DERREUR
+
+acceptFriend:
+{
+    ID: 5
+    bool: true/false (true = accept, false = refuse)
+    char[255]username
+} RESPONSE : OK/MESSAGE DERREUR
+
+Call:
+{
+    ID: 6
+    char[255]username
+} RESPONSE : OK/KO
+
+HangUp:
+{
+    ID: 7
+} RESPONSE : OK/KO
+
+Serveur =======> Client:
+
+
+X M'a accepté dans sa friendlist :
+{
+    ID: 8
+    char[255]username
+} RESPONSE : PAS DE REPONSE
+
+X M'a demandé en ami :
+{
+    ID: 9
+    char[255]username
+} RESPONSE : PAS DE REPONSE
+
+LISTE DES AMIS : (envoie en boucle)
+{
+    ID 10
+    char[255]username
+    int state (0 => disconnected/1 => connected/2 => en appel)
+}
+
+X MA ENLEVE DE SA LISTE DAMI :
+{
+    ID 11
+    char[255]username
+}

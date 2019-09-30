@@ -15,6 +15,7 @@ file(
         sources
         *.cpp
         *.hpp
+        *.ui
 )
 
 include_directories(${CMAKE_INCLUDE_PATH} .)
