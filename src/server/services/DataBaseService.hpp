@@ -4,6 +4,7 @@
 #define DATABASE_DEFAULT_NAME "database.db"
 
 #include "database/IDataBaseProvider.hpp"
+#include "database/RequestBuilder.hpp"
 
 template <class T >
 class DataBaseService : public IService {
@@ -12,6 +13,7 @@ class DataBaseService : public IService {
         explicit DataBaseService() : _dataBase() {};
         bool openDataBase(const std::string &name = DATABASE_DEFAULT_NAME) { return _dataBase.openDataBase(name); }
         bool closeDataBase() { return _dataBase.closeDataBase(); }
+        bool executeRequest(const Request &request) {return _dataBase.executeRequest(request);}
     private:
         T _dataBase;
 };

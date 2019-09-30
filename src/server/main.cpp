@@ -15,6 +15,7 @@
 #include "services/NetworkService.hpp"
 #include "services/DataBaseService.hpp"
 #include "services/DispatchService.hpp"
+#include "database/RequestBuilder.hpp"
 
 int main()
 {
@@ -26,6 +27,9 @@ int main()
     /* Open default database (DATABASE_DEFAULT_NAME) */
     if (dbService->openDataBase()) {
         logService->writeHour("Database opened");
+        dbService->executeRequest(RequestBuilder::createRelationTable());
+        dbService->executeRequest(RequestBuilder::createUserTable());
+        dbService->executeRequest(RequestBuilder::addUser("toto", "SUCEMESBOULEEEES"));
     } else {
         logService->writeError("Unable to open database ' " + std::string(DATABASE_DEFAULT_NAME) + "'");
     }
