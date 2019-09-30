@@ -6,7 +6,6 @@
 */
 
 #include <iostream>
-
 #include "AudioWrapper.hpp"
 #include "AudioCompressor.hpp"
 #include "AudioException.hpp"
@@ -18,10 +17,6 @@ int outputCallback(const void *inputBuffer, void *outputBuffer,
              void *userData) {
     auto *wrapper = reinterpret_cast<AudioWrapper *>(userData);
     auto *output = static_cast<float *>(outputBuffer);
-
-    (void)inputBuffer;
-    (void)timeInfo;
-    (void)statusFlags;
     auto &queue = wrapper->getQueue();
     auto &float_vector = queue.front();
 
@@ -38,15 +33,11 @@ int outputCallback(const void *inputBuffer, void *outputBuffer,
     return (0);
 }
 
-
-int callback(const void *inputBuffer, void *outputBuffer,
+int callback(const void *inputBuffer, void *,
                            unsigned long framesPerBuffer,
-                           const PaStreamCallbackTimeInfo* timeInfo,
-                           PaStreamCallbackFlags statusFlags,
+                           const PaStreamCallbackTimeInfo *,
+                           PaStreamCallbackFlags,
                            void *userData) {
-    (void)outputBuffer;
-    (void)timeInfo;
-    (void)statusFlags;
     auto *wrapper = reinterpret_cast<AudioWrapper *>(userData);
     auto *in = (float *)inputBuffer;
     std::vector<float> outData;
@@ -55,15 +46,13 @@ int callback(const void *inputBuffer, void *outputBuffer,
         outData.push_back(*in++);
         outData.push_back(*in++);
     }
-
     AudioPacket packet = wrapper->getCompressor().compress((float *)inputBuffer);
     std::vector<unsigned char> serializedData = AudioPacket::serialize(packet);
-    //TODO: Envoyer sur le réseau
-
     wrapper->addToSendList(serializedData);
     return 0;
 }
 
+// TODO séparer le UdpClient du wrapper audio
 AudioWrapper::AudioWrapper() {
     this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.112.192", 7777));
     this->timer = new QTimer(this);
@@ -119,20 +108,12 @@ AudioWrapper::AudioWrapper() {
 }
 
 AudioWrapper::~AudioWrapper() {
-    PaError err;
-
     this->Stop();
-    err = Pa_Terminate();
-    if (err != paNoError)
-        throw AudioException("Error while quiting portAudio");
+    Pa_Terminate();
 }
 
 /***
  * Start AudioStream
- */
-
-/**
- * Pourquoi pas foutre un stream network dans cette fonction pour l'utiliser dans le callback ?
  */
 void AudioWrapper::Start() {
     PaError err;

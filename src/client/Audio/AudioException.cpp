@@ -1,6 +1,9 @@
-//
-// Created by abel on 26/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
 #include "AudioException.hpp"
 
