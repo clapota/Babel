@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <services/DispatchService.hpp>
 #include "database/SqliteProvider.hpp"
 #include "network/BoostListener.hpp"
 #include "services/ServiceLocator.hpp"
@@ -13,19 +14,21 @@
 #include "services/BoostService.hpp"
 #include "services/NetworkService.hpp"
 #include "services/DataBaseService.hpp"
+#include "services/DispatchService.hpp"
 
 int main()
 {
     auto logService = ServiceLocator<LogService>::getService();
     auto netService = ServiceLocator<NetworkService<BoostListener>>::getService();
     auto dbService = ServiceLocator<DataBaseService<SqliteProvider>>::getService();
+    auto DispService = ServiceLocator<DispatchService>::getService();
 
     /* Open default database (DATABASE_DEFAULT_NAME) */
-    if (!dbService->openDataBase()) {
+    if (dbService->openDataBase()) {
+        logService->writeHour("Database opened");
+    } else {
         logService->writeError("Unable to open database ' " + std::string(DATABASE_DEFAULT_NAME) + "'");
-        return 84;
     }
-    logService->writeHour("Database opened");
 
     netService->accept();
     logService->writeHour("Server is now listening on port " + std::to_string(LISTENER_DEFAULT_PORT));

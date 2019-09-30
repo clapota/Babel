@@ -10,10 +10,6 @@ class NetworkService : public IService {
         explicit NetworkService() : _listener() {};
         const void stop() { _listener.stop(); }
         const void accept() { _listener.accept(); }
-
-        ~NetworkService() {
-            stop();
-        }
     private:
         T _listener;
 };

@@ -14,7 +14,12 @@ class BoostListener : public IListener {
                       boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)) { }
         void stop() override;
         void accept() override;
+
+        ~BoostListener() {
+            stop();
+        }
     private:
+        std::vector<BoostConnection::pointer> test;
         bool _isRunning = false;
         boost::asio::ip::tcp::acceptor _acceptor;
         void handle_accept(BoostConnection::pointer new_connection, const boost::system::error_code& error);

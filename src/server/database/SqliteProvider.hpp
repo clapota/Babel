@@ -9,6 +9,10 @@ class SqliteProvider : IDataBaseProvider {
     public:
         bool openDataBase(const std::string &name) override;
         bool closeDataBase() override;
+
+        ~SqliteProvider() {
+           closeDataBase();
+        }
     private:
         sqlite3 *db = nullptr;
 };

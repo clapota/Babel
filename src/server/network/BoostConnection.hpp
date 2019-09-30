@@ -14,6 +14,7 @@ class BoostConnection : public IConnection, public boost::enable_shared_from_thi
         {
             return pointer(new BoostConnection());
         }
+
         boost::asio::ip::tcp::socket& getSocket()
         {
             return _socket;
@@ -30,5 +31,7 @@ class BoostConnection : public IConnection, public boost::enable_shared_from_thi
                             _bytes({}) {}
         boost::asio::ip::tcp::socket _socket;
 };
+
+void bite(IConnection &);
 
 #endif //BABEL_BOOSTCONNECTION_HPP
