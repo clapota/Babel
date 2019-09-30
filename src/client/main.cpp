@@ -7,6 +7,7 @@
 
 #include <QtWidgets/QApplication>
 #include <iostream>
+#include <QtWidgets/QListWidget>
 #include "MainWindow/mainwindow.h"
 #include "MainWindow/LoginWindow.hpp"
 
@@ -15,7 +16,6 @@ int main(int argc, char **argv)
 	try {
 		QApplication app(argc, argv);
 		MainWindow window;
-
 		window.show();
 		return QApplication::exec();
 	} catch (const std::exception &exception) {
