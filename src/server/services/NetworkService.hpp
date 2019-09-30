@@ -1,4 +1,4 @@
-#ifndef BABEL_NETWORKSERVICE_HPP
+    #ifndef BABEL_NETWORKSERVICE_HPP
 #define BABEL_NETWORKSERVICE_HPP
 
 #include "network/IListener.hpp"
