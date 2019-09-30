@@ -5,6 +5,8 @@ void BoostListener::accept()
 {
     BoostConnection::pointer new_connection = BoostConnection::create();
 
+    test.push_back(new_connection);
+
     _isRunning = true;
     _acceptor.async_accept(new_connection->getSocket(),
                            boost::bind(&BoostListener::handle_accept,
@@ -32,9 +34,8 @@ void BoostListener::handle_accept(BoostConnection::pointer new_connection,
     if (!error) {
         log->writeHour("Client connected");
         new_connection->read_async();
-        new_connection->write_async("bite");
-       // if (_isRunning)
-      //      accept();
+        if (_isRunning)
+            accept();
     } else {
         log->writeHour(error.message());
         /* TODO : handle error*/
