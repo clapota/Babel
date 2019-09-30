@@ -1,25 +1,48 @@
-//
-// Created by abel on 19/09/2019.
-//
+/*
+** EPITECH PROJECT, 2019
+** Babel
+** File description:
+** Created by abel,
+*/
 
-#ifndef BABEL_AUDIOWRAPPER_H
-#define BABEL_AUDIOWRAPPER_H
+#ifndef BABEL_AUDIOWRAPPER_HPP
+#define BABEL_AUDIOWRAPPER_HPP
 
-#define SAMPLE_RATE 44100
-
+#include <fstream>
 #include <portaudio.h>
+#include <vector>
+#include <queue>
+#include <memory>
+#include <QObject>
+#include "AudioInfo.hpp"
+#include "AudioCompressor.hpp"
+#include "Network/UdpClient.hpp"
 
-class AudioWrapper {
+class AudioWrapper : public QObject {
+    Q_OBJECT
+
     public:
         AudioWrapper();
-        ~AudioWrapper();
+        ~AudioWrapper() override;
         void Start();
         void Stop();
-        void Sleep(int milliseconds);
-        void *getInputBuffer();
-        void getInfo();
+        AudioCompressor &getCompressor();
+        void addInQueue(std::vector<float> audioData);
+        std::queue<std::vector<float>> &getQueue();
+        void close();
+        void addToSendList(std::vector<unsigned char> &data);
+    public slots:
+        void sendData();
+    signals:
+        void hangUp();
     private:
+        PaStream *outStream = nullptr;
         PaStream *stream = nullptr;
+        QTimer *timer = nullptr;
+        AudioCompressor compressor;
+        std::queue<std::vector<float>> audioQueue;
+        std::queue<std::vector<unsigned char>> sendList;
+        std::unique_ptr<UdpClient> udpClient = nullptr;
 };
 
 

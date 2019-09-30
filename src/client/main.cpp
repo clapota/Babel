@@ -6,22 +6,25 @@
 */
 
 #include <stdio.h>
-#include <opus/opus.h>
-#include <portaudio.h>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
+#include <iostream>
 #include "Audio/AudioWrapper.hpp"
-#include "MainWindow/Mainwindow.hpp"
+#include "CustomButton.hpp"
 
 int main(int argc, char **argv)
 {
-    AudioWrapper wrapper;
-	QApplication app (argc, argv);
-	QPushButton button ("Hello world !");
+	try {
+		QApplication app(argc, argv);
+		CustomButton button;
 
-    MainWindow w;
-    w.show();
-    wrapper.Start();
-	button.show();
-	return app.exec();
+		button.show();
+		return app.exec();
+	} catch (const std::exception &exception) {
+		std::cerr << exception.what() << std::endl;
+		return (84);
+	} catch (...) {
+		std::cerr << "Something happened" << std::endl;
+		return (84);
+	}
 }
