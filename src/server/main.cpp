@@ -36,6 +36,7 @@ void exceptedClose(int s)
     exit(0);
 }
 
+#ifdef __linux__
 void handleSigInt()
 {
     struct sigaction sigIntHandler{};
@@ -46,7 +47,7 @@ void handleSigInt()
 
     sigaction(SIGINT, &sigIntHandler, NULL);
 };
-
+#endif
 
 int main()
 {
@@ -68,8 +69,10 @@ int main()
     netService->accept();
     logService->writeHour("Server is now listening on port " + std::to_string(LISTENER_DEFAULT_PORT));
 
-    /* Manage user interaction */
+#ifdef __linux__
+	/* Handle user interaction */
     handleSigInt();
+#endif
 
     /* Block until end of logic calls fired by network events*/
     boostService->runContext();

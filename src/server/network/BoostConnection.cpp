@@ -32,9 +32,10 @@ void BoostConnection::write_async(const std::string &message)
     auto &socket = getSocket();
 
     boost::asio::async_write(socket, boost::asio::buffer(message),
-                                     boost::bind(&BoostConnection::handleWrite, shared_from_this(),
-                                     boost::asio::placeholders::error,
-                                     boost::asio::placeholders::bytes_transferred));
+                                     boost::bind(&BoostConnection::handleWrite,
+												shared_from_this(),
+												boost::asio::placeholders::error,
+												boost::asio::placeholders::bytes_transferred));
 }
 
 void const BoostConnection::handleWrite(const boost::system::error_code &error, size_t size)
@@ -62,9 +63,10 @@ void const BoostConnection::handleRead(const boost::system::error_code &error, s
         /* Work is done asynchronously */
         // dispatch->enqueue(data);
         if (_isActive) {
+			write_async("Bite");
             getSocket().async_read_some(boost::asio::buffer(_bytes),
                                         boost::bind(&BoostConnection::handleRead,
-                                                    this,
+                                                    shared_from_this(),
                                                     boost::asio::placeholders::error,
                                                     boost::asio::placeholders::bytes_transferred));
         }

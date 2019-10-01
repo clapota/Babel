@@ -116,4 +116,5 @@ Request RequestBuilder::getFriendOfUser(int userId, void *data, int (*callback)(
                       "user1_id = " + std::to_string(userId) + " OR user2_id = " + std::to_string(userId) + ";";
     request.data = data;
     request.callback = callback;
+	return request;
 }

@@ -20,5 +20,7 @@ bool SqliteProvider::executeRequest(const Request& request) {
     if (rc != SQLITE_OK) {
         std::cerr << errMessage << std::endl;
         sqlite3_free(errMessage);
+		return false;
     }
+	return true;
 }

@@ -1,11 +1,8 @@
 cmake_minimum_required(VERSION 2.8.12)
 add_definitions("-fPIC -g")
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-
 set(CMAKE_AUTOMOC ON)
 
-conan_basic_setup()
 
 find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
 
