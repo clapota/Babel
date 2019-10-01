@@ -9,5 +9,4 @@ file(
 )
 
 include_directories(${CMAKE_INCLUDE_PATH} .)
-add_library(babel_common SHARED ${sources})
-target_link_libraries(babel_common ${CONAN_LIBS})
+add_library(babel_common STATIC ${sources})
