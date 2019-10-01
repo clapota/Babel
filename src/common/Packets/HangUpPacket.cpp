@@ -5,9 +5,9 @@
 ** Created by antoine_dh,
 */
 
-#include "HangUp.hpp"
+#include "HangUpPacket.hpp"
 
-int HangUp::getId() const
+int HangUpPacket::getId() const
 {
     return PacketId;
 }
