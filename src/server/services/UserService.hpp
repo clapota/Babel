@@ -24,22 +24,28 @@ class Client {
             _id(id) { }
 };
 
-class ClientService : public IService {
+class UserService : public IService {
     public:
         void registerClient(boost::shared_ptr<IConnection> &connection) {
             _clients.emplace_back(Client::create(connection));
         }
 
-        std::shared_ptr<Client> retrieveClient(int id)
+        boost::shared_ptr<Client> retrieveClient(boost::shared_ptr<IConnection> &connection)
         {
-       /*     auto e = std::find_if(_clients.begin(), _clients.end(),
-                [&](Client &e) {
-                    return e.getId() == id;
-                });
+            auto client = std::find_if(_clients.begin(), _clients.end(), [&](const auto &e) {
+                return e->Connection == connection;
+            });
 
-            if (e != _clients.end())
-                return e[0]; */
+           if (client != _clients.end())
+                return client[0];
             return nullptr;
+        }
+
+        void removeClient(boost::shared_ptr<IConnection> &connection)
+        {
+            _clients.erase(std::remove_if(_clients.begin(), _clients.end(), [&](const auto &e) {
+                return e->Connection == connection;
+            }), _clients.end());
         }
 
     private:

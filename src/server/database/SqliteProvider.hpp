@@ -3,12 +3,16 @@
 
 #include <string>
 #include <sqlite3.h>
+#include <functional>
 #include "IDataBaseProvider.hpp"
+#include "RequestBuilder.hpp"
+
 
 class SqliteProvider : IDataBaseProvider {
     public:
         bool openDataBase(const std::string &name) override;
         bool closeDataBase() override;
+        bool executeRequest(const Request& request);
 
         ~SqliteProvider() {
            closeDataBase();

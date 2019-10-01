@@ -5,6 +5,7 @@
 
 class IConnection {
     public:
+        virtual ~IConnection() = default;
         virtual void shutdown() = 0;
         virtual void read_async() = 0;
         virtual void write_async(void *data, size_t size) = 0;

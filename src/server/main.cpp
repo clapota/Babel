@@ -14,8 +14,39 @@
 #include "services/NetworkService.hpp"
 #include "services/DataBaseService.hpp"
 #include "services/DispatchService.hpp"
-#include "services/DispatchService.hpp"
-#include "services/ClientService.hpp"
+#include "services/UserService.hpp"
+#include "database/RequestBuilder.hpp"
+
+int Client::ReferenceId = 0;
+
+void exceptedClose(int s)
+{
+    std::cout << std::endl;
+    auto logService = ServiceLocator<LogService>::getService();
+    auto dbService = ServiceLocator<DataBaseService<SqliteProvider>>::getService();
+    auto boostService = ServiceLocator<BoostService>::getService();
+    auto netService = ServiceLocator<NetworkService<BoostListener>>::getService();
+
+    logService->writeHour("Closing database");
+    dbService->closeDataBase();
+    logService->writeHour("Stopping boost context");
+    boostService->stopContext();
+    logService->writeHour("Stopping network listener");
+    netService->stop();
+    exit(0);
+}
+
+void handleSigInt()
+{
+    struct sigaction sigIntHandler{};
+
+    sigIntHandler.sa_handler = exceptedClose;
+    sigemptyset(&sigIntHandler.sa_mask);
+    sigIntHandler.sa_flags = 0;
+
+    sigaction(SIGINT, &sigIntHandler, NULL);
+};
+
 
 int main()
 {
@@ -27,6 +58,9 @@ int main()
     /* Open default database (DATABASE_DEFAULT_NAME) */
     if (dbService->openDataBase()) {
         logService->writeHour("Database opened");
+        dbService->executeRequest(RequestBuilder::createRelationTable());
+        dbService->executeRequest(RequestBuilder::createUserTable());
+        dbService->executeRequest(RequestBuilder::addUser("toto", "SUCEMESBOULEEEES"));
     } else {
         logService->writeError("Unable to open database ' " + std::string(DATABASE_DEFAULT_NAME) + "'");
     }
@@ -34,8 +68,8 @@ int main()
     netService->accept();
     logService->writeHour("Server is now listening on port " + std::to_string(LISTENER_DEFAULT_PORT));
 
-    /* set first client id to 0 */
-    Client::ReferenceId = 0;
+    /* Manage user interaction */
+    handleSigInt();
 
     /* Block until end of logic calls fired by network events*/
     boostService->runContext();

@@ -1,5 +1,8 @@
 #include <boost/bind.hpp>
 #include "BoostConnection.hpp"
+#include "network/BoostListener.hpp"
+#include "services/UserService.hpp"
+#include "services/NetworkService.hpp"
 #include "services/DispatchService.hpp"
 
 using namespace std::placeholders;
@@ -58,7 +61,6 @@ void const BoostConnection::handleRead(const boost::system::error_code &error, s
     if (!error) {
         /* Work is done asynchronously */
         // dispatch->enqueue(data);
-
         if (_isActive) {
             getSocket().async_read_some(boost::asio::buffer(_bytes),
                                         boost::bind(&BoostConnection::handleRead,
@@ -67,14 +69,23 @@ void const BoostConnection::handleRead(const boost::system::error_code &error, s
                                                     boost::asio::placeholders::bytes_transferred));
         }
     } else {
-        shutdown();
-        /* TODO : remove from client list */
-        log->writeError("[HandleRead] " + error.message());
+        this->shutdown();
+
+        /* TODO : put in dispatcher
+         * allows you to retrieve corresponding client
+         * auto iConnection = this->toIConnection();
+         * auto client = ServiceLocator<UserService>::getService()->retrieveClient(iConnection); */
+
+        auto iConnection = this->toIConnection();
+        auto clientsService = ServiceLocator<UserService>::getService();
+
+        clientsService->removeClient(iConnection);
+        log->writeHour("Client disconnected");
     }
 }
 
 void BoostConnection::shutdown()
 {
     _isActive = false;
-    _socket.close();
+     _socket.close();
 }

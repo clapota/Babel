@@ -8,7 +8,7 @@
 
 class BoostConnection : public IConnection, public boost::enable_shared_from_this<BoostConnection> {
     public:
-        typedef boost::shared_ptr<BoostConnection> pointer;
+        using pointer = boost::shared_ptr<BoostConnection>;
 
         static pointer create()
         {
@@ -18,6 +18,11 @@ class BoostConnection : public IConnection, public boost::enable_shared_from_thi
         boost::asio::ip::tcp::socket& getSocket()
         {
             return _socket;
+        }
+
+        boost::shared_ptr<IConnection> toIConnection()
+        {
+            return shared_from_this();
         }
 
         void shutdown() override;

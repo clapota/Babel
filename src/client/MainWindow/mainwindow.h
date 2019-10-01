@@ -14,10 +14,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+        enum Widget {
+        CONNEXION = 0,
+        MAIN = 1,
+    };
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow() override;
+    void changeVisibleWidget(Widget);
 
-public slots:
+    public slots:
     void connectToServer();
     void addFriend();
     void deleteFriend();
