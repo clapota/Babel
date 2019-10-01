@@ -7,8 +7,7 @@ set(CMAKE_AUTOMOC ON)
 
 conan_basic_setup()
 
-find_package(Qt5Widgets CONFIG REQUIRED)
-find_package(Qt5Network CONFIG REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
 
 file(
         GLOB_RECURSE
