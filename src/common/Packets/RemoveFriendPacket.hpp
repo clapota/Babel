@@ -13,6 +13,8 @@
 class RemoveFriendPacket : public IPacket {
     public:
         static constexpr int PacketId = 4;
+
+        RemoveFriendPacket() = default;
         explicit RemoveFriendPacket(const std::string &username);
         const std::string &getUsername() const;
         int getId() const override;

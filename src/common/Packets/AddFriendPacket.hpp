@@ -14,6 +14,7 @@ class AddFriendPacket : public IPacket {
     public:
         static constexpr int PacketId = 3;
 
+        AddFriendPacket() = default;
         explicit AddFriendPacket(const std::string &username);
         const std::string &getUsername() const;
         int getId() const override;

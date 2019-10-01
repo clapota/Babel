@@ -13,8 +13,10 @@
 class CallPacket : public IPacket {
     public:
         static constexpr int PacketId = 6;
-        const std::string &getUsername() const;
+
+        CallPacket() = default;
         explicit CallPacket(const std::string &username);
+        const std::string &getUsername() const;
         int getId() const override;
 
     private:

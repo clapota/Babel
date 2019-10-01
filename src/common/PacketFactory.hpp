@@ -14,31 +14,31 @@
 #include "Packets/AddFriendPacket.hpp"
 #include "Packets/CallPacket.hpp"
 #include "Packets/ConnectPacket.hpp"
-#include "Packets/HangUp.hpp"
+#include "Packets/HangUpPacket.hpp"
 #include "Packets/RegisterPacket.hpp"
 #include "Packets/RemoveFriendPacket.hpp"
 
 class PacketFactory {
 public:
-	enum class PacketEnum : int {
+	enum PacketEnum : int {
 		ACCEPT_FRIEND = AcceptFriendPacket::PacketId,
 		ADD_FRIEND = AddFriendPacket::PacketId,
 		CALL = CallPacket::PacketId,
 		CONNECT = ConnectPacket::PacketId,
-		HANG_UP = HangUp::PacketId,
+		HANG_UP = HangUpPacket::PacketId,
 		REGISTER = RegisterPacket::PacketId,
 		REMOVE_FRIEND = RemoveFriendPacket::PacketId
 	};
 
-	static std::unique_ptr<IPacket> PacketFactory::instantiate(int packetId)
+	static std::unique_ptr<IPacket> instantiate(int packetId)
 	{
-		return creatorMap.at(packetId);
+		if (creatorMap.find(packetId) == creatorMap.end())
+			throw std::runtime_error("Unknown Packet ID: " + std::to_string(packetId));
+		return creatorMap.at(packetId)();
 	}
 
 private:
 	using Creator = std::function<std::unique_ptr<IPacket>()>;
 
-	static std::map<int, Creator> creatorMap = {
-		{PacketEnum::ACCEPT_FRIEND, []() { return std::make_unique<AcceptFriendPacket>(); }}
-	};
+	static const std::map<int, std::function<std::unique_ptr<IPacket>()>> creatorMap;
 };

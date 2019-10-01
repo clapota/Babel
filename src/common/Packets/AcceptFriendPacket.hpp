@@ -13,12 +13,14 @@
 class AcceptFriendPacket : public IPacket {
     public:
         static constexpr int PacketId = 5;
+
+        AcceptFriendPacket() = default;
         AcceptFriendPacket(bool accepted, const std::string &username);
         bool isAccepted() const;
         const std::string &getUsername() const;
         int getId() const override;
 
     private:
-        bool accepted;
+        bool accepted {};
         std::string username;
 };
