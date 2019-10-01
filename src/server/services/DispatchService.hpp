@@ -24,9 +24,7 @@ class DispatchService : public IService {
             auto log = ServiceLocator<LogService>::getService();
 
             while (_isRunning) {
-                std::cout << "waiting for work to come .." << std::endl;
                 auto &data = _queue.waitAndPop();
-                std::cout << "Miam I have work to do" << std::endl;
 
                 try { data.func(*(data.connection)); }
                 catch (std::exception &ex) { log->writeError(ex.what()); }

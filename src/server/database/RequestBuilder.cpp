@@ -29,6 +29,7 @@ Request RequestBuilder::createUserTable() {
 int addUserCallback(void *, int, char **, char **)
 {
     std::cout << "User created successfully" << std::endl;
+    return 0;
 }
 
 /***
@@ -66,6 +67,7 @@ int addRelationCallback(void *data, int, char **, char **)
 {
     std::cout << "Relation added" << std::endl;
     //TODO: FAIRE DES TRUCS
+    return 0;
 }
 
 Request RequestBuilder::addRelation(int id1, int id2, void *data) {

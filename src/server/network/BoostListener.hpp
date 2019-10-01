@@ -19,10 +19,9 @@ class BoostListener : public IListener {
             stop();
         }
     private:
-        std::vector<BoostConnection::pointer> test;
         bool _isRunning = false;
         boost::asio::ip::tcp::acceptor _acceptor;
-        void handle_accept(BoostConnection::pointer new_connection, const boost::system::error_code& error);
+        void handle_accept(BoostConnection::pointer &new_connection, const boost::system::error_code& error);
 };
 
 #endif //BABEL_BOOSTLISTENER_HPP
