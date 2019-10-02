@@ -11,6 +11,7 @@ class NativeBinaryWriter : public IBinaryWriter
         std::stringstream &Data();
         void writeInt(uint32_t value) override;
         void writeString(const std::string &value) override;
+        void writeBool(bool value) override;
     private:
         std::stringstream _stream;
 };

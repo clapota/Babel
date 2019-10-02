@@ -28,3 +28,8 @@ std::stringstream &NativeBinaryWriter::Data()
 
     return _stream;
 }
+
+void NativeBinaryWriter::writeBool(bool value)
+{
+    _stream.write(reinterpret_cast<char *>(&value), sizeof(value));
+}

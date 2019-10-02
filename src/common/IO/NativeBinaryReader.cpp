@@ -26,3 +26,11 @@ void NativeBinaryReader::setStream(std::stringstream *stream)
 {
     this->_stream = stream;
 }
+
+bool NativeBinaryReader::readBool()
+{
+    bool value = false;
+    _stream->read((char *)&value , sizeof(bool));
+
+    return value;
+}

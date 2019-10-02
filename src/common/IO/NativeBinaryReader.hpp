@@ -10,6 +10,7 @@ class NativeBinaryReader : public IBinaryReader
         void setStream(std::stringstream *stream);
         int readInt() override;
         std::string readString() override;
+        bool readBool() override;
     private:
         std::stringstream *_stream;
 };

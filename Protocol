@@ -79,3 +79,10 @@ X MA ENLEVE DE SA LISTE DAMI :
     ID 11
     char[255]username
 }
+
+Réponse :
+{
+    ID 12
+    int request_id
+    bool ok
+}

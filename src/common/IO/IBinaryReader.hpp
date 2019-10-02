@@ -9,6 +9,7 @@ class IBinaryReader
         ~IBinaryReader() = default;
         virtual int readInt() = 0;
         virtual std::string readString() = 0;
+        virtual bool readBool() = 0;
 };
 
 #endif //BABEL_IBINARYREADER_HPP

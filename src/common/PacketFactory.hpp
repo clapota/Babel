@@ -17,6 +17,11 @@
 #include "Packets/HangUpPacket.hpp"
 #include "Packets/RegisterPacket.hpp"
 #include "Packets/RemoveFriendPacket.hpp"
+#include "Packets/FriendAcceptedPacket.hpp"
+#include "Packets/FriendInfoPacket.hpp"
+#include "Packets/FriendRemovedPacket.hpp"
+#include "Packets/ReceivedFriendRequestPacket.hpp"
+#include "Packets/ResponsePacket.hpp"
 
 class PacketFactory {
 public:
@@ -27,7 +32,12 @@ public:
 		CONNECT = ConnectPacket::PacketId,
 		HANG_UP = HangUpPacket::PacketId,
 		REGISTER = RegisterPacket::PacketId,
-		REMOVE_FRIEND = RemoveFriendPacket::PacketId
+		REMOVE_FRIEND = RemoveFriendPacket::PacketId,
+		FRIEND_ACCEPTED = FriendAcceptedPacket::PacketId,
+		FRIEND_REMOVED = FriendRemovedPacket::PacketId,
+		FRIEND_INFO = FriendInfoPacket::PacketId,
+		RECEIVED_FRIEND_REQUEST = ReceivedFriendRequestPacket::PacketId,
+		RESPONSE_PACKET = ResponsePacket::PacketId,
 	};
 
 	static std::unique_ptr<IPacket> instantiate(int packetId)

@@ -27,7 +27,7 @@ class AcceptFriendPacket : public IPacket {
             auto accepted = isAccepted() ? 1 : 0;
 
             writer.writeString(userName);
-            writer.writeInt(accepted);
+            writer.writeInt(static_cast<uint32_t>(accepted));
         }
 
         void deserialize(IBinaryReader &reader) override
@@ -57,6 +57,6 @@ class AcceptFriendPacket : public IPacket {
         }
 
     private:
-        bool _accepted;
+        bool _accepted {};
         std::string _username;
 };
