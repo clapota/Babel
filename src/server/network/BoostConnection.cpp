@@ -1,7 +1,9 @@
 #include <boost/bind.hpp>
+#include <IO/NativeBinaryReader.hpp>
 #include "BoostConnection.hpp"
 #include "network/BoostListener.hpp"
 #include "services/UserService.hpp"
+#include "services/HandlerService.hpp"
 #include "services/NetworkService.hpp"
 #include "services/DispatchService.hpp"
 
@@ -56,14 +58,16 @@ void const BoostConnection::handleWrite(const boost::system::error_code &error, 
 
 void const BoostConnection::handleRead(const boost::system::error_code &error, size_t size)
 {
+    auto _this = this->toIConnection();
     auto log = ServiceLocator<LogService>::getService();
-   // auto dispatch = ServiceLocator<DispatchService>::getService();
+    auto handlerService = ServiceLocator<HandlerService>::getService();
 
     if (!error) {
         /* Work is done asynchronously */
         // dispatch->enqueue(data);
-        if (_isActive) {
+        handlerService->handlePacket(_this, _bytes.data(), size);
 
+        if (_isActive) {
             getSocket().async_read_some(boost::asio::buffer(_bytes),
                                         boost::bind(&BoostConnection::handleRead,
                                                     shared_from_this(),
@@ -78,10 +82,9 @@ void const BoostConnection::handleRead(const boost::system::error_code &error, s
          * auto iConnection = this->toIConnection();
          * auto client = ServiceLocator<UserService>::getService()->retrieveClient(iConnection); */
 
-        auto iConnection = this->toIConnection();
         auto clientsService = ServiceLocator<UserService>::getService();
 
-        clientsService->removeClient(iConnection);
+        clientsService->removeClient(_this);
         log->writeHour("Client disconnected");
     }
 }

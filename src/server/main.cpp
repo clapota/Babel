@@ -18,7 +18,6 @@
 #include "services/DataBaseService.hpp"
 #include "services/DispatchService.hpp"
 #include "services/UserService.hpp"
-#include "database/RequestBuilder.hpp"
 
 int Client::ReferenceId = 0;
 
@@ -54,25 +53,6 @@ void handleSigInt()
 
 int main()
 {
-    uint32_t a = 69;
-    std::string bite = "test";
-
-    NativeBinaryWriter writer;
-    AcceptFriendPacket afp;
-
-    afp.setUsername("caca1");
-    afp.setAccepted(true);
-    afp.serialize(writer);
-
-    std::stringstream stream;
-    stream <<  writer.Data().rdbuf()->str();
-
-    NativeBinaryReader reader;
-    AcceptFriendPacket afp2;
-
-    reader.setStream(&stream);
-    afp2.deserialize(reader);
-
     auto logService = ServiceLocator<LogService>::getService();
     auto netService = ServiceLocator<NetworkService<BoostListener>>::getService();
     auto dbService = ServiceLocator<DataBaseService<SqliteProvider>>::getService();
@@ -81,9 +61,6 @@ int main()
     /* Open default database (DATABASE_DEFAULT_NAME) */
     if (dbService->openDataBase()) {
         logService->writeHour("Database opened");
-        dbService->executeRequest(RequestBuilder::createRelationTable());
-        dbService->executeRequest(RequestBuilder::createUserTable());
-        dbService->executeRequest(RequestBuilder::addUser("toto", "SUCEMESBOULEEEES"));
     } else {
         logService->writeError("Unable to open database ' " + std::string(DATABASE_DEFAULT_NAME) + "'");
     }

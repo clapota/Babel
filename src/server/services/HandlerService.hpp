@@ -5,6 +5,7 @@
 #include "IPacket.hpp"
 #include "IService.hpp"
 #include "UserService.hpp"
+#include "PacketFactory.hpp"
 #include "ServiceLocator.hpp"
 #include "DispatchService.hpp"
 #include "../network/IConnection.hpp"
@@ -23,19 +24,39 @@ class HandlerService : public IService {
                 return;
 
             /* TODO : Build packet */
+            std::stringstream stream;
+            NativeBinaryReader reader;
+
+            stream.write((const char *)data, len);
+            reader.setStream(&stream);
+
+            auto id = reader.readInt();
+
+            /***********************/
 
             /* TODO : Retrieve handler from list */
+            auto handler = _handlers[id];
+            /*************************************/
+
+            auto packe = PacketFactory::instantiate(id);
 
             /* TODO : Generate DispatchData */
-            /* Packet : NOT YET (NEED FACTORY)
-             * Client : YES
-             * Method : YES */
+            DispatchData dispatchData = {
+                .packet = PacketFactory::instantiate(id),
+                .client = client,
+                .func = handler
+            };
+            dispatchData.packet->deserialize(reader);
+            /********************************/
 
             /* TODO : Dispatch */
+            dispatchService->enqueue(dispatchData);
+            /*******************/
         }
     private:
-        std::map<ushort, std::function<void(Client *, IPacket *)>> _handlers = {
-            { 1, std::function<void(Client *, IPacket *)>(HandshakeHandler::loginHandler)}
+        std::map<ushort, std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>> _handlers = {
+            { 1, std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>(HandshakeHandler::registerHandler)},
+            { 2, std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>(HandshakeHandler::loginHandler)}
         };
 };
 

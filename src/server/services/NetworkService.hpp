@@ -5,7 +5,7 @@
 #include "network/IListener.hpp"
 
 
-    template <class T >
+template <class T >
 class NetworkService : public IService {
     static_assert(std::is_base_of<IListener, T>::value, "T must inherit from IListener");
     public:

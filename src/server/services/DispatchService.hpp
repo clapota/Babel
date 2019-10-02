@@ -3,15 +3,16 @@
 
 #include <boost/thread.hpp>
 #include "IPacket.hpp"
+#include "../logic/Client.hpp"
 #include "services/IService.hpp"
 #include "network/IConnection.hpp"
 #include "queue/ConcurrentQueue.hpp"
 #include "services/ServiceLocator.hpp"
 
 struct DispatchData {
-    IPacket *packet;
-    IConnection *connection;
-    std::function<void(IConnection *, IPacket *)> func;
+    std::unique_ptr<IPacket> packet;
+    boost::shared_ptr<Client> client;
+    std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)> func;
 };
 
 class DispatchService : public IService {
@@ -25,15 +26,15 @@ class DispatchService : public IService {
             auto log = ServiceLocator<LogService>::getService();
 
             while (_isRunning) {
-                auto &data = _queue.waitAndPop();
+                auto data = _queue.waitAndPop();
 
-                try { data.func(data.connection, data.packet); }
+                try { data.func(data.client, data.packet); }
                 catch (std::exception &ex) { log->writeError(ex.what()); }
             }
         }
 
         void enqueue(DispatchData &data) {
-            _queue.push(data);
+            _queue.push(std::move(data));
         }
 
         void stop() {

@@ -1,26 +1,84 @@
 #include <iostream>
+#include <sqlite_orm/sqlite_orm.h>
 #include "SqliteProvider.hpp"
 
 bool SqliteProvider::openDataBase(const std::string &name)
 {
-    return (bool)(!sqlite3_open(name.c_str(), &db));
+    db = new Storage(initStorage(name));
+    return true;
 }
 
 bool SqliteProvider::closeDataBase()
 {
-    return (bool)(!sqlite3_close(db));
+    return true;
 }
 
-bool SqliteProvider::executeRequest(const Request& request) {
-    char *errMessage;
-    int rc;
+bool SqliteProvider::createUser(const std::string &username,
+    const std::string &password
+)
+{
+    return false;
+}
 
-    rc = sqlite3_exec(db, request.request.c_str(), request.callback, request.data, &errMessage);
+bool SqliteProvider::createRelation(int a, int b)
+{
+    return false;
+}
 
-    if (rc != SQLITE_OK) {
-        std::cerr << errMessage << std::endl;
-        sqlite3_free(errMessage);
-		return false;
-    }
-	return true;
+bool SqliteProvider::createRelation(const std::string &username1,
+    const std::string &username2
+)
+{
+    return false;
+}
+
+User SqliteProvider::getUserById(int id)
+{
+    return User();
+}
+
+User SqliteProvider::getUserByName(const std::string &username)
+{
+    return User();
+}
+
+std::vector<User> SqliteProvider::getAll()
+{
+    return std::vector<User>();
+}
+
+std::vector<User> SqliteProvider::getFriendsOf(int id)
+{
+    return std::vector<User>();
+}
+
+std::vector<User> SqliteProvider::getFriendsOf(const std::string &username)
+{
+    return std::vector<User>();
+}
+
+std::vector<PendingFriendRequest> SqliteProvider::getPendingFriendsRequestOf(
+    int id
+)
+{
+    return std::vector<PendingFriendRequest>();
+}
+
+std::vector<PendingFriendRequest> SqliteProvider::getPendingFriendsRequestOf(
+    const std::string &username
+)
+{
+    return std::vector<PendingFriendRequest>();
+}
+
+bool SqliteProvider::addPendingFriendRequest(int sender, int receiver)
+{
+    return false;
+}
+
+bool SqliteProvider::addPendingFriendRequest(const std::string &sender,
+    const std::string &receiver
+)
+{
+    return false;
 }

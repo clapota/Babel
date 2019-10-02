@@ -2,27 +2,8 @@
 #define BABEL_CLIENTSERVICE_HPP
 
 #include <vector>
+#include "logic/Client.hpp"
 #include "network/IConnection.hpp"
-
-class Client {
-    public:
-        static int ReferenceId;
-
-        static boost::shared_ptr<Client> create(boost::shared_ptr<IConnection> &connection)
-        {
-            return boost::shared_ptr<Client>(new Client(ReferenceId++, connection));
-        }
-
-        int getId() { return _id; }
-
-        boost::shared_ptr<IConnection> Connection;
-    private:
-        int _id = 0;
-
-        explicit Client(int id, boost::shared_ptr<IConnection> &connection) :
-            Connection(connection),
-            _id(id) { }
-};
 
 class UserService : public IService {
     public:

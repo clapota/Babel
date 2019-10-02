@@ -2,6 +2,7 @@
 #define BABEL_LOGSERVICE_HPP
 
 #include <iostream>
+#include "IService.hpp"
 
 class LogService : public IService {
     public:

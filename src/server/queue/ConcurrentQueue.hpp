@@ -12,7 +12,13 @@ class ConcurrentQueue {
             boost::mutex::scoped_lock locker(this->mutex);
             queue.push(item);
             locker.unlock();
-            std::cout << "bite" << std::endl;
+            condition_variable.notify_one();
+        }
+
+        void push(T &&item) {
+            boost::mutex::scoped_lock locker(this->mutex);
+            queue.push(std::move(item));
+            locker.unlock();
             condition_variable.notify_one();
         }
 
@@ -21,13 +27,13 @@ class ConcurrentQueue {
             return queue.empty();
         }
 
-        T &waitAndPop() {
+        T waitAndPop() {
             boost::mutex::scoped_lock lock(this->mutex);
             while(queue.empty())
                 condition_variable.wait(lock);
-            auto &tes = queue.front();
+            auto tes = std::move(queue.front());
             queue.pop();
-            return tes;
+            return std::move(tes);
         }
     private:
         std::queue<T> queue;

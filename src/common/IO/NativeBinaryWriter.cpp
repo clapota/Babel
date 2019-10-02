@@ -15,6 +15,8 @@ void NativeBinaryWriter::writeString(const std::string &value)
 {
     size_t len = value.size();
 
+    std::cout << "Sending string size : " << len;
+
     _stream.write((char *)&len, sizeof(len));
     _stream.write((char *)&value[0], len);
 }

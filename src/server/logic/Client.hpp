@@ -17,19 +17,20 @@ class Client {
             return boost::shared_ptr<Client>(new Client(ReferenceId++, connection));
         }
 
-        void Send(IPacket &packet)
+        void send(IPacket &packet)
         {
-            NativeBinaryWriter writer;
+            NativeBinaryWriter finalWriter, writer;
 
             packet.serialize(writer);
 
-            /* WARNING : NOT SURE */
-            Connection->write_async(writer.Data().str());
+            finalWriter.writeInt((uint32_t )packet.getId());
+            finalWriter.writeString(writer.Data().str());
+
+            /* WARNING : NOT FINAL IMPLEMENTATION */
+            Connection->write_async(finalWriter.Data().str());
         }
 
-
         boost::shared_ptr<IConnection> Connection;
-
     private:
         int _id = 0;
 
