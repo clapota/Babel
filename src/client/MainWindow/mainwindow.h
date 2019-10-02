@@ -33,11 +33,23 @@ public:
     void LogInInSignIn();
     void SignInInSignIn();
     void Disconnect();
+    void registerResponse(IPacket &packet);
+    void connectResponse(IPacket &packet);
+    void addFriendResponse(IPacket &packet);
+    void removeFriendResponse(IPacket &packet);
+    void acceptFriendResponse(IPacket &packet);
+    void callResponse(IPacket &packet);
+    void hangUpResponse(IPacket &packet);
+    void friendAccept(IPacket &packet);
+    void requestFriend(IPacket &packet);
+    void userInfo(IPacket &packet);
+    void removedFromFriend(IPacket &packet);
 
 private:
     Ui::MainWindow *ui;
     TcpClient client;
     std::unique_ptr<AudioWrapper> audioManager = nullptr;
+    bool isConnected = false;
 };
 
 #endif // MAINWINDOW_H

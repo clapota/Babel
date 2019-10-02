@@ -51,5 +51,25 @@ void TcpClient::dispatchData() {
         packet.deserialize(reader);
         int responseId = packet.getRequestId();
         this->signalMap[responseId](dynamic_cast<IPacket &>(packet));
+    } else if (id == PacketFactory::FRIEND_ACCEPTED) {
+        FriendAcceptedPacket packet;
+
+        packet.deserialize(reader);
+        this->signalMap[id](dynamic_cast<IPacket &>(packet));
+    } else if (id == PacketFactory::RECEIVED_FRIEND_REQUEST) {
+        ReceivedFriendRequestPacket packet;
+
+        packet.deserialize(reader);
+        this->signalMap[id](dynamic_cast<IPacket &>(packet));
+    } else if (id == PacketFactory::FRIEND_INFO) {
+        FriendInfoPacket packet;
+
+        packet.deserialize(reader);
+        this->signalMap[id](dynamic_cast<IPacket &>(packet));
+    } else if (id == PacketFactory::FRIEND_REMOVED) {
+        FriendRemovedPacket packet;
+
+        packet.deserialize(reader);
+        this->signalMap[id](dynamic_cast<IPacket &>(packet));
     }
 }
