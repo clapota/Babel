@@ -8,8 +8,9 @@
 #include "PacketFactory.hpp"
 #include "ServiceLocator.hpp"
 #include "DispatchService.hpp"
-#include "../network/IConnection.hpp"
-#include "../logic/handshake/HandshakeHandler.hpp"
+#include "network/IConnection.hpp"
+#include "logic/handshake/HandshakeHandler.hpp"
+#include "IO/NativeBinaryReader.hpp"
 
 class HandlerService : public IService {
     public:
@@ -35,7 +36,7 @@ class HandlerService : public IService {
             /***********************/
 
             /* TODO : Retrieve handler from list */
-            auto handler = _handlers[id];
+            const auto &handler = _handlers.at(id);
             /*************************************/
 
             auto packe = PacketFactory::instantiate(id);
@@ -56,11 +57,7 @@ class HandlerService : public IService {
     private:
         using Handler = std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>;
 
-        std::map<int, Handler> _handlers = {
-            { RegisterPacket::PacketId, HandshakeHandler::registerHandler},
-            { ConnectPacket::PacketId, HandshakeHandler::loginHandler},
-            { AddFriendPacket::PacketId, HandshakeHandler::addFriendHandler },
-        };
+        static const std::map<int, Handler> _handlers;
 };
 
 #endif //BABEL_HANDLERSERVICE_HPP
