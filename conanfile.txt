@@ -2,6 +2,7 @@
 portaudio/v190600.20161030@bincrafters/stable
 opus/1.2.1@bincrafters/stable
 boost_asio/1.69.0@bincrafters/stable
+boost_thread/1.69.0@bincrafters/stable
 sqlite3/3.29.0@bincrafters/stable
 sqlite_orm/1.4@bincrafters/stable
 

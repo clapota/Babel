@@ -20,3 +20,4 @@ babel
 build/
 bin/
 .qmake.stash
+.vs/
