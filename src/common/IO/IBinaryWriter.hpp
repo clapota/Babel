@@ -9,6 +9,7 @@ class IBinaryWriter
         virtual ~IBinaryWriter() = default;
         virtual void writeInt(uint32_t) = 0;
         virtual void writeString(const std::string &) = 0;
+        virtual void writeBool(bool) = 0;
     private:
 
 };

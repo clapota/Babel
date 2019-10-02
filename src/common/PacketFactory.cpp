@@ -15,4 +15,9 @@ const std::map<int, std::function<std::unique_ptr<IPacket>()>> PacketFactory::cr
     { PacketEnum::HANG_UP, []() { return std::make_unique<HangUpPacket>(); }},
     { PacketEnum::REGISTER, []() { return std::make_unique<RegisterPacket>(); }},
     { PacketEnum::REMOVE_FRIEND, []() { return std::make_unique<RemoveFriendPacket>(); }},
+    { PacketEnum::FRIEND_ACCEPTED, []() { return std::make_unique<FriendAcceptedPacket>(); }},
+    { PacketEnum::FRIEND_REMOVED, []() { return std::make_unique<FriendRemovedPacket>(); }},
+    { PacketEnum::FRIEND_INFO, []() { return std::make_unique<FriendInfoPacket>(); }},
+    { PacketEnum::RECEIVED_FRIEND_REQUEST, []() { return std::make_unique<ReceivedFriendRequestPacket>(); }},
+    { PacketEnum::RESPONSE_PACKET, []() { return std::make_unique<ResponsePacket>(); }},
 };

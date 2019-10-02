@@ -16,4 +16,4 @@ file(
 
 include_directories(${CMAKE_INCLUDE_PATH} .)
 add_executable(babel_client ${sources})
-target_link_libraries(babel_client ${CONAN_LIBS} Qt5::Widgets Qt5::Network)
+target_link_libraries(babel_client ${CONAN_LIBS} Qt5::Widgets Qt5::Network babel_common)

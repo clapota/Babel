@@ -38,15 +38,25 @@ public:
     QWidget *widget;
     QListWidget *listWidget;
     QPushButton *pushButton;
+    QPushButton *DisconnectButton;
     QWidget *widget_2;
-    QPushButton *pushButton_2;
+    QPushButton *LogInInLogIn;
     QLabel *label;
     QLineEdit *lineEdit;
     QLineEdit *lineEdit_2;
     QLabel *label_2;
+    QPushButton *SignInInLogIn;
+    QWidget *Sign;
+    QPushButton *SignIninSignIn;
+    QLabel *label_3;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_4;
+    QLabel *label_4;
+    QLineEdit *lineEdit_5;
+    QLabel *label_5;
+    QPushButton *LogInInSignIn;
     QMenuBar *menuBar;
     QMenu *menuSalut;
-    QMenu *menuLog_out;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -55,6 +65,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(313, 517);
+        MainWindow->setMinimumSize(QSize(313, 517));
+        MainWindow->setMaximumSize(QSize(313, 517));
         actionAdd_new_friend = new QAction(MainWindow);
         actionAdd_new_friend->setObjectName(QStringLiteral("actionAdd_new_friend"));
         actionDelete_frind = new QAction(MainWindow);
@@ -75,16 +87,19 @@ public:
         new QListWidgetItem(listWidget);
         new QListWidgetItem(listWidget);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(20, 10, 281, 391));
+        listWidget->setGeometry(QRect(20, 20, 281, 381));
         pushButton = new QPushButton(widget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(70, 410, 161, 41));
+        DisconnectButton = new QPushButton(widget);
+        DisconnectButton->setObjectName(QStringLiteral("DisconnectButton"));
+        DisconnectButton->setGeometry(QRect(220, 0, 81, 21));
         widget_2 = new QWidget(centralWidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
-        widget_2->setGeometry(QRect(60, 140, 221, 121));
-        pushButton_2 = new QPushButton(widget_2);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(30, 70, 161, 31));
+        widget_2->setGeometry(QRect(60, 140, 221, 151));
+        LogInInLogIn = new QPushButton(widget_2);
+        LogInInLogIn->setObjectName(QStringLiteral("LogInInLogIn"));
+        LogInInLogIn->setGeometry(QRect(30, 110, 161, 31));
         label = new QLabel(widget_2);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 10, 61, 21));
@@ -97,14 +112,42 @@ public:
         label_2 = new QLabel(widget_2);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(20, 40, 61, 21));
+        SignInInLogIn = new QPushButton(widget_2);
+        SignInInLogIn->setObjectName(QStringLiteral("SignInInLogIn"));
+        SignInInLogIn->setGeometry(QRect(30, 70, 161, 31));
+        Sign = new QWidget(centralWidget);
+        Sign->setObjectName(QStringLiteral("Sign"));
+        Sign->setGeometry(QRect(60, 120, 221, 191));
+        SignIninSignIn = new QPushButton(Sign);
+        SignIninSignIn->setObjectName(QStringLiteral("SignIninSignIn"));
+        SignIninSignIn->setGeometry(QRect(30, 90, 161, 31));
+        label_3 = new QLabel(Sign);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(20, 10, 61, 21));
+        lineEdit_3 = new QLineEdit(Sign);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setGeometry(QRect(90, 10, 113, 25));
+        lineEdit_4 = new QLineEdit(Sign);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        lineEdit_4->setGeometry(QRect(90, 40, 113, 25));
+        label_4 = new QLabel(Sign);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(20, 40, 61, 21));
+        lineEdit_5 = new QLineEdit(Sign);
+        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
+        lineEdit_5->setGeometry(QRect(90, 60, 113, 25));
+        label_5 = new QLabel(Sign);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(30, 60, 41, 21));
+        LogInInSignIn = new QPushButton(Sign);
+        LogInInSignIn->setObjectName(QStringLiteral("LogInInSignIn"));
+        LogInInSignIn->setGeometry(QRect(30, 130, 161, 31));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 313, 22));
         menuSalut = new QMenu(menuBar);
         menuSalut->setObjectName(QStringLiteral("menuSalut"));
-        menuLog_out = new QMenu(menuBar);
-        menuLog_out->setObjectName(QStringLiteral("menuLog_out"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -114,7 +157,6 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuSalut->menuAction());
-        menuBar->addAction(menuLog_out->menuAction());
         menuSalut->addAction(actionAdd_new_friend);
         menuSalut->addAction(actionDelete_frind);
 
@@ -144,11 +186,17 @@ public:
         listWidget->setSortingEnabled(__sortingEnabled);
 
         pushButton->setText(QApplication::translate("MainWindow", "Call", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Connexion", nullptr));
+        DisconnectButton->setText(QApplication::translate("MainWindow", "Disconnect", nullptr));
+        LogInInLogIn->setText(QApplication::translate("MainWindow", "Log In", nullptr));
         label->setText(QApplication::translate("MainWindow", "Username", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "Password", nullptr));
+        SignInInLogIn->setText(QApplication::translate("MainWindow", "Sign In", nullptr));
+        SignIninSignIn->setText(QApplication::translate("MainWindow", "Sign In", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Username", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "Password", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "Repeat", nullptr));
+        LogInInSignIn->setText(QApplication::translate("MainWindow", "Log In", nullptr));
         menuSalut->setTitle(QApplication::translate("MainWindow", "Friends", nullptr));
-        menuLog_out->setTitle(QApplication::translate("MainWindow", "Logout", nullptr));
     } // retranslateUi
 
 };
