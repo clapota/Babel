@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "../../common/PacketFactory.hpp"
+#include "../../common/IO/NativeBinaryWriter.hpp"
 #include <QPushButton>
 #include <iostream>
 #include <QtCore/QDir>
@@ -7,7 +9,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    client("127.0.0.1", 4444)
+    client("10.26.111.73", 4444)
 {
     ui->setupUi(this);
     auto *connectionButton = this->ui->LogInInLogIn;
@@ -41,7 +43,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::Disconnect()
 {
-    // TODO reset actual user
     ui->lineEdit_2->clear();
     ui->lineEdit->clear();
     this->changeVisibleWidget(CONNEXION);
@@ -71,7 +72,18 @@ void MainWindow::SignInInSignIn()
     text = ui->lineEdit_5->text();
     std::string RepeatedPassword = text.toStdString();
 
-    printf("bite\n");
+    if (password != RepeatedPassword)
+    {
+        ui->lineEdit_4->setStyleSheet("border: 1px solid red;");
+        ui->lineEdit_5->setStyleSheet("border: 1px solid red;");
+    } else {
+        RegisterPacket packet;
+
+        packet.setPassword(password);
+        packet.setUsername(username);
+
+        this->client.sendData(packet);
+    }
 }
 
 void MainWindow::connectToServer() {
@@ -86,9 +98,14 @@ void MainWindow::connectToServer() {
     std::cout << "password " << password << " username " << username << std::endl;
 
     if (!username.empty() && !password.empty()) {
+        ConnectPacket packet;
+
+        packet.setEmail(username);
+        packet.setPassword(password);
+        this->client.sendData(packet);
         //TODO: Build le packet et l'envoyer avec le TCPCLIENT
         //if checkpass
-              changeVisibleWidget(MAIN);
+//              changeVisibleWidget(MAIN);
     } else {
         if (username.empty())
             usernameLineEdit->setStyleSheet("border: 1px solid red;");
@@ -115,10 +132,10 @@ void MainWindow::addFriend() {
                 alreadyExist = true;
         }
         if (!alreadyExist) {
-            //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+            AddFriendPacket packet;
 
-            //IF SERVER RESPONSE == OK
-            list->addItem(text);
+            packet.setUsername(text.toStdString());
+            this->client.sendData(packet);
         }
     }
 }
@@ -139,9 +156,11 @@ void MainWindow::deleteFriend() {
 
     if (ok && !item.isEmpty())
     {
-        //TODO: Build le packet et l'envoyer avec le TCPCLIENT
+        RemoveFriendPacket packet;
 
-        // IF RESPONSE == OK
+        packet.setUsername(item.toStdString());
+
+        this->client.sendData(packet);
 
         for (int i = 0; i < list->count(); i++) {
             auto *it = list->item(i);
@@ -163,6 +182,11 @@ void MainWindow::call() {
         std::cout << "BITE" << std::endl;
         callButton->setStyleSheet("border-color: red");
     } else {
+        CallPacket packet;
+
+        packet.setUsername(selected->text().toStdString());
+        this->client.sendData(packet);
+
         std::cout << selected->text().toStdString() << std::endl;
     }
 
