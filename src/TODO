@@ -1,4 +1,6 @@
 - Packet are serialized BUT we need to send [Id + DataLength] + (Serialized data)
 [Id + DataLength] is missing for now.
+  See : server/logic/Client
 
-- See : Server/services/HandlerService
+
+- See : server/services/HandlerService
