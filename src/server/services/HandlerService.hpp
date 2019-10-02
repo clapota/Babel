@@ -58,7 +58,8 @@ class HandlerService : public IService {
 
         std::map<int, Handler> _handlers = {
             { RegisterPacket::PacketId, HandshakeHandler::registerHandler},
-            { ConnectPacket::PacketId, HandshakeHandler::loginHandler}
+            { ConnectPacket::PacketId, HandshakeHandler::loginHandler},
+            { AddFriendPacket::PacketId, HandshakeHandler::addFriendHandler },
         };
 };
 

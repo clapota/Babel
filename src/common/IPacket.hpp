@@ -9,7 +9,7 @@ class IPacket
     public:
         ~IPacket() = default;
         virtual const int getId() const = 0;
-        virtual void serialize(IBinaryWriter &writer) = 0;
+        virtual void serialize(IBinaryWriter &writer) const = 0;
         virtual void deserialize(IBinaryReader &reader) = 0;
 };
 

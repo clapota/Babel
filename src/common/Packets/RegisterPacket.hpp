@@ -21,7 +21,7 @@ class RegisterPacket : public IPacket {
 
         RegisterPacket() = default;
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             auto userName = getUsername();
             auto userPassword = getPassword();

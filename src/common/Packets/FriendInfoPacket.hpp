@@ -51,7 +51,7 @@ class FriendInfoPacket : public IPacket {
             return PacketId;
         }
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             writer.writeString(_username);
             writer.writeInt(static_cast<uint32_t>(_state));

@@ -44,7 +44,7 @@ class ResponsePacket : public IPacket {
             return 0;
         }
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             writer.writeInt(static_cast<uint32_t>(requestId));
             writer.writeBool(ok);

@@ -4,7 +4,8 @@
 #include <boost/asio.hpp>
 #include "IPacket.hpp"
 #include "IO/NativeBinaryWriter.hpp"
-#include "../network/IConnection.hpp"
+#include "network/IConnection.hpp"
+#include "database/SqliteProvider.hpp"
 
 class Client {
     public:
@@ -17,7 +18,7 @@ class Client {
             return boost::shared_ptr<Client>(new Client(ReferenceId++, connection));
         }
 
-        void send(IPacket &packet)
+        void send(const IPacket &packet)
         {
             NativeBinaryWriter finalWriter, writer;
 
@@ -30,9 +31,35 @@ class Client {
             Connection->write_async(finalWriter.Data().str());
         }
 
+        bool isLogged() const
+        {
+            return _logged;
+        }
+
+        const User &getUser() const
+        {
+            if (!isLogged())
+                throw std::runtime_error("User not logged in");
+            return _user;
+        }
+
+        void setUser(const User &user)
+        {
+            _user = user;
+            _logged = true;
+        }
+
+        void logout()
+        {
+            _user = User { .id = -1 };
+            _logged = false;
+        }
+
         boost::shared_ptr<IConnection> Connection;
     private:
         int _id = 0;
+        bool _logged;
+        User _user;
 
         explicit Client(int id, boost::shared_ptr<IConnection> &connection) :
             Connection(connection),

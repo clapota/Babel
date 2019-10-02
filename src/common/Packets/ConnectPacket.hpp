@@ -21,7 +21,7 @@ class ConnectPacket : public IPacket {
 
         ConnectPacket() = default;
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             auto userMail = getEmail();
             auto userPassword = getPassword();

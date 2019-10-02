@@ -20,7 +20,7 @@ class ReceivedFriendRequestPacket : public IPacket {
             return PacketId;
         }
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             writer.writeString(getUsername());
         }
