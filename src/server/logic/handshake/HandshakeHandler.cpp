@@ -28,7 +28,13 @@ void HandshakeHandler::addFriendHandler(boost::shared_ptr<Client> client,
 
     if (friendUser.id == -1 || !client->isLogged() || afp.getUsername() == client->getUser().username)
         return client->send(ResponsePacket(packet->getId(), false));
-    //TODO add friend to DB
+    /* check if users are already friends */
+    auto clientFriends = db->getFriendsOf(client->getUser().username);
+    if (std::find_if(clientFriends.begin(), clientFriends.end(), [&](const User &u) {
+        return u.username == client->getUser().username;
+    }) != clientFriends.end())
+        return client->send(ResponsePacket(packet->getId(), false));
+    db->addPendingFriendRequest(client->getUser().username, friendUser.username);
     ServiceLocator<LogService>::getService()->writeHour(client->getUser().username + " added " + afp.getUsername() + " as friend.");
     client->send(ResponsePacket(packet->getId(), true));
 }
