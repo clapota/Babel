@@ -21,7 +21,7 @@ class AcceptFriendPacket : public IPacket {
             return PacketId;
         }
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             auto userName = getUsername();
             auto accepted = isAccepted() ? 1 : 0;

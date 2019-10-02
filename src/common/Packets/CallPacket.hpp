@@ -21,7 +21,7 @@ class CallPacket : public IPacket {
 
         CallPacket() = default;
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             auto userName = getUsername();
 

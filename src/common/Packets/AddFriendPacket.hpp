@@ -21,7 +21,7 @@ class AddFriendPacket : public IPacket {
 
         AddFriendPacket() = default;
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         {
             auto userName = getUsername();
 

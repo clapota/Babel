@@ -20,7 +20,7 @@ class HangUpPacket : public IPacket {
             return PacketId;
         }
 
-        void serialize(IBinaryWriter &writer) override
+        void serialize(IBinaryWriter &writer) const override
         { }
 
         void deserialize(IBinaryReader &reader) override
