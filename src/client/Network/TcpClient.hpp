@@ -7,15 +7,21 @@
 
 #include <QTcpSocket>
 #include <QtNetwork/QHostAddress>
+#include "../../common/IPacket.hpp"
 
 class TcpClient : public QObject {
     Q_OBJECT
     public:
         TcpClient(const std::string &addr, unsigned short port);
         ~TcpClient() override = default;
-        void sendData(std::vector<unsigned char> &);
+        void sendData(IPacket &);
     public slots:
         void dispatchData();
+    signals:
+        void friendAccepted();
+        void friendRequest();
+        void friendData();
+        void friendRemoved();
     private:
         QTcpSocket *tcpSocket = nullptr;
         unsigned short port;

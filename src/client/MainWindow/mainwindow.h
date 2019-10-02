@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QInputDialog>
 #include "../Network/TcpClient.hpp"
+#include "../Audio/AudioWrapper.hpp"
 
 namespace Ui {
     class MainWindow;
@@ -36,6 +37,7 @@ public:
 private:
     Ui::MainWindow *ui;
     TcpClient client;
+    std::unique_ptr<AudioWrapper> audioManager = nullptr;
 };
 
 #endif // MAINWINDOW_H

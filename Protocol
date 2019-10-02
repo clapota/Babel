@@ -21,6 +21,7 @@ Connect:
     char[255]username
     char[255]password
 } RESPONSE : OK/MESSAGE DERREUR
+AddFriend:
 
 AddFriend:
 {
