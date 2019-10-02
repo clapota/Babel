@@ -45,9 +45,11 @@ void TcpClient::dispatchData() {
 
     reader.setStream(&stream);
     int id = reader.readInt();
-    if (id == 2) {
-        ConnectPacket packet;
+    if (id == PacketFactory::RESPONSE_PACKET) {
+        ResponsePacket packet;
+
         packet.deserialize(reader);
-        std::cout << "received " << packet.getEmail() << " " << packet.getPassword() << std::endl;
+        int responseId = packet.getRequestId();
+        this->signalMap[responseId](dynamic_cast<IPacket &>(packet));
     }
 }
