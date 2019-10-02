@@ -2,15 +2,16 @@
 #define BABEL_DISPATCHSERVICE_HPP
 
 #include <boost/thread.hpp>
+#include "IPacket.hpp"
 #include "services/IService.hpp"
 #include "network/IConnection.hpp"
 #include "queue/ConcurrentQueue.hpp"
 #include "services/ServiceLocator.hpp"
 
 struct DispatchData {
-    /* packet */
+    IPacket *packet;
     IConnection *connection;
-    std::function<void(IConnection &)> func;
+    std::function<void(IConnection *, IPacket *)> func;
 };
 
 class DispatchService : public IService {
@@ -26,7 +27,7 @@ class DispatchService : public IService {
             while (_isRunning) {
                 auto &data = _queue.waitAndPop();
 
-                try { data.func(*(data.connection)); }
+                try { data.func(data.connection, data.packet); }
                 catch (std::exception &ex) { log->writeError(ex.what()); }
             }
         }

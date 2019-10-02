@@ -16,7 +16,7 @@ void BoostConnection::read_async()
                                             boost::asio::placeholders::bytes_transferred));
 }
 
-void BoostConnection::write_async(void *data, size_t size)
+/*void BoostConnection::write_async(std::string &data, size_t size)
 {
     auto &socket = getSocket();
 
@@ -25,7 +25,7 @@ void BoostConnection::write_async(void *data, size_t size)
                                                  shared_from_this(),
                                                  boost::asio::placeholders::error,
                                                  boost::asio::placeholders::bytes_transferred));
-}
+} */
 
 void BoostConnection::write_async(const std::string &message)
 {
@@ -63,7 +63,7 @@ void const BoostConnection::handleRead(const boost::system::error_code &error, s
         /* Work is done asynchronously */
         // dispatch->enqueue(data);
         if (_isActive) {
-			write_async("Bite");
+
             getSocket().async_read_some(boost::asio::buffer(_bytes),
                                         boost::bind(&BoostConnection::handleRead,
                                                     shared_from_this(),

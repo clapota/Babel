@@ -13,10 +13,36 @@
 class RemoveFriendPacket : public IPacket {
     public:
         static constexpr int PacketId = 4;
-        explicit RemoveFriendPacket(const std::string &username);
-        const std::string &getUsername() const;
-        int getId() const override;
+
+        const int getId() const override
+        {
+            return PacketId;
+        }
+
+        RemoveFriendPacket() = default;
+
+        void serialize(IBinaryWriter &writer) override
+        {
+            auto userName = getUsername();
+
+            writer.writeString(userName);
+        }
+
+        void deserialize(IBinaryReader &reader) override
+        {
+            setUsername(reader.readString());
+        }
+
+        const std::string &getUsername() const
+        {
+            return _username;
+        }
+
+        void setUsername(const std::string &_username)
+        {
+            RemoveFriendPacket::_username = _username;
+        }
 
     private:
-        std::string username;
+        std::string _username;
 };

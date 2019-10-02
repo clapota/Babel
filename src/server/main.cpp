@@ -6,6 +6,9 @@
 */
 
 #include <iostream>
+#include <IO/NativeBinaryWriter.hpp>
+#include <IO/NativeBinaryReader.hpp>
+#include <Packets/AcceptFriendPacket.hpp>
 #include "database/SqliteProvider.hpp"
 #include "network/BoostListener.hpp"
 #include "services/ServiceLocator.hpp"
@@ -51,6 +54,25 @@ void handleSigInt()
 
 int main()
 {
+    uint32_t a = 69;
+    std::string bite = "test";
+
+    NativeBinaryWriter writer;
+    AcceptFriendPacket afp;
+
+    afp.setUsername("caca1");
+    afp.setAccepted(true);
+    afp.serialize(writer);
+
+    std::stringstream stream;
+    stream <<  writer.Data().rdbuf()->str();
+
+    NativeBinaryReader reader;
+    AcceptFriendPacket afp2;
+
+    reader.setStream(&stream);
+    afp2.deserialize(reader);
+
     auto logService = ServiceLocator<LogService>::getService();
     auto netService = ServiceLocator<NetworkService<BoostListener>>::getService();
     auto dbService = ServiceLocator<DataBaseService<SqliteProvider>>::getService();

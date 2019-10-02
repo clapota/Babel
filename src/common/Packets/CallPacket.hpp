@@ -13,10 +13,36 @@
 class CallPacket : public IPacket {
     public:
         static constexpr int PacketId = 6;
-        const std::string &getUsername() const;
-        explicit CallPacket(const std::string &username);
-        int getId() const override;
+
+        const int getId() const override
+        {
+            return PacketId;
+        }
+
+        CallPacket() = default;
+
+        void serialize(IBinaryWriter &writer) override
+        {
+            auto userName = getUsername();
+
+            writer.writeString(userName);
+        }
+
+        void deserialize(IBinaryReader &reader) override
+        {
+            setUsername(reader.readString());
+        }
+
+        const std::string &getUsername() const
+        {
+            return _username;
+        }
+
+        void setUsername(const std::string &username)
+        {
+            CallPacket::_username = username;
+        }
 
     private:
-        std::string username;
+        std::string _username;
 };

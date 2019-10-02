@@ -1,13 +1,16 @@
-/*
-** EPITECH PROJECT, 2019
-** Babel
-** File description:
-** Created by antoine_dh,
-*/
+#ifndef BABEL_APACKET_HPP
+#define BABEL_APACKET_HPP
 
-#pragma once
+#include "IO/IBinaryWriter.hpp"
+#include "IO/IBinaryReader.hpp"
 
-class IPacket {
+class IPacket
+{
     public:
-        virtual int getId() const = 0;
+        ~IPacket() = default;
+        virtual const int getId() const = 0;
+        virtual void serialize(IBinaryWriter &writer) = 0;
+        virtual void deserialize(IBinaryReader &reader) = 0;
 };
+
+#endif //BABEL_APACKET_HPP

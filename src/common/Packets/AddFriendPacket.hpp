@@ -14,10 +14,36 @@ class AddFriendPacket : public IPacket {
     public:
         static constexpr int PacketId = 3;
 
-        explicit AddFriendPacket(const std::string &username);
-        const std::string &getUsername() const;
-        int getId() const override;
+        const int getId() const override
+        {
+            return PacketId;
+        }
+
+        AddFriendPacket() = default;
+
+        void serialize(IBinaryWriter &writer) override
+        {
+            auto userName = getUsername();
+
+            writer.writeString(userName);
+        }
+
+        void deserialize(IBinaryReader &reader) override
+        {
+            setUsername(reader.readString());
+        }
+
+        const std::string &getUsername() const
+        {
+            return _username;
+        }
+
+        void setUsername(const std::string &username)
+        {
+            AddFriendPacket::_username = username;
+        }
 
     private:
-        std::string username;
+        std::string _username;
+
 };

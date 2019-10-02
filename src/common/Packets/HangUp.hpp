@@ -14,5 +14,15 @@ class HangUp : public IPacket {
         static constexpr int PacketId = 7;
 
         HangUp() = default;
-        int getId() const override;
+
+        int const getId() const override
+        {
+            return PacketId;
+        }
+
+        void serialize(IBinaryWriter &writer) override
+        { }
+
+        void deserialize(IBinaryReader &reader) override
+        { }
 };

@@ -14,13 +14,49 @@ class RegisterPacket : public IPacket {
     public:
         static constexpr int PacketId = 1;
 
+        const int getId() const override
+        {
+            return PacketId;
+        }
+
         RegisterPacket() = default;
-        RegisterPacket(const std::string &email, const std::string &password);
-        int getId() const override;
-        const std::string &getUsername() const;
-        const std::string &getPassword() const;
+
+        void serialize(IBinaryWriter &writer) override
+        {
+            auto userName = getUsername();
+            auto userPassword = getPassword();
+
+            writer.writeString(userName);
+            writer.writeString(userPassword);
+        }
+
+        void deserialize(IBinaryReader &reader) override
+        {
+            setUsername(reader.readString());
+            setPassword(reader.readString());
+        }
+
+        const std::string &getUsername() const
+        {
+            return _username;
+        }
+
+        void setUsername(const std::string &_username)
+        {
+            RegisterPacket::_username = _username;
+        }
+
+        const std::string &getPassword() const
+        {
+            return _password;
+        }
+
+        void setPassword(const std::string &_password)
+        {
+            RegisterPacket::_password = _password;
+        }
 
     private:
-        std::string username;
-        std::string password;
+        std::string _username;
+        std::string _password;
 };
