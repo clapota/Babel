@@ -9,11 +9,11 @@
 
 #include "IPacket.hpp"
 
-class HangUp : public IPacket {
+class HangUpPacket : public IPacket {
     public:
         static constexpr int PacketId = 7;
 
-        HangUp() = default;
+        HangUpPacket() = default;
 
         int const getId() const override
         {
