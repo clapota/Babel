@@ -54,9 +54,11 @@ class HandlerService : public IService {
             /*******************/
         }
     private:
-        std::map<ushort, std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>> _handlers = {
-            { 1, std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>(HandshakeHandler::registerHandler)},
-            { 2, std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>(HandshakeHandler::loginHandler)}
+        using Handler = std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>;
+
+        std::map<int, Handler> _handlers = {
+            { RegisterPacket::PacketId, HandshakeHandler::registerHandler},
+            { ConnectPacket::PacketId, HandshakeHandler::loginHandler}
         };
 };
 
