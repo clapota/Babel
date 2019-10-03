@@ -32,6 +32,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(SignInInSignIn, SIGNAL(clicked()), this, SLOT(SignInInSignIn()));
     connect(LogInInSignIn, SIGNAL(clicked()), this, SLOT(LogInInSignIn()));
     connect(Disconnect, SIGNAL(clicked()), this, SLOT(Disconnect()));
+    connect(&client, SIGNAL(registerResponse()), this, SLOT(registerResponse()));
+    connect(&client, SIGNAL(connectResponse()), this, SLOT(connectResponse()));
+    connect(&client, SIGNAL(addFriendResponse()), this, SLOT(addFriendResponse()));
+    connect(&client, SIGNAL(removeFriendResponse()), this, SLOT(removeFriendResponse()));
+    connect(&client, SIGNAL(acceptFriendResponse()), this, SLOT(acceptFriendResponse()));
+    connect(&client, SIGNAL(callResponse()), this, SLOT(callResponse()));
+    connect(&client, SIGNAL(hangUpResponse()), this, SLOT(hangUpResponse()));
+    connect(&client, SIGNAL(friendAccept()), this, SLOT(friendAccept()));
+    connect(&client, SIGNAL(requestFriend()), this, SLOT(requestFriend()));
+    connect(&client, SIGNAL(userInfo()), this, SLOT(userInfo()));
+    connect(&client, SIGNAL(removedFromFriend()), this, SLOT(removedFromFriend()));
     ui->widget->setVisible(false);
     ui->Sign->setVisible(false);
 }
@@ -206,5 +217,111 @@ void MainWindow::changeVisibleWidget(Widget wid)
         ui->widget->setVisible(false);
         ui->widget_2->setVisible(false);
         ui->Sign->setVisible(true);
+    }
+}
+
+void MainWindow::registerResponse(IPacket &packet) {
+    auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
+
+    if (responsePacket.isOk())
+        std::cout << "Account created with success" << std::endl;
+    else
+        std::cerr << "Error while creating account, please retry" << std::endl;
+}
+
+void MainWindow::connectResponse(IPacket &packet) {
+    auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
+
+    if (responsePacket.isOk()) {
+        this->changeVisibleWidget(MAIN);
+        this->isConnected = true;
+    } else {
+        std::cerr << "Error while log in" << std::endl;
+    }
+}
+
+void MainWindow::addFriendResponse(IPacket &packet) {
+    auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
+
+    if (responsePacket.isOk()) {
+        std::cout << "Friend added with success, waiting for his response" << std::endl;
+    } else {
+        std::cerr << "error while adding friend" << std::endl;
+    }
+}
+
+void MainWindow::removeFriendResponse(IPacket &packet) {
+    auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
+
+    if (responsePacket.isOk()) {
+        std::cout << "Friend remove with success" << std::endl;
+    } else {
+        std::cerr << "Bug" << std::endl;
+    }
+}
+
+void MainWindow::acceptFriendResponse(IPacket &packet) {
+    auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
+
+    if (responsePacket.isOk()) {
+        std::cout << "Friend accepted with success" << std::endl;
+    } else {
+        std::cerr << "Bug" << std::endl;
+    }
+}
+
+void MainWindow::callResponse(IPacket &packet) {
+    auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
+
+    if (responsePacket.isOk()) {
+        std::cout << "Call ready to be setup" << std::endl;
+    } else {
+        std::cerr << "Bug" << std::endl;
+    }
+
+}
+
+void MainWindow::hangUpResponse(IPacket &packet) {
+    auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
+
+    if (responsePacket.isOk()) {
+        std::cout << "Hanging Up" << std::endl;
+        this->audioManager = nullptr;
+    } else {
+        std::cerr << "Bug" << std::endl;
+    }
+}
+
+void MainWindow::friendAccept(IPacket &packet) {
+    auto &friendAcceptPacket = dynamic_cast<FriendAcceptedPacket &>(packet);
+
+    auto *list = this->ui->listWidget;
+    list->addItem(QString(friendAcceptPacket.getUsername().c_str()));
+}
+
+void MainWindow::requestFriend(IPacket &packet) {
+    auto &requestFriend = dynamic_cast<ReceivedFriendRequestPacket &>(packet);
+
+    //TODO: Ajouter a une liste de requete d'amis ....
+}
+
+void MainWindow::userInfo(IPacket &packet) {
+    auto &friendInfo = dynamic_cast<FriendInfoPacket &>(packet);
+
+    auto *list = this->ui->listWidget;
+    for (int i = 0; i < list->count(); i++) {
+        auto *it = list->item(i);
+
+    }
+}
+
+void MainWindow::removedFromFriend(IPacket &packet) {
+    auto &rffPacket = dynamic_cast<FriendRemovedPacket &>(packet);
+
+    auto *list = this->ui->listWidget;
+    for (int i = 0; i < list->count(); i++) {
+        auto *it = list->item(i);
+        if (it->text().toStdString() == rffPacket.getUsername())
+            delete it;
     }
 }
