@@ -40,16 +40,21 @@ void TcpClient::dispatchData() {
 
     std::stringstream stream;
 
-    stream.write(array.data(), array.size());
+    stream.write((const char *)array.data(), array.size());
     NativeBinaryReader reader;
+    std::string toto = array.toStdString();
 
+    std::cout << "received of size : " << stream.str().size() << " data : " << stream.str() << std::endl;
     reader.setStream(&stream);
     int id = reader.readInt();
+    std::cout << "Dispatching " << id << std::endl;
     if (id == PacketFactory::RESPONSE_PACKET) {
         ResponsePacket packet;
 
+        std::cout << "BITE BITE " << std::endl;
         packet.deserialize(reader);
         int responseId = packet.getRequestId();
+        std::cout << "rId" << responseId << std::endl;
         this->signalMap[responseId](dynamic_cast<IPacket &>(packet));
     } else if (id == PacketFactory::FRIEND_ACCEPTED) {
         FriendAcceptedPacket packet;

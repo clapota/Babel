@@ -18,16 +18,24 @@ bool SqliteProvider::createUser(const std::string &username,
 )
 {
     User user{-1, username, password};
-    db->insert(user);
-    return true;
+    try {
+        db->insert(user);
+        return true;
+    } catch (...) {
+        return false;
+    }
 }
 
 bool SqliteProvider::createRelation(int a, int b)
 {
     Friendship friendship{a, b};
+    try {
 
-    db->insert(friendship);
-    return true;
+        db->insert(friendship);
+        return true;
+    } catch (...) {
+        return false;
+    }
 }
 
 bool SqliteProvider::createRelation(const std::string &username1,
@@ -38,8 +46,12 @@ bool SqliteProvider::createRelation(const std::string &username1,
     User user2 = getUserByName(username2);
 
     Friendship friendship{user1.id, user2.id};
-    db->insert(friendship);
-    return true;
+    try {
+        db->insert(friendship);
+        return true;
+    } catch (...) {
+        return false;
+    }
 }
 
 User SqliteProvider::getUserById(int id)
@@ -60,6 +72,8 @@ User SqliteProvider::getUserByName(const std::string &username)
 {
     try {
         auto user = db->get_all<User>(sqlite_orm::where(sqlite_orm::like(&User::username, username.c_str())));
+        if (user.empty())
+            return User{-1, "", ""};
         return user[0];
     } catch (std::system_error e) {
         std::cerr << e.what() << std::endl;
@@ -68,7 +82,6 @@ User SqliteProvider::getUserByName(const std::string &username)
         std::cerr << "unknown error" << std::endl;
         return User{-1, "", ""};
     }
-    return User();
 }
 
 std::vector<User> SqliteProvider::getAll()
@@ -136,8 +149,12 @@ bool SqliteProvider::addPendingFriendRequest(int sender, int receiver)
 {
     PendingFriendRequest request{sender, receiver};
 
-    db->insert(request);
-    return true;
+    try {
+        db->insert(request);
+        return true;
+    } catch(...) {
+        return false;
+    }
 }
 
 bool SqliteProvider::addPendingFriendRequest(const std::string &sender,

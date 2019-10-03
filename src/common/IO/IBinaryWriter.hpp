@@ -10,6 +10,7 @@ class IBinaryWriter
         virtual void writeInt(uint32_t) = 0;
         virtual void writeString(const std::string &) = 0;
         virtual void writeBool(bool) = 0;
+        virtual void writeRawString(const std::string &) = 0;
     private:
 
 };
