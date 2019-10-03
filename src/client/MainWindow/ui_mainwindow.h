@@ -39,6 +39,9 @@ public:
     QListWidget *listWidget;
     QPushButton *pushButton;
     QPushButton *DisconnectButton;
+    QListWidget *PendingFriends;
+    QLabel *label_6;
+    QLabel *label_7;
     QWidget *widget_2;
     QPushButton *LogInInLogIn;
     QLabel *label;
@@ -87,13 +90,26 @@ public:
         new QListWidgetItem(listWidget);
         new QListWidgetItem(listWidget);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(20, 20, 281, 381));
+        listWidget->setGeometry(QRect(20, 30, 281, 211));
         pushButton = new QPushButton(widget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(70, 410, 161, 41));
         DisconnectButton = new QPushButton(widget);
         DisconnectButton->setObjectName(QStringLiteral("DisconnectButton"));
         DisconnectButton->setGeometry(QRect(220, 0, 81, 21));
+        PendingFriends = new QListWidget(widget);
+        new QListWidgetItem(PendingFriends);
+        new QListWidgetItem(PendingFriends);
+        new QListWidgetItem(PendingFriends);
+        new QListWidgetItem(PendingFriends);
+        PendingFriends->setObjectName(QStringLiteral("PendingFriends"));
+        PendingFriends->setGeometry(QRect(20, 270, 281, 131));
+        label_6 = new QLabel(widget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(20, 250, 91, 20));
+        label_7 = new QLabel(widget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(20, 10, 91, 20));
         widget_2 = new QWidget(centralWidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         widget_2->setGeometry(QRect(60, 140, 221, 151));
@@ -187,6 +203,21 @@ public:
 
         pushButton->setText(QApplication::translate("MainWindow", "Call", nullptr));
         DisconnectButton->setText(QApplication::translate("MainWindow", "Disconnect", nullptr));
+
+        const bool __sortingEnabled1 = PendingFriends->isSortingEnabled();
+        PendingFriends->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem4 = PendingFriends->item(0);
+        ___qlistwidgetitem4->setText(QApplication::translate("MainWindow", "Antoine", nullptr));
+        QListWidgetItem *___qlistwidgetitem5 = PendingFriends->item(1);
+        ___qlistwidgetitem5->setText(QApplication::translate("MainWindow", "Abel", nullptr));
+        QListWidgetItem *___qlistwidgetitem6 = PendingFriends->item(2);
+        ___qlistwidgetitem6->setText(QApplication::translate("MainWindow", "Lucas", nullptr));
+        QListWidgetItem *___qlistwidgetitem7 = PendingFriends->item(3);
+        ___qlistwidgetitem7->setText(QApplication::translate("MainWindow", "Donatien", nullptr));
+        PendingFriends->setSortingEnabled(__sortingEnabled1);
+
+        label_6->setText(QApplication::translate("MainWindow", "Pending friends", nullptr));
+        label_7->setText(QApplication::translate("MainWindow", "Friends", nullptr));
         LogInInLogIn->setText(QApplication::translate("MainWindow", "Log In", nullptr));
         label->setText(QApplication::translate("MainWindow", "Username", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "Password", nullptr));
