@@ -71,7 +71,7 @@
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>140</x>
        <y>410</y>
        <width>161</width>
        <height>41</height>
@@ -148,6 +148,19 @@
      </property>
      <property name="text">
       <string>Friends</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>410</y>
+       <width>101</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Accept friend</string>
      </property>
     </widget>
    </widget>

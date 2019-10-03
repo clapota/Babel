@@ -42,6 +42,7 @@ public:
     QListWidget *PendingFriends;
     QLabel *label_6;
     QLabel *label_7;
+    QPushButton *pushButton_3;
     QWidget *widget_2;
     QPushButton *LogInInLogIn;
     QLabel *label;
@@ -93,7 +94,7 @@ public:
         listWidget->setGeometry(QRect(20, 30, 281, 211));
         pushButton = new QPushButton(widget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(70, 410, 161, 41));
+        pushButton->setGeometry(QRect(140, 410, 161, 41));
         DisconnectButton = new QPushButton(widget);
         DisconnectButton->setObjectName(QStringLiteral("DisconnectButton"));
         DisconnectButton->setGeometry(QRect(220, 0, 81, 21));
@@ -110,6 +111,9 @@ public:
         label_7 = new QLabel(widget);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setGeometry(QRect(20, 10, 91, 20));
+        pushButton_3 = new QPushButton(widget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(30, 410, 101, 41));
         widget_2 = new QWidget(centralWidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         widget_2->setGeometry(QRect(60, 140, 221, 151));
@@ -218,6 +222,7 @@ public:
 
         label_6->setText(QApplication::translate("MainWindow", "Pending friends", nullptr));
         label_7->setText(QApplication::translate("MainWindow", "Friends", nullptr));
+        pushButton_3->setText(QApplication::translate("MainWindow", "Accept friend", nullptr));
         LogInInLogIn->setText(QApplication::translate("MainWindow", "Log In", nullptr));
         label->setText(QApplication::translate("MainWindow", "Username", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "Password", nullptr));
