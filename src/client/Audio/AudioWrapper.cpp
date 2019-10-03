@@ -53,8 +53,8 @@ int callback(const void *inputBuffer, void *,
 }
 
 // TODO séparer le UdpClient du wrapper audio
-AudioWrapper::AudioWrapper() {
-    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, "10.26.112.192", 7777));
+AudioWrapper::AudioWrapper(const std::string &ip) {
+    this->udpClient = std::unique_ptr<UdpClient>(new UdpClient(*this, ip, 7777));
     this->timer = new QTimer(this);
     this->timer->setInterval(10);
     QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(sendData()));

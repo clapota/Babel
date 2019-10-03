@@ -29,6 +29,7 @@ class BoostConnection : public IConnection, public boost::enable_shared_from_thi
         void read_async() override;
       /*  void write_async(std::strng *data, size_t size) override; */
         void write_async(const std::string &message) override;
+        const std::string &getClientIp() const;
     private:
         bool _isActive = false;
         std::array<char, 4096> _bytes;

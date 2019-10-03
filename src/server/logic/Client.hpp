@@ -55,10 +55,15 @@ class Client {
             _logged = false;
         }
 
+        const std::string &getIp() const
+        {
+            return Connection->getClientIp();
+        }
+
         boost::shared_ptr<IConnection> Connection;
     private:
         int _id = 0;
-        bool _logged;
+        bool _logged = false;
         User _user;
 
         explicit Client(int id, boost::shared_ptr<IConnection> &connection) :

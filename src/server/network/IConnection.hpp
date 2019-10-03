@@ -2,6 +2,7 @@
 #define BABEL_ICONNECTION_HPP
 
 #include <boost/asio.hpp>
+#include <string>
 
 class IConnection {
     public:
@@ -10,6 +11,7 @@ class IConnection {
         virtual void read_async() = 0;
         /* virtual void write_async(void *data, size_t size) = 0; */
         virtual void write_async(const std::string &message) = 0;
+        virtual const std::string &getClientIp() const = 0;
 };
 
 #endif //BABEL_ICONNECTION_HPP

@@ -20,4 +20,5 @@ const std::map<int, std::function<std::unique_ptr<IPacket>()>> PacketFactory::cr
     { PacketEnum::FRIEND_INFO, []() { return std::make_unique<FriendInfoPacket>(); }},
     { PacketEnum::RECEIVED_FRIEND_REQUEST, []() { return std::make_unique<ReceivedFriendRequestPacket>(); }},
     { PacketEnum::RESPONSE_PACKET, []() { return std::make_unique<ResponsePacket>(); }},
+    {PacketEnum::CALLING_PACKET, []() { return std::make_unique<CallingPacket>(); }},
 };

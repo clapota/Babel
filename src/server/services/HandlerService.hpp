@@ -36,23 +36,25 @@ class HandlerService : public IService {
             /***********************/
 
             /* TODO : Retrieve handler from list */
-            const auto &handler = _handlers.at(id);
-            /*************************************/
+            if (_handlers.find(id) != _handlers.end()) {
+                const auto &handler = _handlers.at(id);
+                /*************************************/
 
-            auto packe = PacketFactory::instantiate(id);
+                auto packe = PacketFactory::instantiate(id);
 
-            /* TODO : Generate DispatchData */
-            DispatchData dispatchData = {
-                .packet = PacketFactory::instantiate(id),
-                .client = client,
-                .func = handler
-            };
-            dispatchData.packet->deserialize(reader);
-            /********************************/
+                /* TODO : Generate DispatchData */
+                DispatchData dispatchData = {
+                        .packet = PacketFactory::instantiate(id),
+                        .client = client,
+                        .func = handler
+                };
+                dispatchData.packet->deserialize(reader);
+                /********************************/
 
-            /* TODO : Dispatch */
-            dispatchService->enqueue(dispatchData);
-            /*******************/
+                /* TODO : Dispatch */
+                dispatchService->enqueue(dispatchData);
+                /*******************/
+            }
         }
     private:
         using Handler = std::function<void(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &)>;

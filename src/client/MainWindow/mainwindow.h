@@ -44,6 +44,8 @@ public:
     void requestFriend(IPacket &packet);
     void userInfo(IPacket &packet);
     void removedFromFriend(IPacket &packet);
+    void called(IPacket &packet);
+    void hangUp();
 
 private:
     Ui::MainWindow *ui;

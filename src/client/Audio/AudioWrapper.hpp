@@ -22,7 +22,7 @@ class AudioWrapper : public QObject {
     Q_OBJECT
 
     public:
-        AudioWrapper();
+        AudioWrapper(const std::string &ip);
         ~AudioWrapper() override;
         void Start();
         void Stop();

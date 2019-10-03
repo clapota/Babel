@@ -94,3 +94,9 @@ void BoostConnection::shutdown()
     _isActive = false;
      _socket.close();
 }
+
+const std::string &BoostConnection::getClientIp() const {
+    std::string ip = this->_socket.remote_endpoint().address().to_string();
+
+    return std::move(ip);
+}

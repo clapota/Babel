@@ -10,6 +10,7 @@ class HandshakeHandler
         static void registerHandler(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &packet);
         static void addFriendHandler(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &packet);
         static void acceptFriendHandler(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &packet);
+        static void callFriendHandler(boost::shared_ptr<Client>, std::unique_ptr<IPacket> &packet);
 };
 
 #endif //BABEL_HANDSHAKEHANDLER_HPP

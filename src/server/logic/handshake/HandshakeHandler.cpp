@@ -23,7 +23,7 @@ void HandshakeHandler::loginHandler(boost::shared_ptr<Client> client, std::uniqu
     std::cout << "received : " << cp.getEmail() << " " << cp.getPassword() << std::endl;
     std::cout << "User : " << user.id << " " << user.username << " " << user.password << std::endl;
     response.setRequestId(ConnectPacket::PacketId);
-    bool ok = !(user.id == -1 || user.password != cp.getPassword());
+    bool ok = !(user.id == -1 || user.password != cp.getPassword() || userService->getClientByUserName(user.username) == nullptr);
     response.setOk(ok);
 
     client->send(response);
@@ -41,6 +41,12 @@ void HandshakeHandler::loginHandler(boost::shared_ptr<Client> client, std::uniqu
             else
                 friendInfoPacket.setState(FriendInfoPacket::DISCONNECTED);
             client->send(friendInfoPacket);
+        }
+        std::vector<PendingFriendRequest> requestOf = db->getPendingFriendsRequestOf(user.id);
+        for (auto &it: requestOf) {
+            ReceivedFriendRequestPacket rfrp;
+            rfrp.setUsername(db->getUserById(it.sender_id).username);
+            client->send(rfrp);
         }
     }
 }
@@ -154,6 +160,46 @@ void HandshakeHandler::acceptFriendHandler(boost::shared_ptr<Client> client, std
                 fap2.setUsername(client->getUser().username);
                 friendClient->send(fap2);
             }
+        }
+    }
+}
+
+/***
+ * Called every time the client send a CallPacket
+ * @param client
+ * @param packet
+ */
+void HandshakeHandler::callFriendHandler(boost::shared_ptr<Client> client, std::unique_ptr<IPacket> &packet) {
+    ResponsePacket response;
+    auto db = ServiceLocator<DataBaseService<SqliteProvider>>::getService();
+    auto userService = ServiceLocator<UserService>::getService();
+    auto &callPacket = dynamic_cast<CallPacket &>(*packet);
+
+    response.setRequestId(callPacket.getId());
+    response.setOk(false);
+    bool areFriends = false;
+
+    if (client->isLogged()) {
+        std::vector<User> friendOfClient = db->getFriendsOf(client->getUser().username);
+
+        for (auto &it: friendOfClient) {
+            if (it.username == callPacket.getUsername())
+                areFriends = true;
+        }
+
+        ///Pour l'instant t'as pas le choix, si on t'appelle bah on t'appelle
+        if (client->getUser().username != callPacket.getUsername() && areFriends && userService->getClientByUserName(callPacket.getUsername()) != nullptr) {
+            response.setOk(true);
+            client->send(response);
+
+            CallingPacket cp;
+            cp.setIp(userService->getClientByUserName(callPacket.getUsername())->getIp());
+            client->send(cp);
+            CallingPacket cp2;
+            cp2.setIp(client->getIp());
+            userService->getClientByUserName(callPacket.getUsername())->send(cp2);
+        } else {
+            client->send(response);
         }
     }
 }

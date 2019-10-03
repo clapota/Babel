@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <iostream>
 #include <QtCore/QDir>
+#include <memory>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -45,6 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&client, SIGNAL(removedFromFriend(IPacket &)), this, SLOT(removedFromFriend(IPacket &)));
     ui->widget->setVisible(false);
     ui->Sign->setVisible(false);
+    ui->listWidget->clear();
+    ui->PendingFriends->clear();
 }
 
 MainWindow::~MainWindow()
@@ -184,12 +187,10 @@ void MainWindow::deleteFriend() {
 void MainWindow::call() {
     auto *list = this->ui->listWidget;
 
-    std::cout << "test" << std::endl;
     auto *selected = list->currentItem();
     if (selected == nullptr) {
         auto *callButton = this->ui->pushButton;
 
-        std::cout << "BITE" << std::endl;
         callButton->setStyleSheet("border-color: red");
     } else {
         CallPacket packet;
@@ -302,17 +303,23 @@ void MainWindow::friendAccept(IPacket &packet) {
 void MainWindow::requestFriend(IPacket &packet) {
     auto &requestFriend = dynamic_cast<ReceivedFriendRequestPacket &>(packet);
 
-    //TODO: Ajouter a une liste de requete d'amis ....
+    auto *list = this->ui->PendingFriends;
+    list->addItem(QString(requestFriend.getUsername().c_str()));
 }
 
 void MainWindow::userInfo(IPacket &packet) {
     auto &friendInfo = dynamic_cast<FriendInfoPacket &>(packet);
 
+    bool inList = false;
     auto *list = this->ui->listWidget;
     for (int i = 0; i < list->count(); i++) {
         auto *it = list->item(i);
 
+        if (it->text().toStdString() == friendInfo.getUsername())
+            inList = true;
     }
+    if (!inList)
+        list->addItem(QString(friendInfo.getUsername().c_str()));
 }
 
 void MainWindow::removedFromFriend(IPacket &packet) {
@@ -324,4 +331,20 @@ void MainWindow::removedFromFriend(IPacket &packet) {
         if (it->text().toStdString() == rffPacket.getUsername())
             delete it;
     }
+}
+
+void MainWindow::called(IPacket &packet) {
+    auto &cPacket = dynamic_cast<CallingPacket &>(packet);
+
+    const std::string& ip = cPacket.getIp();
+    this->audioManager = std::unique_ptr<AudioWrapper>(new AudioWrapper(ip));
+    QObject::connect(audioManager.get(), SIGNAL(hangUp()), this, SLOT(hangUp()));
+}
+
+void MainWindow::hangUp() {
+    this->audioManager = nullptr;
+
+    HangUpPacket packet;
+
+    this->client.sendData(packet);
 }

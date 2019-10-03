@@ -22,6 +22,7 @@
 #include "Packets/FriendRemovedPacket.hpp"
 #include "Packets/ReceivedFriendRequestPacket.hpp"
 #include "Packets/ResponsePacket.hpp"
+#include "Packets/CallingPacket.hpp"
 
 class PacketFactory {
 public:
@@ -38,6 +39,7 @@ public:
 		FRIEND_INFO = FriendInfoPacket::PacketId,
 		RECEIVED_FRIEND_REQUEST = ReceivedFriendRequestPacket::PacketId,
 		RESPONSE_PACKET = ResponsePacket::PacketId,
+		CALLING_PACKET = CallingPacket::PacketId
 	};
 
 	static std::unique_ptr<IPacket> instantiate(int packetId)

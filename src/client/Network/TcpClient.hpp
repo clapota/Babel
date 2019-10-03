@@ -29,6 +29,7 @@ class TcpClient : public QObject {
         void acceptFriendResponse(IPacket &);
         void callResponse(IPacket &);
         void hangUpResponse(IPacket &);
+        void called(IPacket &);
         /***
          * friendAccept is when someone accepts me in friendlist
          */
@@ -55,6 +56,7 @@ class TcpClient : public QObject {
                 {9, [this](IPacket &packet){emit requestFriend(packet);}},
                 {10, [this](IPacket &packet){emit userInfo(packet);}},
                 {11, [this](IPacket &packet){emit removedFromFriend(packet);}},
+                {13, [this](IPacket &packet){emit called(packet);}},
                 };
 
 };
