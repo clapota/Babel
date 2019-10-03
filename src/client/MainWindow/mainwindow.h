@@ -46,6 +46,7 @@ public:
     void removedFromFriend(IPacket &packet);
     void called(IPacket &packet);
     void hangUp();
+    void acceptFriend();
 
 private:
     Ui::MainWindow *ui;

@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Sign->setVisible(false);
     ui->listWidget->clear();
     ui->PendingFriends->clear();
+    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(acceptFriend()));
 }
 
 MainWindow::~MainWindow()
@@ -348,4 +349,17 @@ void MainWindow::hangUp() {
     HangUpPacket packet;
 
     this->client.sendData(packet);
+}
+
+void MainWindow::acceptFriend() {
+    auto *list = this->ui->PendingFriends;
+
+    auto *selected = list->currentItem();
+    if (selected) {
+        AcceptFriendPacket packet;
+
+        packet.setUsername(selected->text().toStdString());
+        packet.setAccepted(true);
+        this->client.sendData(packet);
+    }
 }
