@@ -55,7 +55,7 @@ class Client {
             _logged = false;
         }
 
-        const std::string &getIp() const
+        std::string getIp() const
         {
             return Connection->getClientIp();
         }

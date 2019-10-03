@@ -39,7 +39,7 @@ class UserService : public IService {
                     if (user.username == username)
                         return it;
                 } catch (...) {
-                    std::cout << "toto" << std::endl;
+                    std::cerr << "Client Exception" << std::endl;
                 }
             }
             return nullptr;

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../../common/PacketFactory.hpp"
-#include "../../common/IO/NativeBinaryWriter.hpp"
+#include "PacketFactory.hpp"
+#include "IO/NativeBinaryWriter.hpp"
 #include <QPushButton>
 #include <iostream>
 #include <QtCore/QDir>
@@ -339,7 +339,7 @@ void MainWindow::called(IPacket &packet) {
     auto &cPacket = dynamic_cast<CallingPacket &>(packet);
 
     const std::string& ip = cPacket.getIp();
-    std::cout << ip << std::endl;
+    std::cout << "IP: " << ip << std::endl;
     this->audioManager = std::unique_ptr<AudioWrapper>(new AudioWrapper(ip));
     QObject::connect(audioManager.get(), SIGNAL(hangUp()), this, SLOT(hangUp()));
     this->audioManager->Start();
