@@ -41,7 +41,7 @@ class ResponsePacket : public IPacket {
 
         const int getId() const override
         {
-            return 0;
+            return ResponsePacket::PacketId;
         }
 
         void serialize(IBinaryWriter &writer) const override

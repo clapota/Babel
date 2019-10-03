@@ -35,3 +35,7 @@ void NativeBinaryWriter::writeBool(bool value)
 {
     _stream.write(reinterpret_cast<char *>(&value), sizeof(value));
 }
+
+void NativeBinaryWriter::writeRawString(const std::string &value) {
+    _stream.write(value.c_str(), value.size());
+}

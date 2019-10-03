@@ -4,6 +4,7 @@
 #include <vector>
 #include "logic/Client.hpp"
 #include "network/IConnection.hpp"
+#include "IService.hpp"
 
 class UserService : public IService {
     public:
@@ -27,6 +28,21 @@ class UserService : public IService {
             _clients.erase(std::remove_if(_clients.begin(), _clients.end(), [&](const auto &e) {
                 return e->Connection == connection;
             }), _clients.end());
+        }
+
+        boost::shared_ptr<Client> getClientByUserName(const std::string &username)
+        {
+            for (auto &it: _clients) {
+                try {
+                    User user = it->getUser();
+
+                    if (user.username == username)
+                        return it;
+                } catch (...) {
+                    std::cout << "toto" << std::endl;
+                }
+            }
+            return nullptr;
         }
 
     private:

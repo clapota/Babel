@@ -25,7 +25,7 @@ class Client {
             packet.serialize(writer);
 
             finalWriter.writeInt((uint32_t )packet.getId());
-            finalWriter.writeString(writer.Data().str());
+            finalWriter.writeRawString(writer.Data().str());
 
             /* WARNING : NOT FINAL IMPLEMENTATION */
             Connection->write_async(finalWriter.Data().str());

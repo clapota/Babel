@@ -23,7 +23,7 @@ class DataBaseService : public IService {
      std::vector<User> getFriendsOf(int id) { return _dataBase.getFriendsOf(id); }
      std::vector<User> getFriendsOf(const std::string &username) { return _dataBase.getFriendsOf(username); }
      std::vector<PendingFriendRequest> getPendingFriendsRequestOf(int id) { return _dataBase.getPendingFriendsRequestOf(id); }
-     std::vector<PendingFriendRequest> getPendingFriendsRequestOf(const std::string &username) { return _dataBase.getPendingFriendRequestOf(username); }
+     std::vector<PendingFriendRequest> getPendingFriendsRequestOf(const std::string &username) { return _dataBase.getPendingFriendsRequestOf(username); }
      bool addPendingFriendRequest(int sender, int receiver) { return _dataBase.addPendingFriendRequest(sender, receiver); }
      bool addPendingFriendRequest(const std::string &sender, const std::string &receiver) { return _dataBase.addPendingFriendRequest(sender, receiver); }
 

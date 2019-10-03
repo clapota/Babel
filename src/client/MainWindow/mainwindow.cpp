@@ -9,7 +9,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    client("10.26.111.73", 4444)
+    client("127.0.0.1", 4444)
 {
     ui->setupUi(this);
     auto *connectionButton = this->ui->LogInInLogIn;
@@ -32,17 +32,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(SignInInSignIn, SIGNAL(clicked()), this, SLOT(SignInInSignIn()));
     connect(LogInInSignIn, SIGNAL(clicked()), this, SLOT(LogInInSignIn()));
     connect(Disconnect, SIGNAL(clicked()), this, SLOT(Disconnect()));
-    connect(&client, SIGNAL(registerResponse()), this, SLOT(registerResponse()));
-    connect(&client, SIGNAL(connectResponse()), this, SLOT(connectResponse()));
-    connect(&client, SIGNAL(addFriendResponse()), this, SLOT(addFriendResponse()));
-    connect(&client, SIGNAL(removeFriendResponse()), this, SLOT(removeFriendResponse()));
-    connect(&client, SIGNAL(acceptFriendResponse()), this, SLOT(acceptFriendResponse()));
-    connect(&client, SIGNAL(callResponse()), this, SLOT(callResponse()));
-    connect(&client, SIGNAL(hangUpResponse()), this, SLOT(hangUpResponse()));
-    connect(&client, SIGNAL(friendAccept()), this, SLOT(friendAccept()));
-    connect(&client, SIGNAL(requestFriend()), this, SLOT(requestFriend()));
-    connect(&client, SIGNAL(userInfo()), this, SLOT(userInfo()));
-    connect(&client, SIGNAL(removedFromFriend()), this, SLOT(removedFromFriend()));
+    connect(&client, SIGNAL(registerResponse(IPacket &)), this, SLOT(registerResponse(IPacket &)));
+    connect(&client, SIGNAL(connectResponse(IPacket &)), this, SLOT(connectResponse(IPacket &)));
+    connect(&client, SIGNAL(addFriendResponse(IPacket &)), this, SLOT(addFriendResponse(IPacket &)));
+    connect(&client, SIGNAL(removeFriendResponse(IPacket &)), this, SLOT(removeFriendResponse(IPacket &)));
+    connect(&client, SIGNAL(acceptFriendResponse(IPacket &)), this, SLOT(acceptFriendResponse(IPacket &)));
+    connect(&client, SIGNAL(callResponse(IPacket &)), this, SLOT(callResponse(IPacket &)));
+    connect(&client, SIGNAL(hangUpResponse(IPacket &)), this, SLOT(hangUpResponse(IPacket &)));
+    connect(&client, SIGNAL(friendAccept(IPacket &)), this, SLOT(friendAccept(IPacket &)));
+    connect(&client, SIGNAL(requestFriend(IPacket &)), this, SLOT(requestFriend(IPacket &)));
+    connect(&client, SIGNAL(userInfo(IPacket &)), this, SLOT(userInfo(IPacket &)));
+    connect(&client, SIGNAL(removedFromFriend(IPacket &)), this, SLOT(removedFromFriend(IPacket &)));
     ui->widget->setVisible(false);
     ui->Sign->setVisible(false);
 }
@@ -114,9 +114,6 @@ void MainWindow::connectToServer() {
         packet.setEmail(username);
         packet.setPassword(password);
         this->client.sendData(packet);
-        //TODO: Build le packet et l'envoyer avec le TCPCLIENT
-        //if checkpass
-//              changeVisibleWidget(MAIN);
     } else {
         if (username.empty())
             usernameLineEdit->setStyleSheet("border: 1px solid red;");
@@ -232,6 +229,7 @@ void MainWindow::registerResponse(IPacket &packet) {
 void MainWindow::connectResponse(IPacket &packet) {
     auto &responsePacket = dynamic_cast<ResponsePacket &>(packet);
 
+    std::cout << "BITE" << std::endl;
     if (responsePacket.isOk()) {
         this->changeVisibleWidget(MAIN);
         this->isConnected = true;

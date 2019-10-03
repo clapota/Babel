@@ -25,7 +25,7 @@ struct PendingFriendRequest {
 
 inline auto initStorage(const std::string &name)
 {
-    return sqlite_orm::make_storage(name,
+    auto storage = sqlite_orm::make_storage(name,
         sqlite_orm::make_table("users",
             sqlite_orm::make_column("id", &User::id, sqlite_orm::autoincrement(), sqlite_orm::primary_key()),
             sqlite_orm::make_column("username", &User::username, sqlite_orm::unique()),
@@ -36,6 +36,8 @@ inline auto initStorage(const std::string &name)
         sqlite_orm::make_table("pending_friend_request",
             sqlite_orm::make_column("sender_id", &PendingFriendRequest::sender_id),
             sqlite_orm::make_column("receiver_id", &PendingFriendRequest::receiver_id)));
+    storage.sync_schema();
+    return storage;
 }
 
 using Storage = decltype(initStorage(""));
