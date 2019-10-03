@@ -18,9 +18,10 @@ int outputCallback(const void *inputBuffer, void *outputBuffer,
     auto *wrapper = reinterpret_cast<AudioWrapper *>(userData);
     auto *output = static_cast<float *>(outputBuffer);
     auto &queue = wrapper->getQueue();
-    auto &float_vector = queue.front();
 
     if (!queue.empty()) {
+        auto &float_vector = queue.front();
+
         int i = 0;
         for (auto it: float_vector) {
             *output++ = it;
