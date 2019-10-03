@@ -92,7 +92,9 @@ void MainWindow::SignInInSignIn()
 
         packet.setPassword(password);
         packet.setUsername(username);
-
+        ui->lineEdit_3->clear();
+        ui->lineEdit_4->clear();
+        ui->lineEdit_5->clear();
         this->client.sendData(packet);
     }
 }
