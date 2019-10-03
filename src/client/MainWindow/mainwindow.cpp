@@ -339,6 +339,7 @@ void MainWindow::called(IPacket &packet) {
     const std::string& ip = cPacket.getIp();
     this->audioManager = std::unique_ptr<AudioWrapper>(new AudioWrapper(ip));
     QObject::connect(audioManager.get(), SIGNAL(hangUp()), this, SLOT(hangUp()));
+    this->audioManager->Start();
 }
 
 void MainWindow::hangUp() {
