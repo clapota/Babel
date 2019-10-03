@@ -23,7 +23,7 @@ void HandshakeHandler::loginHandler(boost::shared_ptr<Client> client, std::uniqu
     std::cout << "received : " << cp.getEmail() << " " << cp.getPassword() << std::endl;
     std::cout << "User : " << user.id << " " << user.username << " " << user.password << std::endl;
     response.setRequestId(ConnectPacket::PacketId);
-    bool ok = !(user.id == -1 || user.password != cp.getPassword() || userService->getClientByUserName(user.username) == nullptr);
+    bool ok = !(user.id == -1 || user.password != cp.getPassword() || userService->getClientByUserName(user.username) != nullptr);
     response.setOk(ok);
 
     client->send(response);
