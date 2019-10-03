@@ -319,8 +319,9 @@ void MainWindow::userInfo(IPacket &packet) {
         if (it->text().toStdString() == friendInfo.getUsername())
             inList = true;
     }
-    if (!inList)
+    if (!inList) {
         list->addItem(QString(friendInfo.getUsername().c_str()));
+    }
 }
 
 void MainWindow::removedFromFriend(IPacket &packet) {
@@ -338,6 +339,7 @@ void MainWindow::called(IPacket &packet) {
     auto &cPacket = dynamic_cast<CallingPacket &>(packet);
 
     const std::string& ip = cPacket.getIp();
+    std::cout << ip << std::endl;
     this->audioManager = std::unique_ptr<AudioWrapper>(new AudioWrapper(ip));
     QObject::connect(audioManager.get(), SIGNAL(hangUp()), this, SLOT(hangUp()));
     this->audioManager->Start();
