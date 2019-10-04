@@ -78,7 +78,7 @@ void TcpClient::dispatchData() {
         this->signalMap[id](dynamic_cast<IPacket &>(packet));
     } else if (id == PacketFactory::CALLING_PACKET) {
         CallingPacket packet;
-
+        std::cout << "toto" << std::endl;
         packet.deserialize(reader);
         this->signalMap[id](dynamic_cast<IPacket &>(packet));
     }

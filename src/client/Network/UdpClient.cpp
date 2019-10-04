@@ -11,6 +11,7 @@
 #include "Audio/AudioWrapper.hpp"
 
 UdpClient::UdpClient(AudioWrapper &wrapper, const std::string &addr, unsigned short port) : wrapper(wrapper), address(QString(addr.c_str())), port(port) {
+    std::cout << "initializing UDP client with ip " << addr << std::endl;
     this->udpSocket = new QUdpSocket(this);
     this->udpSocket->bind(QHostAddress::Any, this->port);
     QObject::connect(this->udpSocket, SIGNAL(readyRead()), this, SLOT(readReady()));
@@ -23,6 +24,7 @@ UdpClient::UdpClient(AudioWrapper &wrapper, const std::string &addr, unsigned sh
 void UdpClient::readReady() {
     while (this->udpSocket->hasPendingDatagrams())
     {
+        std::cout << "received data" << std::endl;
         this->timer->setInterval(5000);
         QHostAddress host;
 

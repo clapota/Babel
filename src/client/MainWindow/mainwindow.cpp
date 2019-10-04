@@ -10,7 +10,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    client("127.0.0.1", 4444)
+    client("10.26.111.73", 4444)
 {
     ui->setupUi(this);
     auto *connectionButton = this->ui->LogInInLogIn;
@@ -44,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&client, SIGNAL(requestFriend(IPacket &)), this, SLOT(requestFriend(IPacket &)));
     connect(&client, SIGNAL(userInfo(IPacket &)), this, SLOT(userInfo(IPacket &)));
     connect(&client, SIGNAL(removedFromFriend(IPacket &)), this, SLOT(removedFromFriend(IPacket &)));
+    connect(&client, SIGNAL(called(IPacket &)), this, SLOT(called(IPacket &)));
     ui->widget->setVisible(false);
     ui->Sign->setVisible(false);
     ui->listWidget->clear();

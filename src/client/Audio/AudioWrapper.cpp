@@ -59,6 +59,7 @@ AudioWrapper::AudioWrapper(const std::string &ip) {
     this->timer = new QTimer(this);
     this->timer->setInterval(10);
     QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(sendData()));
+    std::cout << "initializing portaudio" << std::endl;
     PaError err = Pa_Initialize();
     PaStream *stream;
     PaStream *outStream;
@@ -119,6 +120,7 @@ AudioWrapper::~AudioWrapper() {
 void AudioWrapper::Start() {
     PaError err;
 
+    std::cout << "Starting portaudio" << std::endl;
     if (Pa_IsStreamStopped(this->stream) != 0) {
         err = Pa_StartStream(this->stream);
         if (err != paNoError)
