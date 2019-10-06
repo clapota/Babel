@@ -1,4 +1,10 @@
+
+#ifdef __linux__
 #include <netinet/in.h>
+#else
+#include <winsock2.h>
+#endif
+
 #include <vector>
 #include <boost/thread/csbl/memory/shared_ptr.hpp>
 #include <cstring>

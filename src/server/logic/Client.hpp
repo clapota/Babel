@@ -51,7 +51,7 @@ class Client {
 
         void logout()
         {
-            _user = User { .id = -1 };
+            _user = User { -1 };
             _logged = false;
         }
 

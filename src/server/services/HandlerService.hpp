@@ -44,9 +44,9 @@ class HandlerService : public IService {
 
                 /* TODO : Generate DispatchData */
                 DispatchData dispatchData = {
-                        .packet = PacketFactory::instantiate(id),
-                        .client = client,
-                        .func = handler
+                        PacketFactory::instantiate(id),
+                        client,
+                        handler
                 };
                 dispatchData.packet->deserialize(reader);
                 /********************************/

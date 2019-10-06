@@ -1,4 +1,10 @@
+
+#ifdef __linux__
 #include <netinet/in.h>
+#else
+#include <winsock2.h>
+#endif
+
 #include <iostream>
 #include "NativeBinaryReader.hpp"
 
