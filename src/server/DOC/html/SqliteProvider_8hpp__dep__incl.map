@@ -1,0 +1,13 @@
+<map id="database/SqliteProvider.hpp" name="database/SqliteProvider.hpp">
+<area shape="rect" id="node2" href="$SqliteProvider_8cpp.html" title="database/SqliteProvider.cpp" alt="" coords="5,80,208,107"/>
+<area shape="rect" id="node3" href="$Client_8hpp.html" title="logic/Client.hpp" alt="" coords="433,80,556,107"/>
+<area shape="rect" id="node5" href="$HandshakeHandler_8cpp.html" title="logic/handshake/Handshake\lHandler.cpp" alt="" coords="115,244,320,285"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title="main.cpp" alt="" coords="896,251,979,278"/>
+<area shape="rect" id="node4" href="$UserService_8hpp.html" title="services/UserService.hpp" alt="" coords="512,162,699,189"/>
+<area shape="rect" id="node11" href="$HandshakeHandler_8hpp.html" title="logic/handshake/Handshake\lHandler.hpp" alt="" coords="283,155,488,196"/>
+<area shape="rect" id="node12" href="$DispatchService_8hpp.html" title="services/DispatchService.hpp" alt="" coords="723,162,936,189"/>
+<area shape="rect" id="node7" href="$BoostConnection_8cpp.html" title="network/BoostConnection.cpp" alt="" coords="700,333,916,360"/>
+<area shape="rect" id="node8" href="$HandlerService_8hpp.html" title="services/HandlerService.hpp" alt="" coords="345,251,551,278"/>
+<area shape="rect" id="node10" href="$BoostListener_8cpp.html" title="network/BoostListener.cpp" alt="" coords="576,251,771,278"/>
+<area shape="rect" id="node9" href="$HandlerService_8cpp.html" title="services/HandlerService.cpp" alt="" coords="345,333,551,360"/>
+</map>

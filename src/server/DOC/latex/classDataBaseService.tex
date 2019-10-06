@@ -1,0 +1,175 @@
+\hypertarget{classDataBaseService}{}\section{Data\+Base\+Service$<$ T $>$ Class Template Reference}
+\label{classDataBaseService}\index{Data\+Base\+Service$<$ T $>$@{Data\+Base\+Service$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Data\+Base\+Service.\+hpp$>$}
+
+
+
+Inheritance diagram for Data\+Base\+Service$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{classDataBaseService__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Data\+Base\+Service$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{classDataBaseService__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDataBaseService_ac5820e66451a0393723eb87db0c98c97}{Data\+Base\+Service}} ()
+\item 
+bool \mbox{\hyperlink{classDataBaseService_a0f1095843e3650701cdd23ae8dbc09d8}{open\+Data\+Base}} (const std\+::string \&name=\mbox{\hyperlink{DataBaseService_8hpp_aed391e0e48987704aefc7aa59b508aa7}{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+A\+ME}})
+\item 
+bool \mbox{\hyperlink{classDataBaseService_a1106f4f3393298f38e66b8a7b6bc5dc1}{close\+Data\+Base}} ()
+\item 
+bool \mbox{\hyperlink{classDataBaseService_af13f9198530eda7dae7d4308ea25258c}{create\+User}} (const std\+::string \&username, const std\+::string \&password)
+\item 
+bool \mbox{\hyperlink{classDataBaseService_a1c133b9b35bb83281c96a1ccbf08aa5f}{create\+Relation}} (int a, int b)
+\item 
+bool \mbox{\hyperlink{classDataBaseService_a72fd8d920d0483b01db15518fa578e15}{create\+Relation}} (const std\+::string \&username1, const std\+::string \&username2)
+\item 
+\mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{classDataBaseService_a04a13e93541e53fa750bf169ec0b5b85}{get\+User\+By\+Id}} (int id)
+\item 
+\mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{classDataBaseService_a1e0272ebe8dd31859b810e6f797cde5b}{get\+User\+By\+Name}} (const std\+::string \&username)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structUser}{User}} $>$ \mbox{\hyperlink{classDataBaseService_a1226c799e69e1417202366d4c2f7137d}{get\+All}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structUser}{User}} $>$ \mbox{\hyperlink{classDataBaseService_ac82ba94d3e80ccc2f576b14bf71c8c2e}{get\+Friends\+Of}} (int id)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structUser}{User}} $>$ \mbox{\hyperlink{classDataBaseService_a11c94f12e798e1bf70afa4581fa7c8b0}{get\+Friends\+Of}} (const std\+::string \&username)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}} $>$ \mbox{\hyperlink{classDataBaseService_a14110b164fa5ae2af7edb53ba58f38df}{get\+Pending\+Friends\+Request\+Of}} (int id)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}} $>$ \mbox{\hyperlink{classDataBaseService_a96fb5a08a7337b7c2728317d445fc923}{get\+Pending\+Friends\+Request\+Of}} (const std\+::string \&username)
+\item 
+bool \mbox{\hyperlink{classDataBaseService_a1f31c3e831b50028eccfe4bbc6fce6cd}{add\+Pending\+Friend\+Request}} (int sender, int receiver)
+\item 
+bool \mbox{\hyperlink{classDataBaseService_a655fd576cba8952f982546adacaa6e57}{add\+Pending\+Friend\+Request}} (const std\+::string \&sender, const std\+::string \&receiver)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDataBaseService_ac5820e66451a0393723eb87db0c98c97}\label{classDataBaseService_ac5820e66451a0393723eb87db0c98c97}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!Data\+Base\+Service@{Data\+Base\+Service}}
+\index{Data\+Base\+Service@{Data\+Base\+Service}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{Data\+Base\+Service()}{DataBaseService()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::\mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataBaseService_a1f31c3e831b50028eccfe4bbc6fce6cd}\label{classDataBaseService_a1f31c3e831b50028eccfe4bbc6fce6cd}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}}
+\index{add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{add\+Pending\+Friend\+Request()}{addPendingFriendRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::add\+Pending\+Friend\+Request (\begin{DoxyParamCaption}\item[{int}]{sender,  }\item[{int}]{receiver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a655fd576cba8952f982546adacaa6e57}\label{classDataBaseService_a655fd576cba8952f982546adacaa6e57}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}}
+\index{add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{add\+Pending\+Friend\+Request()}{addPendingFriendRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::add\+Pending\+Friend\+Request (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sender,  }\item[{const std\+::string \&}]{receiver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a1106f4f3393298f38e66b8a7b6bc5dc1}\label{classDataBaseService_a1106f4f3393298f38e66b8a7b6bc5dc1}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!close\+Data\+Base@{close\+Data\+Base}}
+\index{close\+Data\+Base@{close\+Data\+Base}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{close\+Data\+Base()}{closeDataBase()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::close\+Data\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a1c133b9b35bb83281c96a1ccbf08aa5f}\label{classDataBaseService_a1c133b9b35bb83281c96a1ccbf08aa5f}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!create\+Relation@{create\+Relation}}
+\index{create\+Relation@{create\+Relation}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{create\+Relation()}{createRelation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::create\+Relation (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a72fd8d920d0483b01db15518fa578e15}\label{classDataBaseService_a72fd8d920d0483b01db15518fa578e15}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!create\+Relation@{create\+Relation}}
+\index{create\+Relation@{create\+Relation}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{create\+Relation()}{createRelation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::create\+Relation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username1,  }\item[{const std\+::string \&}]{username2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_af13f9198530eda7dae7d4308ea25258c}\label{classDataBaseService_af13f9198530eda7dae7d4308ea25258c}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!create\+User@{create\+User}}
+\index{create\+User@{create\+User}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{create\+User()}{createUser()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::create\+User (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a1226c799e69e1417202366d4c2f7137d}\label{classDataBaseService_a1226c799e69e1417202366d4c2f7137d}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!get\+All@{get\+All}}
+\index{get\+All@{get\+All}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{get\+All()}{getAll()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{structUser}{User}}$>$ \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_ac82ba94d3e80ccc2f576b14bf71c8c2e}\label{classDataBaseService_ac82ba94d3e80ccc2f576b14bf71c8c2e}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!get\+Friends\+Of@{get\+Friends\+Of}}
+\index{get\+Friends\+Of@{get\+Friends\+Of}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{get\+Friends\+Of()}{getFriendsOf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{structUser}{User}}$>$ \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::get\+Friends\+Of (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a11c94f12e798e1bf70afa4581fa7c8b0}\label{classDataBaseService_a11c94f12e798e1bf70afa4581fa7c8b0}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!get\+Friends\+Of@{get\+Friends\+Of}}
+\index{get\+Friends\+Of@{get\+Friends\+Of}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{get\+Friends\+Of()}{getFriendsOf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{structUser}{User}}$>$ \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::get\+Friends\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a14110b164fa5ae2af7edb53ba58f38df}\label{classDataBaseService_a14110b164fa5ae2af7edb53ba58f38df}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}}
+\index{get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{get\+Pending\+Friends\+Request\+Of()}{getPendingFriendsRequestOf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}}$>$ \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::get\+Pending\+Friends\+Request\+Of (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a96fb5a08a7337b7c2728317d445fc923}\label{classDataBaseService_a96fb5a08a7337b7c2728317d445fc923}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}}
+\index{get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{get\+Pending\+Friends\+Request\+Of()}{getPendingFriendsRequestOf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}}$>$ \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::get\+Pending\+Friends\+Request\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a04a13e93541e53fa750bf169ec0b5b85}\label{classDataBaseService_a04a13e93541e53fa750bf169ec0b5b85}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!get\+User\+By\+Id@{get\+User\+By\+Id}}
+\index{get\+User\+By\+Id@{get\+User\+By\+Id}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{get\+User\+By\+Id()}{getUserById()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::get\+User\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a1e0272ebe8dd31859b810e6f797cde5b}\label{classDataBaseService_a1e0272ebe8dd31859b810e6f797cde5b}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!get\+User\+By\+Name@{get\+User\+By\+Name}}
+\index{get\+User\+By\+Name@{get\+User\+By\+Name}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{get\+User\+By\+Name()}{getUserByName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::get\+User\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classDataBaseService_a0f1095843e3650701cdd23ae8dbc09d8}\label{classDataBaseService_a0f1095843e3650701cdd23ae8dbc09d8}} 
+\index{Data\+Base\+Service@{Data\+Base\+Service}!open\+Data\+Base@{open\+Data\+Base}}
+\index{open\+Data\+Base@{open\+Data\+Base}!Data\+Base\+Service@{Data\+Base\+Service}}
+\subsubsection{\texorpdfstring{open\+Data\+Base()}{openDataBase()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classDataBaseService}{Data\+Base\+Service}}$<$ T $>$\+::open\+Data\+Base (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name = {\ttfamily \mbox{\hyperlink{DataBaseService_8hpp_aed391e0e48987704aefc7aa59b508aa7}{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+A\+ME}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+services/\mbox{\hyperlink{DataBaseService_8hpp}{Data\+Base\+Service.\+hpp}}\end{DoxyCompactItemize}

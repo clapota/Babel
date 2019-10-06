@@ -1,0 +1,205 @@
+\hypertarget{classIDataBaseProvider}{}\section{I\+Data\+Base\+Provider Class Reference}
+\label{classIDataBaseProvider}\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+
+
+{\ttfamily \#include $<$I\+Data\+Base\+Provider.\+hpp$>$}
+
+
+
+Inheritance diagram for I\+Data\+Base\+Provider\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{classIDataBaseProvider__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for I\+Data\+Base\+Provider\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{classIDataBaseProvider__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classIDataBaseProvider_a3b467ba6923af62a82475a2a817eb1c8}{open\+Data\+Base}} (const std\+::string \&name)=0
+\item 
+virtual bool \mbox{\hyperlink{classIDataBaseProvider_aa7761525c25b0791d58de2429a0892ce}{close\+Data\+Base}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{classIDataBaseProvider_ae959ea126a1fc1df9ffe058d5a3d9851}{create\+User}} (const std\+::string \&username, const std\+::string \&password)=0
+\item 
+virtual bool \mbox{\hyperlink{classIDataBaseProvider_adb9f20d5c7f73566b279c8564905429d}{create\+Relation}} (int a, int b)=0
+\item 
+virtual bool \mbox{\hyperlink{classIDataBaseProvider_ade3438db196aed2c67268f09a1b4a266}{create\+Relation}} (const std\+::string \&username1, const std\+::string \&username2)=0
+\item 
+virtual \mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{classIDataBaseProvider_a91cd76a2802e4dc03184f305a6624124}{get\+User\+By\+Id}} (int id)=0
+\item 
+virtual \mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{classIDataBaseProvider_a716a0f86654a2fbee3f4e25e2083f7cb}{get\+User\+By\+Name}} (const std\+::string \&username)=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structUser}{User}} $>$ \mbox{\hyperlink{classIDataBaseProvider_a15a6d47baac2391f17d911f73e68bd0f}{get\+All}} ()=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structUser}{User}} $>$ \mbox{\hyperlink{classIDataBaseProvider_a4d9f2f45058852ecc5cec9c949825529}{get\+Friends\+Of}} (int id)=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structUser}{User}} $>$ \mbox{\hyperlink{classIDataBaseProvider_a75f39a7b7596d952c0890dd5b3549569}{get\+Friends\+Of}} (const std\+::string \&username)=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}} $>$ \mbox{\hyperlink{classIDataBaseProvider_ad30f529c809222d72f94d15de95d44b2}{get\+Pending\+Friends\+Request\+Of}} (int id)=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}} $>$ \mbox{\hyperlink{classIDataBaseProvider_a376d53c78f3e101b9c0e4540330cce5b}{get\+Pending\+Friends\+Request\+Of}} (const std\+::string \&username)=0
+\item 
+virtual bool \mbox{\hyperlink{classIDataBaseProvider_ab8e4c2a8bb221a594947ec6216b80f95}{add\+Pending\+Friend\+Request}} (int sender, int receiver)=0
+\item 
+virtual bool \mbox{\hyperlink{classIDataBaseProvider_ae41b4c95e8f56e613e5e37b3563ef1f0}{add\+Pending\+Friend\+Request}} (const std\+::string \&sender, const std\+::string \&receiver)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classIDataBaseProvider_ab8e4c2a8bb221a594947ec6216b80f95}\label{classIDataBaseProvider_ab8e4c2a8bb221a594947ec6216b80f95}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}}
+\index{add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{add\+Pending\+Friend\+Request()}{addPendingFriendRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual bool I\+Data\+Base\+Provider\+::add\+Pending\+Friend\+Request (\begin{DoxyParamCaption}\item[{int}]{sender,  }\item[{int}]{receiver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a085e35f6de7248f7142a8e6841ab3b65}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_ae41b4c95e8f56e613e5e37b3563ef1f0}\label{classIDataBaseProvider_ae41b4c95e8f56e613e5e37b3563ef1f0}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}}
+\index{add\+Pending\+Friend\+Request@{add\+Pending\+Friend\+Request}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{add\+Pending\+Friend\+Request()}{addPendingFriendRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual bool I\+Data\+Base\+Provider\+::add\+Pending\+Friend\+Request (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sender,  }\item[{const std\+::string \&}]{receiver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_aac8f8614546a2c5e629ad84a3536adc8}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_aa7761525c25b0791d58de2429a0892ce}\label{classIDataBaseProvider_aa7761525c25b0791d58de2429a0892ce}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!close\+Data\+Base@{close\+Data\+Base}}
+\index{close\+Data\+Base@{close\+Data\+Base}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{close\+Data\+Base()}{closeDataBase()}}
+{\footnotesize\ttfamily virtual bool I\+Data\+Base\+Provider\+::close\+Data\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a3f54f53f319d3c9b8c5bec57f2708c07}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_adb9f20d5c7f73566b279c8564905429d}\label{classIDataBaseProvider_adb9f20d5c7f73566b279c8564905429d}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!create\+Relation@{create\+Relation}}
+\index{create\+Relation@{create\+Relation}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{create\+Relation()}{createRelation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual bool I\+Data\+Base\+Provider\+::create\+Relation (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a6dc02301bf2f012306eeed7e867cec08}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_ade3438db196aed2c67268f09a1b4a266}\label{classIDataBaseProvider_ade3438db196aed2c67268f09a1b4a266}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!create\+Relation@{create\+Relation}}
+\index{create\+Relation@{create\+Relation}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{create\+Relation()}{createRelation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual bool I\+Data\+Base\+Provider\+::create\+Relation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username1,  }\item[{const std\+::string \&}]{username2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a452f16560299d7e5f9c3f738cba13172}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_ae959ea126a1fc1df9ffe058d5a3d9851}\label{classIDataBaseProvider_ae959ea126a1fc1df9ffe058d5a3d9851}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!create\+User@{create\+User}}
+\index{create\+User@{create\+User}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{create\+User()}{createUser()}}
+{\footnotesize\ttfamily virtual bool I\+Data\+Base\+Provider\+::create\+User (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a7483b0b7156adba736b6b27f8b1826a0}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_a15a6d47baac2391f17d911f73e68bd0f}\label{classIDataBaseProvider_a15a6d47baac2391f17d911f73e68bd0f}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!get\+All@{get\+All}}
+\index{get\+All@{get\+All}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{get\+All()}{getAll()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{structUser}{User}}$>$ I\+Data\+Base\+Provider\+::get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a0b9c9b002caa7e43ed4590a6a1023525}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_a4d9f2f45058852ecc5cec9c949825529}\label{classIDataBaseProvider_a4d9f2f45058852ecc5cec9c949825529}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!get\+Friends\+Of@{get\+Friends\+Of}}
+\index{get\+Friends\+Of@{get\+Friends\+Of}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{get\+Friends\+Of()}{getFriendsOf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{structUser}{User}}$>$ I\+Data\+Base\+Provider\+::get\+Friends\+Of (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a639fb7f9341b668d17917711fc5ae39a}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_a75f39a7b7596d952c0890dd5b3549569}\label{classIDataBaseProvider_a75f39a7b7596d952c0890dd5b3549569}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!get\+Friends\+Of@{get\+Friends\+Of}}
+\index{get\+Friends\+Of@{get\+Friends\+Of}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{get\+Friends\+Of()}{getFriendsOf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{structUser}{User}}$>$ I\+Data\+Base\+Provider\+::get\+Friends\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a19b97c70f002b84aa6a41d2d2dc9c44d}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_ad30f529c809222d72f94d15de95d44b2}\label{classIDataBaseProvider_ad30f529c809222d72f94d15de95d44b2}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}}
+\index{get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{get\+Pending\+Friends\+Request\+Of()}{getPendingFriendsRequestOf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}}$>$ I\+Data\+Base\+Provider\+::get\+Pending\+Friends\+Request\+Of (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a199db7e0313f5e485fcf67d5a9864233}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_a376d53c78f3e101b9c0e4540330cce5b}\label{classIDataBaseProvider_a376d53c78f3e101b9c0e4540330cce5b}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}}
+\index{get\+Pending\+Friends\+Request\+Of@{get\+Pending\+Friends\+Request\+Of}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{get\+Pending\+Friends\+Request\+Of()}{getPendingFriendsRequestOf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{structPendingFriendRequest}{Pending\+Friend\+Request}}$>$ I\+Data\+Base\+Provider\+::get\+Pending\+Friends\+Request\+Of (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a82dcdc27e96ff8bfe63989af3e6eff62}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_a91cd76a2802e4dc03184f305a6624124}\label{classIDataBaseProvider_a91cd76a2802e4dc03184f305a6624124}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!get\+User\+By\+Id@{get\+User\+By\+Id}}
+\index{get\+User\+By\+Id@{get\+User\+By\+Id}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{get\+User\+By\+Id()}{getUserById()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structUser}{User}} I\+Data\+Base\+Provider\+::get\+User\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a1e6db27d238aadcb5871c278521aea72}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_a716a0f86654a2fbee3f4e25e2083f7cb}\label{classIDataBaseProvider_a716a0f86654a2fbee3f4e25e2083f7cb}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!get\+User\+By\+Name@{get\+User\+By\+Name}}
+\index{get\+User\+By\+Name@{get\+User\+By\+Name}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{get\+User\+By\+Name()}{getUserByName()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structUser}{User}} I\+Data\+Base\+Provider\+::get\+User\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_a2654aee827789cfc1d40e9992d441056}{Sqlite\+Provider}}.
+
+\mbox{\Hypertarget{classIDataBaseProvider_a3b467ba6923af62a82475a2a817eb1c8}\label{classIDataBaseProvider_a3b467ba6923af62a82475a2a817eb1c8}} 
+\index{I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}!open\+Data\+Base@{open\+Data\+Base}}
+\index{open\+Data\+Base@{open\+Data\+Base}!I\+Data\+Base\+Provider@{I\+Data\+Base\+Provider}}
+\subsubsection{\texorpdfstring{open\+Data\+Base()}{openDataBase()}}
+{\footnotesize\ttfamily virtual bool I\+Data\+Base\+Provider\+::open\+Data\+Base (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classSqliteProvider_ac37c4f4cb4438b309f7b57eda4579b79}{Sqlite\+Provider}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+database/\mbox{\hyperlink{IDataBaseProvider_8hpp}{I\+Data\+Base\+Provider.\+hpp}}\end{DoxyCompactItemize}

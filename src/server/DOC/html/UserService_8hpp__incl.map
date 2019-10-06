@@ -1,0 +1,7 @@
+<map id="services/UserService.hpp" name="services/UserService.hpp">
+<area shape="rect" id="node3" href="$Client_8hpp.html" title="logic/Client.hpp" alt="" coords="514,80,637,107"/>
+<area shape="rect" id="node7" href="$IConnection_8hpp.html" title="network/IConnection.hpp" alt="" coords="649,155,833,181"/>
+<area shape="rect" id="node14" href="$IService_8hpp.html" title="IService.hpp" alt="" coords="781,80,884,107"/>
+<area shape="rect" id="node9" href="$SqliteProvider_8hpp.html" title="database/SqliteProvider.hpp" alt="" coords="247,155,451,181"/>
+<area shape="rect" id="node13" href="$IDataBaseProvider_8hpp.html" title="IDataBaseProvider.hpp" alt="" coords="419,229,590,256"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="services/LogService.hpp" name="services/LogService.hpp">
+<area shape="rect" id="node2" href="$ServiceLocator_8hpp.html" title="services/ServiceLocator.hpp" alt="" coords="143,80,345,107"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title="main.cpp" alt="" coords="5,319,88,345"/>
+<area shape="rect" id="node3" href="$HandshakeHandler_8cpp.html" title="logic/handshake/Handshake\lHandler.cpp" alt="" coords="665,155,871,196"/>
+<area shape="rect" id="node4" href="$BoostConnection_8hpp.html" title="network/BoostConnection.hpp" alt="" coords="135,162,353,189"/>
+<area shape="rect" id="node5" href="$BoostListener_8hpp.html" title="network/BoostListener.hpp" alt="" coords="112,244,307,271"/>
+<area shape="rect" id="node9" href="$DispatchService_8hpp.html" title="services/DispatchService.hpp" alt="" coords="377,162,591,189"/>
+<area shape="rect" id="node10" href="$HandlerService_8hpp.html" title="services/HandlerService.hpp" alt="" coords="521,244,727,271"/>
+<area shape="rect" id="node7" href="$BoostConnection_8cpp.html" title="network/BoostConnection.cpp" alt="" coords="331,319,547,345"/>
+<area shape="rect" id="node8" href="$BoostListener_8cpp.html" title="network/BoostListener.cpp" alt="" coords="112,319,307,345"/>
+<area shape="rect" id="node11" href="$HandlerService_8cpp.html" title="services/HandlerService.cpp" alt="" coords="571,319,778,345"/>
+</map>

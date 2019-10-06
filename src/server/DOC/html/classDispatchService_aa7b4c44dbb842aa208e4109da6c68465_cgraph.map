@@ -1,0 +1,4 @@
+<map id="DispatchService::loop" name="DispatchService::loop">
+<area shape="rect" id="node2" href="$classServiceLocator.html#a41f5c5b0ec8ca27e1b463c5383854cbd" title="ServiceLocator::getService" alt="" coords="229,5,423,32"/>
+<area shape="rect" id="node3" href="$classConcurrentQueue.html#a1ea1e6082792691143b62317a9ac99ac" title="ConcurrentQueue::waitAndPop" alt="" coords="216,56,436,83"/>
+</map>

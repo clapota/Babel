@@ -1,0 +1,128 @@
+\hypertarget{classClient}{}\section{Client Class Reference}
+\label{classClient}\index{Client@{Client}}
+
+
+{\ttfamily \#include $<$Client.\+hpp$>$}
+
+
+
+Collaboration diagram for Client\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classClient__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classClient_abc4d8d86cc753596a08a90e359f5eb31}{get\+Id}} ()
+\item 
+void \mbox{\hyperlink{classClient_ab26edfd53bf1deeab0aac1715858f279}{send}} (const I\+Packet \&packet)
+\item 
+bool \mbox{\hyperlink{classClient_afcbe6046c74e86b64c1b861f5e58ffbd}{is\+Logged}} () const
+\item 
+const \mbox{\hyperlink{structUser}{User}} \& \mbox{\hyperlink{classClient_a31da08b532d6585e61d98b563177e33a}{get\+User}} () const
+\item 
+void \mbox{\hyperlink{classClient_a902b85e55694c497acf50deb082cb23e}{set\+User}} (const \mbox{\hyperlink{structUser}{User}} \&user)
+\item 
+void \mbox{\hyperlink{classClient_aa977795294407c10fe843b5bc28b6685}{logout}} ()
+\item 
+std\+::string \mbox{\hyperlink{classClient_ab04ab042f49fd43a6eaeb8df05eb0eae}{get\+Ip}} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classClient}{Client}} $>$ \mbox{\hyperlink{classClient_a3d47022bf1a2f166fe04b80e9ec2bebc}{create}} (boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIConnection}{I\+Connection}} $>$ \&connection)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIConnection}{I\+Connection}} $>$ \mbox{\hyperlink{classClient_acf0b64183e7b92d030224c3ae9b54655}{Connection}}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classClient_a19fc58b997c5c69c2156a493983b0652}{Reference\+Id}} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classClient_a3d47022bf1a2f166fe04b80e9ec2bebc}\label{classClient_a3d47022bf1a2f166fe04b80e9ec2bebc}} 
+\index{Client@{Client}!create@{create}}
+\index{create@{create}!Client@{Client}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily static boost\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classClient}{Client}}$>$ Client\+::create (\begin{DoxyParamCaption}\item[{boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIConnection}{I\+Connection}} $>$ \&}]{connection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classClient_abc4d8d86cc753596a08a90e359f5eb31}\label{classClient_abc4d8d86cc753596a08a90e359f5eb31}} 
+\index{Client@{Client}!get\+Id@{get\+Id}}
+\index{get\+Id@{get\+Id}!Client@{Client}}
+\subsubsection{\texorpdfstring{get\+Id()}{getId()}}
+{\footnotesize\ttfamily int Client\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classClient_ab04ab042f49fd43a6eaeb8df05eb0eae}\label{classClient_ab04ab042f49fd43a6eaeb8df05eb0eae}} 
+\index{Client@{Client}!get\+Ip@{get\+Ip}}
+\index{get\+Ip@{get\+Ip}!Client@{Client}}
+\subsubsection{\texorpdfstring{get\+Ip()}{getIp()}}
+{\footnotesize\ttfamily std\+::string Client\+::get\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classClient_a31da08b532d6585e61d98b563177e33a}\label{classClient_a31da08b532d6585e61d98b563177e33a}} 
+\index{Client@{Client}!get\+User@{get\+User}}
+\index{get\+User@{get\+User}!Client@{Client}}
+\subsubsection{\texorpdfstring{get\+User()}{getUser()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structUser}{User}}\& Client\+::get\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{classClient_a31da08b532d6585e61d98b563177e33a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClient_afcbe6046c74e86b64c1b861f5e58ffbd}\label{classClient_afcbe6046c74e86b64c1b861f5e58ffbd}} 
+\index{Client@{Client}!is\+Logged@{is\+Logged}}
+\index{is\+Logged@{is\+Logged}!Client@{Client}}
+\subsubsection{\texorpdfstring{is\+Logged()}{isLogged()}}
+{\footnotesize\ttfamily bool Client\+::is\+Logged (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classClient_aa977795294407c10fe843b5bc28b6685}\label{classClient_aa977795294407c10fe843b5bc28b6685}} 
+\index{Client@{Client}!logout@{logout}}
+\index{logout@{logout}!Client@{Client}}
+\subsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily void Client\+::logout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classClient_ab26edfd53bf1deeab0aac1715858f279}\label{classClient_ab26edfd53bf1deeab0aac1715858f279}} 
+\index{Client@{Client}!send@{send}}
+\index{send@{send}!Client@{Client}}
+\subsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily void Client\+::send (\begin{DoxyParamCaption}\item[{const I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classClient_a902b85e55694c497acf50deb082cb23e}\label{classClient_a902b85e55694c497acf50deb082cb23e}} 
+\index{Client@{Client}!set\+User@{set\+User}}
+\index{set\+User@{set\+User}!Client@{Client}}
+\subsubsection{\texorpdfstring{set\+User()}{setUser()}}
+{\footnotesize\ttfamily void Client\+::set\+User (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structUser}{User}} \&}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classClient_acf0b64183e7b92d030224c3ae9b54655}\label{classClient_acf0b64183e7b92d030224c3ae9b54655}} 
+\index{Client@{Client}!Connection@{Connection}}
+\index{Connection@{Connection}!Client@{Client}}
+\subsubsection{\texorpdfstring{Connection}{Connection}}
+{\footnotesize\ttfamily boost\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classIConnection}{I\+Connection}}$>$ Client\+::\+Connection}
+
+\mbox{\Hypertarget{classClient_a19fc58b997c5c69c2156a493983b0652}\label{classClient_a19fc58b997c5c69c2156a493983b0652}} 
+\index{Client@{Client}!Reference\+Id@{Reference\+Id}}
+\index{Reference\+Id@{Reference\+Id}!Client@{Client}}
+\subsubsection{\texorpdfstring{Reference\+Id}{ReferenceId}}
+{\footnotesize\ttfamily int Client\+::\+Reference\+Id = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/\mbox{\hyperlink{Client_8hpp}{Client.\+hpp}}\item 
+\mbox{\hyperlink{main_8cpp}{main.\+cpp}}\end{DoxyCompactItemize}

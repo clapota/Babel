@@ -1,0 +1,51 @@
+\hypertarget{structDispatchData}{}\section{Dispatch\+Data Struct Reference}
+\label{structDispatchData}\index{Dispatch\+Data@{Dispatch\+Data}}
+
+
+{\ttfamily \#include $<$Dispatch\+Service.\+hpp$>$}
+
+
+
+Collaboration diagram for Dispatch\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{structDispatchData__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ I\+Packet $>$ \mbox{\hyperlink{structDispatchData_a73c4113d390c2df0b035e7e89ea829b4}{packet}}
+\item 
+boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classClient}{Client}} $>$ \mbox{\hyperlink{structDispatchData_a05f2c90200f8ef88bd63f3a7f63aa630}{client}}
+\item 
+std\+::function$<$ void(boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classClient}{Client}} $>$, std\+::unique\+\_\+ptr$<$ I\+Packet $>$ \&)$>$ \mbox{\hyperlink{structDispatchData_a6672e8f2dfa81cd5b386c1cc96a1c2f6}{func}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structDispatchData_a05f2c90200f8ef88bd63f3a7f63aa630}\label{structDispatchData_a05f2c90200f8ef88bd63f3a7f63aa630}} 
+\index{Dispatch\+Data@{Dispatch\+Data}!client@{client}}
+\index{client@{client}!Dispatch\+Data@{Dispatch\+Data}}
+\subsubsection{\texorpdfstring{client}{client}}
+{\footnotesize\ttfamily boost\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classClient}{Client}}$>$ Dispatch\+Data\+::client}
+
+\mbox{\Hypertarget{structDispatchData_a6672e8f2dfa81cd5b386c1cc96a1c2f6}\label{structDispatchData_a6672e8f2dfa81cd5b386c1cc96a1c2f6}} 
+\index{Dispatch\+Data@{Dispatch\+Data}!func@{func}}
+\index{func@{func}!Dispatch\+Data@{Dispatch\+Data}}
+\subsubsection{\texorpdfstring{func}{func}}
+{\footnotesize\ttfamily std\+::function$<$void(boost\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classClient}{Client}}$>$, std\+::unique\+\_\+ptr$<$I\+Packet$>$ \&)$>$ Dispatch\+Data\+::func}
+
+\mbox{\Hypertarget{structDispatchData_a73c4113d390c2df0b035e7e89ea829b4}\label{structDispatchData_a73c4113d390c2df0b035e7e89ea829b4}} 
+\index{Dispatch\+Data@{Dispatch\+Data}!packet@{packet}}
+\index{packet@{packet}!Dispatch\+Data@{Dispatch\+Data}}
+\subsubsection{\texorpdfstring{packet}{packet}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$I\+Packet$>$ Dispatch\+Data\+::packet}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+services/\mbox{\hyperlink{DispatchService_8hpp}{Dispatch\+Service.\+hpp}}\end{DoxyCompactItemize}

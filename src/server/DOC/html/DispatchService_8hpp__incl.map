@@ -1,0 +1,10 @@
+<map id="services/DispatchService.hpp" name="services/DispatchService.hpp">
+<area shape="rect" id="node4" href="$Client_8hpp.html" title="../logic/Client.hpp" alt="" coords="541,80,676,107"/>
+<area shape="rect" id="node7" href="$IConnection_8hpp.html" title="network/IConnection.hpp" alt="" coords="729,162,913,189"/>
+<area shape="rect" id="node14" href="$IService_8hpp.html" title="services/IService.hpp" alt="" coords="870,244,1030,271"/>
+<area shape="rect" id="node15" href="$ConcurrentQueue_8hpp.html" title="queue/ConcurrentQueue.hpp" alt="" coords="1048,80,1255,107"/>
+<area shape="rect" id="node19" href="$ServiceLocator_8hpp.html" title="services/ServiceLocator.hpp" alt="" coords="1430,80,1633,107"/>
+<area shape="rect" id="node9" href="$SqliteProvider_8hpp.html" title="database/SqliteProvider.hpp" alt="" coords="233,162,437,189"/>
+<area shape="rect" id="node13" href="$IDataBaseProvider_8hpp.html" title="IDataBaseProvider.hpp" alt="" coords="317,244,487,271"/>
+<area shape="rect" id="node21" href="$LogService_8hpp.html" title="LogService.hpp" alt="" coords="1471,162,1592,189"/>
+</map>

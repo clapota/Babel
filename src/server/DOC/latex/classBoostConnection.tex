@@ -1,0 +1,127 @@
+\hypertarget{classBoostConnection}{}\section{Boost\+Connection Class Reference}
+\label{classBoostConnection}\index{Boost\+Connection@{Boost\+Connection}}
+
+
+{\ttfamily \#include $<$Boost\+Connection.\+hpp$>$}
+
+
+
+Inheritance diagram for Boost\+Connection\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBoostConnection__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Boost\+Connection\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBoostConnection__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBoostConnection_acaf86877128a2df13130110cf72de640}{pointer}} = boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBoostConnection}{Boost\+Connection}} $>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::asio\+::ip\+::tcp\+::socket \& \mbox{\hyperlink{classBoostConnection_a5b83b6847a7a522439fb6f66fd11b9e5}{get\+Socket}} ()
+\item 
+boost\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIConnection}{I\+Connection}} $>$ \mbox{\hyperlink{classBoostConnection_a3262569e07575555bff604a7f9f6c803}{to\+I\+Connection}} ()
+\item 
+void \mbox{\hyperlink{classBoostConnection_a576ca28ef2f8f335ee1a0ccab64cc55b}{shutdown}} () override
+\item 
+void \mbox{\hyperlink{classBoostConnection_a8b117337238e2652adecde8971c1ab93}{read\+\_\+async}} () override
+\item 
+void \mbox{\hyperlink{classBoostConnection_abe7200e60f8b4d909a057f85ca9569db}{write\+\_\+async}} (const std\+::string \&message) override
+\item 
+std\+::string \mbox{\hyperlink{classBoostConnection_a648ba5a8674fc95b4cab8c94225a19e9}{get\+Client\+Ip}} () const override
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classBoostConnection_acaf86877128a2df13130110cf72de640}{pointer}} \mbox{\hyperlink{classBoostConnection_a2f020a5317924e126c1495a86816f8ef}{create}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBoostConnection_acaf86877128a2df13130110cf72de640}\label{classBoostConnection_acaf86877128a2df13130110cf72de640}} 
+\index{Boost\+Connection@{Boost\+Connection}!pointer@{pointer}}
+\index{pointer@{pointer}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBoostConnection_acaf86877128a2df13130110cf72de640}{Boost\+Connection\+::pointer}} =  boost\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classBoostConnection}{Boost\+Connection}}$>$}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBoostConnection_a2f020a5317924e126c1495a86816f8ef}\label{classBoostConnection_a2f020a5317924e126c1495a86816f8ef}} 
+\index{Boost\+Connection@{Boost\+Connection}!create@{create}}
+\index{create@{create}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classBoostConnection_acaf86877128a2df13130110cf72de640}{pointer}} Boost\+Connection\+::create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBoostConnection_a648ba5a8674fc95b4cab8c94225a19e9}\label{classBoostConnection_a648ba5a8674fc95b4cab8c94225a19e9}} 
+\index{Boost\+Connection@{Boost\+Connection}!get\+Client\+Ip@{get\+Client\+Ip}}
+\index{get\+Client\+Ip@{get\+Client\+Ip}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{get\+Client\+Ip()}{getClientIp()}}
+{\footnotesize\ttfamily std\+::string Boost\+Connection\+::get\+Client\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIConnection_a7064757e5c427496f482239dde7e0540}{I\+Connection}}.
+
+\mbox{\Hypertarget{classBoostConnection_a5b83b6847a7a522439fb6f66fd11b9e5}\label{classBoostConnection_a5b83b6847a7a522439fb6f66fd11b9e5}} 
+\index{Boost\+Connection@{Boost\+Connection}!get\+Socket@{get\+Socket}}
+\index{get\+Socket@{get\+Socket}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{get\+Socket()}{getSocket()}}
+{\footnotesize\ttfamily boost\+::asio\+::ip\+::tcp\+::socket\& Boost\+Connection\+::get\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classBoostConnection_a8b117337238e2652adecde8971c1ab93}\label{classBoostConnection_a8b117337238e2652adecde8971c1ab93}} 
+\index{Boost\+Connection@{Boost\+Connection}!read\+\_\+async@{read\+\_\+async}}
+\index{read\+\_\+async@{read\+\_\+async}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{read\+\_\+async()}{read\_async()}}
+{\footnotesize\ttfamily void Boost\+Connection\+::read\+\_\+async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIConnection_a1c9d492241a79546f243088285279144}{I\+Connection}}.
+
+\mbox{\Hypertarget{classBoostConnection_a576ca28ef2f8f335ee1a0ccab64cc55b}\label{classBoostConnection_a576ca28ef2f8f335ee1a0ccab64cc55b}} 
+\index{Boost\+Connection@{Boost\+Connection}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void Boost\+Connection\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIConnection_ae15b6922f3a31a7f316a6390eb2469b2}{I\+Connection}}.
+
+\mbox{\Hypertarget{classBoostConnection_a3262569e07575555bff604a7f9f6c803}\label{classBoostConnection_a3262569e07575555bff604a7f9f6c803}} 
+\index{Boost\+Connection@{Boost\+Connection}!to\+I\+Connection@{to\+I\+Connection}}
+\index{to\+I\+Connection@{to\+I\+Connection}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{to\+I\+Connection()}{toIConnection()}}
+{\footnotesize\ttfamily boost\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classIConnection}{I\+Connection}}$>$ Boost\+Connection\+::to\+I\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classBoostConnection_abe7200e60f8b4d909a057f85ca9569db}\label{classBoostConnection_abe7200e60f8b4d909a057f85ca9569db}} 
+\index{Boost\+Connection@{Boost\+Connection}!write\+\_\+async@{write\+\_\+async}}
+\index{write\+\_\+async@{write\+\_\+async}!Boost\+Connection@{Boost\+Connection}}
+\subsubsection{\texorpdfstring{write\+\_\+async()}{write\_async()}}
+{\footnotesize\ttfamily void Boost\+Connection\+::write\+\_\+async (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIConnection_a7210f770ebae6277e98142a8b5a6226f}{I\+Connection}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+network/\mbox{\hyperlink{BoostConnection_8hpp}{Boost\+Connection.\+hpp}}\item 
+network/\mbox{\hyperlink{BoostConnection_8cpp}{Boost\+Connection.\+cpp}}\end{DoxyCompactItemize}
