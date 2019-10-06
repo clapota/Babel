@@ -1,0 +1,135 @@
+\hypertarget{classAudioWrapper}{}\section{Audio\+Wrapper Class Reference}
+\label{classAudioWrapper}\index{Audio\+Wrapper@{Audio\+Wrapper}}
+
+
+{\ttfamily \#include $<$Audio\+Wrapper.\+hpp$>$}
+
+
+
+Inheritance diagram for Audio\+Wrapper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classAudioWrapper__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Audio\+Wrapper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classAudioWrapper__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAudioWrapper_a8d77bd1e217129cfd8ec5ca25b16be04}{send\+Data}} ()
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAudioWrapper_ae17f31e4b187479c5b09c1d23a85a3d6}{hang\+Up}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAudioWrapper_a13297af5ffc1d5f9d5d751820ef42acc}{Audio\+Wrapper}} (const std\+::string \&ip)
+\item 
+\mbox{\hyperlink{classAudioWrapper_ae46cc45c2060c761ab7e0d4901b19cc0}{$\sim$\+Audio\+Wrapper}} () override
+\item 
+void \mbox{\hyperlink{classAudioWrapper_aaa9ffbddfceadb866955a41eb17ac744}{Start}} ()
+\item 
+void \mbox{\hyperlink{classAudioWrapper_a95e9bb9ed67d20a5f895659b495ed53d}{Stop}} ()
+\item 
+\mbox{\hyperlink{classAudioCompressor}{Audio\+Compressor}} \& \mbox{\hyperlink{classAudioWrapper_ae5e70291c316e85167afcd89ea98e996}{get\+Compressor}} ()
+\item 
+void \mbox{\hyperlink{classAudioWrapper_a3364ec91d1a0d8d8a17e8f11ef4bcf6c}{add\+In\+Queue}} (std\+::vector$<$ float $>$ audio\+Data)
+\item 
+std\+::queue$<$ std\+::vector$<$ float $>$ $>$ \& \mbox{\hyperlink{classAudioWrapper_ae888485e4ce18c6d581b70f2f66ba2d8}{get\+Queue}} ()
+\item 
+void \mbox{\hyperlink{classAudioWrapper_af3b06805ea3a9e02a4ca5e6a88ad1eeb}{close}} ()
+\item 
+void \mbox{\hyperlink{classAudioWrapper_aa0f8b51535d46adfb4f37d8388d69604}{add\+To\+Send\+List}} (std\+::vector$<$ unsigned char $>$ \&data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAudioWrapper_a13297af5ffc1d5f9d5d751820ef42acc}\label{classAudioWrapper_a13297af5ffc1d5f9d5d751820ef42acc}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!Audio\+Wrapper@{Audio\+Wrapper}}
+\index{Audio\+Wrapper@{Audio\+Wrapper}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{Audio\+Wrapper()}{AudioWrapper()}}
+{\footnotesize\ttfamily Audio\+Wrapper\+::\+Audio\+Wrapper (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classAudioWrapper_ae46cc45c2060c761ab7e0d4901b19cc0}\label{classAudioWrapper_ae46cc45c2060c761ab7e0d4901b19cc0}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!````~Audio\+Wrapper@{$\sim$\+Audio\+Wrapper}}
+\index{````~Audio\+Wrapper@{$\sim$\+Audio\+Wrapper}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{$\sim$\+Audio\+Wrapper()}{~AudioWrapper()}}
+{\footnotesize\ttfamily Audio\+Wrapper\+::$\sim$\+Audio\+Wrapper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAudioWrapper_a3364ec91d1a0d8d8a17e8f11ef4bcf6c}\label{classAudioWrapper_a3364ec91d1a0d8d8a17e8f11ef4bcf6c}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!add\+In\+Queue@{add\+In\+Queue}}
+\index{add\+In\+Queue@{add\+In\+Queue}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{add\+In\+Queue()}{addInQueue()}}
+{\footnotesize\ttfamily void Audio\+Wrapper\+::add\+In\+Queue (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{audio\+Data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAudioWrapper_aa0f8b51535d46adfb4f37d8388d69604}\label{classAudioWrapper_aa0f8b51535d46adfb4f37d8388d69604}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!add\+To\+Send\+List@{add\+To\+Send\+List}}
+\index{add\+To\+Send\+List@{add\+To\+Send\+List}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{add\+To\+Send\+List()}{addToSendList()}}
+{\footnotesize\ttfamily void Audio\+Wrapper\+::add\+To\+Send\+List (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned char $>$ \&}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAudioWrapper_af3b06805ea3a9e02a4ca5e6a88ad1eeb}\label{classAudioWrapper_af3b06805ea3a9e02a4ca5e6a88ad1eeb}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!close@{close}}
+\index{close@{close}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void Audio\+Wrapper\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAudioWrapper_ae5e70291c316e85167afcd89ea98e996}\label{classAudioWrapper_ae5e70291c316e85167afcd89ea98e996}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!get\+Compressor@{get\+Compressor}}
+\index{get\+Compressor@{get\+Compressor}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{get\+Compressor()}{getCompressor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAudioCompressor}{Audio\+Compressor}} \& Audio\+Wrapper\+::get\+Compressor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAudioWrapper_ae888485e4ce18c6d581b70f2f66ba2d8}\label{classAudioWrapper_ae888485e4ce18c6d581b70f2f66ba2d8}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!get\+Queue@{get\+Queue}}
+\index{get\+Queue@{get\+Queue}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{get\+Queue()}{getQueue()}}
+{\footnotesize\ttfamily std\+::queue$<$ std\+::vector$<$ float $>$ $>$ \& Audio\+Wrapper\+::get\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAudioWrapper_ae17f31e4b187479c5b09c1d23a85a3d6}\label{classAudioWrapper_ae17f31e4b187479c5b09c1d23a85a3d6}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!hang\+Up@{hang\+Up}}
+\index{hang\+Up@{hang\+Up}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{hang\+Up}{hangUp}}
+{\footnotesize\ttfamily void Audio\+Wrapper\+::hang\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{classAudioWrapper_a8d77bd1e217129cfd8ec5ca25b16be04}\label{classAudioWrapper_a8d77bd1e217129cfd8ec5ca25b16be04}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!send\+Data@{send\+Data}}
+\index{send\+Data@{send\+Data}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{send\+Data}{sendData}}
+{\footnotesize\ttfamily void Audio\+Wrapper\+::send\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classAudioWrapper_aaa9ffbddfceadb866955a41eb17ac744}\label{classAudioWrapper_aaa9ffbddfceadb866955a41eb17ac744}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!Start@{Start}}
+\index{Start@{Start}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Audio\+Wrapper\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAudioWrapper_a95e9bb9ed67d20a5f895659b495ed53d}\label{classAudioWrapper_a95e9bb9ed67d20a5f895659b495ed53d}} 
+\index{Audio\+Wrapper@{Audio\+Wrapper}!Stop@{Stop}}
+\index{Stop@{Stop}!Audio\+Wrapper@{Audio\+Wrapper}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Audio\+Wrapper\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Audio/\mbox{\hyperlink{AudioWrapper_8hpp}{Audio\+Wrapper.\+hpp}}\item 
+Audio/\mbox{\hyperlink{AudioWrapper_8cpp}{Audio\+Wrapper.\+cpp}}\end{DoxyCompactItemize}

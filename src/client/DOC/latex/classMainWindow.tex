@@ -1,0 +1,275 @@
+\hypertarget{classMainWindow}{}\section{Main\+Window Class Reference}
+\label{classMainWindow}\index{Main\+Window@{Main\+Window}}
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+
+
+Inheritance diagram for Main\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classMainWindow__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Main\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classMainWindow__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98}{Widget}} \{ \mbox{\hyperlink{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98acd276e3221d91ddafcb22927b019c7dd}{C\+O\+N\+N\+E\+X\+I\+ON}} = 0, 
+\mbox{\hyperlink{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98a46a33034e785546fa16e10ba40ea6978}{M\+A\+IN}} = 1, 
+\mbox{\hyperlink{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98a1483d0e181a77be66f3ca0a9aca6df7b}{S\+I\+GN}} = 2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMainWindow_abfedef9edae209df536e8c1c7cf0e7ae}{connect\+To\+Server}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_ae28c5837e284dd761409d55b5e39813b}{add\+Friend}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a9afb210ce554fd18f4e6a88f9348d277}{delete\+Friend}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a4f6b5f8e574fd0b4973b66f3d00ffaf2}{call}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a5af6c159766831c848b75c0d880c8fd4}{Sign\+In\+In\+Log\+In}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a611f2a28a206782610bf8877cf77e0a2}{Log\+In\+In\+Sign\+In}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a9c960d27c03a967b577bc60ad21cb6f8}{Sign\+In\+In\+Sign\+In}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a4c998ea4be4f3f4ead67e5af459b89de}{Disconnect}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a6753e34d0ff49db0d1fb93f716ec92e2}{register\+Response}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_aa2b3f69a6185302ac2ad76fef6acb528}{connect\+Response}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_ad2cbc6f96df012007bb9ee214a9b0576}{add\+Friend\+Response}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a19ca92aa9a59b9b1a3211324d3c7fb8d}{remove\+Friend\+Response}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a9565cefea1c1ba5dfb1c251a2aa8d822}{accept\+Friend\+Response}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a2b5ea73e534de8287c7eadfb24db5acd}{call\+Response}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a6cb8a7d117c4c4b9c2a9efbff9d0a9f6}{hang\+Up\+Response}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a65832e63c031a59f7ab81c6e6e8d7eeb}{friend\+Accept}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a739f0fac2fc2f546756d2285e4fe9ddb}{request\+Friend}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a2acb29717b28598ed004b381d0c5cb8a}{user\+Info}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a2291b360d17ee3ccdb90a05ceaea45ed}{removed\+From\+Friend}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a8e527dafdb7cbd2c404e5f29bbecf40a}{called}} (I\+Packet \&packet)
+\item 
+void \mbox{\hyperlink{classMainWindow_a7d0e1db436a81d7bccca2a8dffb0cb9e}{hang\+Up}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_af71d1efd326645c39792a7731451b207}{accept\+Friend}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}{Main\+Window}} (Q\+Widget $\ast$parent=0)
+\item 
+\mbox{\hyperlink{classMainWindow_a1f7d2c56410fc1bfa135bb907d43313f}{$\sim$\+Main\+Window}} () override
+\item 
+void \mbox{\hyperlink{classMainWindow_a3cb8372306825d0b28040bd7c9f4d6bc}{change\+Visible\+Widget}} (\mbox{\hyperlink{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98}{Widget}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98}\label{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98}} 
+\index{Main\+Window@{Main\+Window}!Widget@{Widget}}
+\index{Widget@{Widget}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Widget}{Widget}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98}{Main\+Window\+::\+Widget}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+N\+E\+X\+I\+ON@{C\+O\+N\+N\+E\+X\+I\+ON}!Main\+Window@{Main\+Window}}\index{Main\+Window@{Main\+Window}!C\+O\+N\+N\+E\+X\+I\+ON@{C\+O\+N\+N\+E\+X\+I\+ON}}}\mbox{\Hypertarget{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98acd276e3221d91ddafcb22927b019c7dd}\label{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98acd276e3221d91ddafcb22927b019c7dd}} 
+C\+O\+N\+N\+E\+X\+I\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+A\+IN@{M\+A\+IN}!Main\+Window@{Main\+Window}}\index{Main\+Window@{Main\+Window}!M\+A\+IN@{M\+A\+IN}}}\mbox{\Hypertarget{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98a46a33034e785546fa16e10ba40ea6978}\label{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98a46a33034e785546fa16e10ba40ea6978}} 
+M\+A\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+I\+GN@{S\+I\+GN}!Main\+Window@{Main\+Window}}\index{Main\+Window@{Main\+Window}!S\+I\+GN@{S\+I\+GN}}}\mbox{\Hypertarget{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98a1483d0e181a77be66f3ca0a9aca6df7b}\label{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98a1483d0e181a77be66f3ca0a9aca6df7b}} 
+S\+I\+GN&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}\label{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}} 
+\index{Main\+Window@{Main\+Window}!Main\+Window@{Main\+Window}}
+\index{Main\+Window@{Main\+Window}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Main\+Window()}{MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classMainWindow_a1f7d2c56410fc1bfa135bb907d43313f}\label{classMainWindow_a1f7d2c56410fc1bfa135bb907d43313f}} 
+\index{Main\+Window@{Main\+Window}!````~Main\+Window@{$\sim$\+Main\+Window}}
+\index{````~Main\+Window@{$\sim$\+Main\+Window}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{$\sim$\+Main\+Window()}{~MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::$\sim$\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMainWindow_af71d1efd326645c39792a7731451b207}\label{classMainWindow_af71d1efd326645c39792a7731451b207}} 
+\index{Main\+Window@{Main\+Window}!accept\+Friend@{accept\+Friend}}
+\index{accept\+Friend@{accept\+Friend}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{accept\+Friend}{acceptFriend}}
+{\footnotesize\ttfamily void Main\+Window\+::accept\+Friend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a9565cefea1c1ba5dfb1c251a2aa8d822}\label{classMainWindow_a9565cefea1c1ba5dfb1c251a2aa8d822}} 
+\index{Main\+Window@{Main\+Window}!accept\+Friend\+Response@{accept\+Friend\+Response}}
+\index{accept\+Friend\+Response@{accept\+Friend\+Response}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{accept\+Friend\+Response}{acceptFriendResponse}}
+{\footnotesize\ttfamily void Main\+Window\+::accept\+Friend\+Response (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_ae28c5837e284dd761409d55b5e39813b}\label{classMainWindow_ae28c5837e284dd761409d55b5e39813b}} 
+\index{Main\+Window@{Main\+Window}!add\+Friend@{add\+Friend}}
+\index{add\+Friend@{add\+Friend}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{add\+Friend}{addFriend}}
+{\footnotesize\ttfamily void Main\+Window\+::add\+Friend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_ad2cbc6f96df012007bb9ee214a9b0576}\label{classMainWindow_ad2cbc6f96df012007bb9ee214a9b0576}} 
+\index{Main\+Window@{Main\+Window}!add\+Friend\+Response@{add\+Friend\+Response}}
+\index{add\+Friend\+Response@{add\+Friend\+Response}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{add\+Friend\+Response}{addFriendResponse}}
+{\footnotesize\ttfamily void Main\+Window\+::add\+Friend\+Response (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a4f6b5f8e574fd0b4973b66f3d00ffaf2}\label{classMainWindow_a4f6b5f8e574fd0b4973b66f3d00ffaf2}} 
+\index{Main\+Window@{Main\+Window}!call@{call}}
+\index{call@{call}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{call}{call}}
+{\footnotesize\ttfamily void Main\+Window\+::call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a8e527dafdb7cbd2c404e5f29bbecf40a}\label{classMainWindow_a8e527dafdb7cbd2c404e5f29bbecf40a}} 
+\index{Main\+Window@{Main\+Window}!called@{called}}
+\index{called@{called}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{called}{called}}
+{\footnotesize\ttfamily void Main\+Window\+::called (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a2b5ea73e534de8287c7eadfb24db5acd}\label{classMainWindow_a2b5ea73e534de8287c7eadfb24db5acd}} 
+\index{Main\+Window@{Main\+Window}!call\+Response@{call\+Response}}
+\index{call\+Response@{call\+Response}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{call\+Response}{callResponse}}
+{\footnotesize\ttfamily void Main\+Window\+::call\+Response (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a3cb8372306825d0b28040bd7c9f4d6bc}\label{classMainWindow_a3cb8372306825d0b28040bd7c9f4d6bc}} 
+\index{Main\+Window@{Main\+Window}!change\+Visible\+Widget@{change\+Visible\+Widget}}
+\index{change\+Visible\+Widget@{change\+Visible\+Widget}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{change\+Visible\+Widget()}{changeVisibleWidget()}}
+{\footnotesize\ttfamily void Main\+Window\+::change\+Visible\+Widget (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMainWindow_a44e53650a12325d1ad0625dbf1ef7d98}{Widget}}}]{wid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMainWindow_aa2b3f69a6185302ac2ad76fef6acb528}\label{classMainWindow_aa2b3f69a6185302ac2ad76fef6acb528}} 
+\index{Main\+Window@{Main\+Window}!connect\+Response@{connect\+Response}}
+\index{connect\+Response@{connect\+Response}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{connect\+Response}{connectResponse}}
+{\footnotesize\ttfamily void Main\+Window\+::connect\+Response (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_abfedef9edae209df536e8c1c7cf0e7ae}\label{classMainWindow_abfedef9edae209df536e8c1c7cf0e7ae}} 
+\index{Main\+Window@{Main\+Window}!connect\+To\+Server@{connect\+To\+Server}}
+\index{connect\+To\+Server@{connect\+To\+Server}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{connect\+To\+Server}{connectToServer}}
+{\footnotesize\ttfamily void Main\+Window\+::connect\+To\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a9afb210ce554fd18f4e6a88f9348d277}\label{classMainWindow_a9afb210ce554fd18f4e6a88f9348d277}} 
+\index{Main\+Window@{Main\+Window}!delete\+Friend@{delete\+Friend}}
+\index{delete\+Friend@{delete\+Friend}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{delete\+Friend}{deleteFriend}}
+{\footnotesize\ttfamily void Main\+Window\+::delete\+Friend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a4c998ea4be4f3f4ead67e5af459b89de}\label{classMainWindow_a4c998ea4be4f3f4ead67e5af459b89de}} 
+\index{Main\+Window@{Main\+Window}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Disconnect}{Disconnect}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a65832e63c031a59f7ab81c6e6e8d7eeb}\label{classMainWindow_a65832e63c031a59f7ab81c6e6e8d7eeb}} 
+\index{Main\+Window@{Main\+Window}!friend\+Accept@{friend\+Accept}}
+\index{friend\+Accept@{friend\+Accept}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{friend\+Accept}{friendAccept}}
+{\footnotesize\ttfamily void Main\+Window\+::friend\+Accept (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a7d0e1db436a81d7bccca2a8dffb0cb9e}\label{classMainWindow_a7d0e1db436a81d7bccca2a8dffb0cb9e}} 
+\index{Main\+Window@{Main\+Window}!hang\+Up@{hang\+Up}}
+\index{hang\+Up@{hang\+Up}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{hang\+Up}{hangUp}}
+{\footnotesize\ttfamily void Main\+Window\+::hang\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a6cb8a7d117c4c4b9c2a9efbff9d0a9f6}\label{classMainWindow_a6cb8a7d117c4c4b9c2a9efbff9d0a9f6}} 
+\index{Main\+Window@{Main\+Window}!hang\+Up\+Response@{hang\+Up\+Response}}
+\index{hang\+Up\+Response@{hang\+Up\+Response}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{hang\+Up\+Response}{hangUpResponse}}
+{\footnotesize\ttfamily void Main\+Window\+::hang\+Up\+Response (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a611f2a28a206782610bf8877cf77e0a2}\label{classMainWindow_a611f2a28a206782610bf8877cf77e0a2}} 
+\index{Main\+Window@{Main\+Window}!Log\+In\+In\+Sign\+In@{Log\+In\+In\+Sign\+In}}
+\index{Log\+In\+In\+Sign\+In@{Log\+In\+In\+Sign\+In}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Log\+In\+In\+Sign\+In}{LogInInSignIn}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Log\+In\+In\+Sign\+In (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a6753e34d0ff49db0d1fb93f716ec92e2}\label{classMainWindow_a6753e34d0ff49db0d1fb93f716ec92e2}} 
+\index{Main\+Window@{Main\+Window}!register\+Response@{register\+Response}}
+\index{register\+Response@{register\+Response}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{register\+Response}{registerResponse}}
+{\footnotesize\ttfamily void Main\+Window\+::register\+Response (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a2291b360d17ee3ccdb90a05ceaea45ed}\label{classMainWindow_a2291b360d17ee3ccdb90a05ceaea45ed}} 
+\index{Main\+Window@{Main\+Window}!removed\+From\+Friend@{removed\+From\+Friend}}
+\index{removed\+From\+Friend@{removed\+From\+Friend}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{removed\+From\+Friend}{removedFromFriend}}
+{\footnotesize\ttfamily void Main\+Window\+::removed\+From\+Friend (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a19ca92aa9a59b9b1a3211324d3c7fb8d}\label{classMainWindow_a19ca92aa9a59b9b1a3211324d3c7fb8d}} 
+\index{Main\+Window@{Main\+Window}!remove\+Friend\+Response@{remove\+Friend\+Response}}
+\index{remove\+Friend\+Response@{remove\+Friend\+Response}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{remove\+Friend\+Response}{removeFriendResponse}}
+{\footnotesize\ttfamily void Main\+Window\+::remove\+Friend\+Response (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a739f0fac2fc2f546756d2285e4fe9ddb}\label{classMainWindow_a739f0fac2fc2f546756d2285e4fe9ddb}} 
+\index{Main\+Window@{Main\+Window}!request\+Friend@{request\+Friend}}
+\index{request\+Friend@{request\+Friend}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{request\+Friend}{requestFriend}}
+{\footnotesize\ttfamily void Main\+Window\+::request\+Friend (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a5af6c159766831c848b75c0d880c8fd4}\label{classMainWindow_a5af6c159766831c848b75c0d880c8fd4}} 
+\index{Main\+Window@{Main\+Window}!Sign\+In\+In\+Log\+In@{Sign\+In\+In\+Log\+In}}
+\index{Sign\+In\+In\+Log\+In@{Sign\+In\+In\+Log\+In}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Sign\+In\+In\+Log\+In}{SignInInLogIn}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Sign\+In\+In\+Log\+In (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a9c960d27c03a967b577bc60ad21cb6f8}\label{classMainWindow_a9c960d27c03a967b577bc60ad21cb6f8}} 
+\index{Main\+Window@{Main\+Window}!Sign\+In\+In\+Sign\+In@{Sign\+In\+In\+Sign\+In}}
+\index{Sign\+In\+In\+Sign\+In@{Sign\+In\+In\+Sign\+In}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Sign\+In\+In\+Sign\+In}{SignInInSignIn}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Sign\+In\+In\+Sign\+In (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\mbox{\Hypertarget{classMainWindow_a2acb29717b28598ed004b381d0c5cb8a}\label{classMainWindow_a2acb29717b28598ed004b381d0c5cb8a}} 
+\index{Main\+Window@{Main\+Window}!user\+Info@{user\+Info}}
+\index{user\+Info@{user\+Info}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{user\+Info}{userInfo}}
+{\footnotesize\ttfamily void Main\+Window\+::user\+Info (\begin{DoxyParamCaption}\item[{I\+Packet \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Main\+Window/\mbox{\hyperlink{mainwindow_8h}{mainwindow.\+h}}\item 
+Main\+Window/\mbox{\hyperlink{mainwindow_8cpp}{mainwindow.\+cpp}}\end{DoxyCompactItemize}

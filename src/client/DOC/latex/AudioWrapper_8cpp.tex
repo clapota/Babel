@@ -1,0 +1,36 @@
+\hypertarget{AudioWrapper_8cpp}{}\section{Audio/\+Audio\+Wrapper.cpp File Reference}
+\label{AudioWrapper_8cpp}\index{Audio/\+Audio\+Wrapper.\+cpp@{Audio/\+Audio\+Wrapper.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}Audio\+Wrapper.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Audio\+Compressor.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Audio\+Exception.\+hpp\char`\"{}}\newline
+Include dependency graph for Audio\+Wrapper.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AudioWrapper_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{AudioWrapper_8cpp_ad824fb6392f1d6792fc67fa7c8126b84}{output\+Callback}} (const void $\ast$input\+Buffer, void $\ast$output\+Buffer, unsigned long frames\+Per\+Buffer, const Pa\+Stream\+Callback\+Time\+Info $\ast$time\+Info, Pa\+Stream\+Callback\+Flags status\+Flags, void $\ast$user\+Data)
+\item 
+int \mbox{\hyperlink{AudioWrapper_8cpp_a4b3d978b94116fab8091a989dfbde4ae}{callback}} (const void $\ast$input\+Buffer, void $\ast$, unsigned long frames\+Per\+Buffer, const Pa\+Stream\+Callback\+Time\+Info $\ast$, Pa\+Stream\+Callback\+Flags, void $\ast$user\+Data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{AudioWrapper_8cpp_a4b3d978b94116fab8091a989dfbde4ae}\label{AudioWrapper_8cpp_a4b3d978b94116fab8091a989dfbde4ae}} 
+\index{Audio\+Wrapper.\+cpp@{Audio\+Wrapper.\+cpp}!callback@{callback}}
+\index{callback@{callback}!Audio\+Wrapper.\+cpp@{Audio\+Wrapper.\+cpp}}
+\subsubsection{\texorpdfstring{callback()}{callback()}}
+{\footnotesize\ttfamily int callback (\begin{DoxyParamCaption}\item[{const void $\ast$}]{input\+Buffer,  }\item[{void $\ast$}]{,  }\item[{unsigned long}]{frames\+Per\+Buffer,  }\item[{const Pa\+Stream\+Callback\+Time\+Info $\ast$}]{,  }\item[{Pa\+Stream\+Callback\+Flags}]{,  }\item[{void $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{AudioWrapper_8cpp_ad824fb6392f1d6792fc67fa7c8126b84}\label{AudioWrapper_8cpp_ad824fb6392f1d6792fc67fa7c8126b84}} 
+\index{Audio\+Wrapper.\+cpp@{Audio\+Wrapper.\+cpp}!output\+Callback@{output\+Callback}}
+\index{output\+Callback@{output\+Callback}!Audio\+Wrapper.\+cpp@{Audio\+Wrapper.\+cpp}}
+\subsubsection{\texorpdfstring{output\+Callback()}{outputCallback()}}
+{\footnotesize\ttfamily int output\+Callback (\begin{DoxyParamCaption}\item[{const void $\ast$}]{input\+Buffer,  }\item[{void $\ast$}]{output\+Buffer,  }\item[{unsigned long}]{frames\+Per\+Buffer,  }\item[{const Pa\+Stream\+Callback\+Time\+Info $\ast$}]{time\+Info,  }\item[{Pa\+Stream\+Callback\+Flags}]{status\+Flags,  }\item[{void $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+

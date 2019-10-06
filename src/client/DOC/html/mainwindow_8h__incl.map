@@ -1,0 +1,7 @@
+<map id="MainWindow/mainwindow.h" name="MainWindow/mainwindow.h">
+<area shape="rect" id="node4" href="$TcpClient_8hpp.html" title="../Network/TcpClient.hpp" alt="" coords="275,80,455,107"/>
+<area shape="rect" id="node8" href="$AudioWrapper_8hpp.html" title="../Audio/AudioWrapper.hpp" alt="" coords="901,80,1094,107"/>
+<area shape="rect" id="node15" href="$AudioInfo_8hpp.html" title="AudioInfo.hpp" alt="" coords="999,229,1111,256"/>
+<area shape="rect" id="node16" href="$AudioCompressor_8hpp.html" title="AudioCompressor.hpp" alt="" coords="855,155,1019,181"/>
+<area shape="rect" id="node18" href="$UdpClient_8hpp.html" title="Network/UdpClient.hpp" alt="" coords="1383,155,1556,181"/>
+</map>
