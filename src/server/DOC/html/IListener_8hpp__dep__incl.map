@@ -1,7 +1,0 @@
-<map id="network/IListener.hpp" name="network/IListener.hpp">
-<area shape="rect" id="node2" href="$BoostListener_8hpp.html" title="network/BoostListener.hpp" alt="" coords="243,80,437,107"/>
-<area shape="rect" id="node6" href="$NetworkService_8hpp.html" title="services/NetworkService.hpp" alt="" coords="8,80,219,107"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title="main.cpp" alt="" coords="245,155,328,181"/>
-<area shape="rect" id="node4" href="$BoostConnection_8cpp.html" title="network/BoostConnection.cpp" alt="" coords="5,155,221,181"/>
-<area shape="rect" id="node5" href="$BoostListener_8cpp.html" title="network/BoostListener.cpp" alt="" coords="352,155,547,181"/>
-</map>

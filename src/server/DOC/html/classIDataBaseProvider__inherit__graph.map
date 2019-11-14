@@ -1,3 +1,0 @@
-<map id="IDataBaseProvider" name="IDataBaseProvider">
-<area shape="rect" id="node2" href="$classSqliteProvider.html" title="{SqliteProvider\n||+ openDataBase()\l+ closeDataBase()\l+ createUser()\l+ createRelation()\l+ createRelation()\l+ getUserById()\l+ getUserByName()\l+ getAll()\l+ getFriendsOf()\l+ getFriendsOf()\l+ getPendingFriendsRequestOf()\l+ getPendingFriendsRequestOf()\l+ addPendingFriendRequest()\l+ addPendingFriendRequest()\l+ ~SqliteProvider()\l}" alt="" coords="5,321,239,604"/>
-</map>

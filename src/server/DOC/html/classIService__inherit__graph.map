@@ -1,9 +1,0 @@
-<map id="IService" name="IService">
-<area shape="rect" id="node2" href="$classBoostService.html" title="{BoostService\n||+ runContext()\l+ stopContext()\l+ getContext()\l}" alt="" coords="5,219,132,325"/>
-<area shape="rect" id="node3" href="$classDataBaseService.html" title="{DataBaseService\&lt; T \&gt;\n||+ DataBaseService()\l+ openDataBase()\l+ closeDataBase()\l+ createUser()\l+ createRelation()\l+ createRelation()\l+ getUserById()\l+ getUserByName()\l+ getAll()\l+ getFriendsOf()\l+ getFriendsOf()\l+ getPendingFriendsRequestOf()\l+ getPendingFriendsRequestOf()\l+ addPendingFriendRequest()\l+ addPendingFriendRequest()\l}" alt="" coords="156,131,389,413"/>
-<area shape="rect" id="node4" href="$classDispatchService.html" title="{DispatchService\n||+ DispatchService()\l+ loop()\l+ enqueue()\l+ stop()\l+ ~DispatchService()\l}" alt="" coords="414,204,577,340"/>
-<area shape="rect" id="node5" href="$classHandlerService.html" title="{HandlerService\n||+ handlePacket()\l}" alt="" coords="601,233,736,311"/>
-<area shape="rect" id="node6" href="$classLogService.html" title="{LogService\n||+ writeHour()\l+ writeError()\l}" alt="" coords="760,226,871,318"/>
-<area shape="rect" id="node7" href="$classNetworkService.html" title="{NetworkService\&lt; T \&gt;\n||+ NetworkService()\l+ stop()\l+ accept()\l}" alt="" coords="895,219,1058,325"/>
-<area shape="rect" id="node8" href="$classUserService.html" title="{UserService\n||+ registerClient()\l+ retrieveClient()\l+ removeClient()\l+ getClientByUserName()\l}" alt="" coords="1082,211,1274,333"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="logic/handshake/HandshakeHandler.hpp" name="logic/handshake/HandshakeHandler.hpp">
-<area shape="rect" id="node2" href="$Client_8hpp.html" title="logic/Client.hpp" alt="" coords="181,95,304,121"/>
-<area shape="rect" id="node6" href="$IConnection_8hpp.html" title="network/IConnection.hpp" alt="" coords="363,169,547,196"/>
-<area shape="rect" id="node8" href="$SqliteProvider_8hpp.html" title="database/SqliteProvider.hpp" alt="" coords="579,169,783,196"/>
-<area shape="rect" id="node12" href="$IDataBaseProvider_8hpp.html" title="IDataBaseProvider.hpp" alt="" coords="953,244,1124,271"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="Audio/AudioCompressor.hpp" name="Audio/AudioCompressor.hpp">
-<area shape="rect" id="node2" href="$AudioCompressor_8cpp.html" title="Audio/AudioCompressor.cpp" alt="" coords="5,80,209,107"/>
-<area shape="rect" id="node3" href="$AudioWrapper_8hpp.html" title="Audio/AudioWrapper.hpp" alt="" coords="329,80,510,107"/>
-<area shape="rect" id="node4" href="$AudioWrapper_8cpp.html" title="Audio/AudioWrapper.cpp" alt="" coords="136,155,316,181"/>
-<area shape="rect" id="node5" href="$mainwindow_8h.html" title="MainWindow/mainwindow.h" alt="" coords="341,155,543,181"/>
-<area shape="rect" id="node8" href="$UdpClient_8cpp.html" title="Network/UdpClient.cpp" alt="" coords="568,155,740,181"/>
-<area shape="rect" id="node6" href="$main_8cpp.html" title="main.cpp" alt="" coords="313,229,395,256"/>
-<area shape="rect" id="node7" href="$mainwindow_8cpp.html" title="MainWindow/mainwindow.cpp" alt="" coords="419,229,638,256"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="network/BoostConnection.hpp" name="network/BoostConnection.hpp">
-<area shape="rect" id="node3" href="$IConnection_8hpp.html" title="IConnection.hpp" alt="" coords="187,87,314,114"/>
-<area shape="rect" id="node6" href="$BoostService_8hpp.html" title="services/BoostService.hpp" alt="" coords="338,87,531,114"/>
-<area shape="rect" id="node8" href="$ServiceLocator_8hpp.html" title="services/ServiceLocator.hpp" alt="" coords="556,87,759,114"/>
-<area shape="rect" id="node7" href="$IService_8hpp.html" title="IService.hpp" alt="" coords="391,244,494,271"/>
-<area shape="rect" id="node10" href="$LogService_8hpp.html" title="LogService.hpp" alt="" coords="498,169,619,196"/>
-</map>
